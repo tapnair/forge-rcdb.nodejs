@@ -16,7 +16,9 @@
 }
 
 .Resizer.horizontal {
-  margin: 0;
+  background: transparent;
+  height: 2px;
+  margin: -5px 0;
   cursor: row-resize;
   width: 100%;
 }

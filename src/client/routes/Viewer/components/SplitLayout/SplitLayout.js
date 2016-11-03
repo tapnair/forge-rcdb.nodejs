@@ -44,7 +44,7 @@ class SplitLayout extends React.Component {
           <div>
             <SplitPane className="primary"
               split="vertical"
-              minSize={50} defaultSize="60%"
+              minSize={50} maxSize="90%" defaultSize="60%"
               onChange={ (size) => {
                 if(this.eventTimeout) {
                   clearTimeout(this.eventTimeout)
@@ -65,7 +65,7 @@ class SplitLayout extends React.Component {
                 width={this.state.splitWidth}/>
 
               <SplitPane split="horizontal"
-                minSize={230} defaultSize={300}
+                minSize={230} maxSize="90%" defaultSize={300}
                 onChange={ (size) => {
                   if(this.eventTimeout) {
                     clearTimeout(this.eventTimeout)
