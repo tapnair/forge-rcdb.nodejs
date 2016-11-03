@@ -4,31 +4,21 @@
 }
 
 .legend-scroll {
-  height: calc(50% - 25px);
+  height: calc(50%);
   overflow: auto;
+  border-bottom: 1px solid #aeaeae;
 }
 
 #legend-container {
   margin-left: 20px;
-  margin-top: 6px;
+  margin-top: 12px;
   height: 100%;
 }
 
 #pie-chart-container {
-  height: calc(50% - 25px);
+  height: calc(50%);
   overflow: hidden;
-}
-
-.db-chart .footer {
-  border-top: 1px solid #aeaeae;
-  text-align: left;
-  height: 26px;
-}
-
-.db-chart .footer .footer-panel {
-  height: 100%;
-  float: left;
-  width: 50%;
+  padding-top: 10px;
 }
 
 svg [class*="_pieChart"],
