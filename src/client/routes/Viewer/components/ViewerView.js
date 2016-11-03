@@ -559,8 +559,8 @@ class ViewerView extends React.Component {
 
       const legendLabel = [
         {text: key, spacing: 0},
-        {text: `% ${costPercent}`, spacing: 170},
-        {text: `$USD ${cost}`, spacing: 230}
+        {text: `% ${costPercent}`, spacing: 190},
+        {text: `$USD ${cost}`, spacing: 250}
       ]
 
       return {
