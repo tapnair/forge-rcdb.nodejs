@@ -18,9 +18,7 @@ class Markup3DExtension extends ExtensionBase {
   constructor (viewer, options) {
 
     super (viewer, options)
-
-    console.log(options)
-
+    
     this.markupCollection = {}
 
     this.markup3DTool = new Markup3DTool(
