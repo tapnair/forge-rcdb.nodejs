@@ -3,11 +3,11 @@
 // by Philippe Leefsma, September 2016
 //
 /////////////////////////////////////////////////////////////////////
-import CustomPropertyPanel from './Viewing.Extension.CustomProperty.Panel'
+import MetaPropertyPanel from './Viewing.Extension.MetaProperty.Panel'
 import ExtensionBase from 'Viewer.ExtensionBase'
 import ViewerToolkit from 'Viewer.Toolkit'
 
-class CustomPropertyExtension extends ExtensionBase {
+class MetaPropertyExtension extends ExtensionBase {
 
   /////////////////////////////////////////////////////////////////
   // Class constructor
@@ -24,7 +24,7 @@ class CustomPropertyExtension extends ExtensionBase {
   /////////////////////////////////////////////////////////////////
   static get ExtensionId() {
 
-    return 'Viewing.Extension.CustomProperty';
+    return 'Viewing.Extension.MetaProperty';
   }
 
   /////////////////////////////////////////////////////////////////
@@ -33,14 +33,19 @@ class CustomPropertyExtension extends ExtensionBase {
   /////////////////////////////////////////////////////////////////
   load() {
 
-    this._panel = new CustomPropertyPanel(
+    this._panel = new MetaPropertyPanel(
       this._viewer,
       this._options)
+
+    this._panel.on('setProperties', (data) => {
+
+      return this.emit('setProperties', data)
+    })
 
     this._viewer.setPropertyPanel(
       this._panel)
 
-    console.log('Viewing.Extension.CustomProperty loaded');
+    console.log('Viewing.Extension.MetaProperty loaded');
 
     return true;
   }
@@ -51,12 +56,46 @@ class CustomPropertyExtension extends ExtensionBase {
   /////////////////////////////////////////////////////////////////
   unload() {
 
-    console.log('Viewing.Extension.CustomProperty unloaded');
+    console.log('Viewing.Extension.MetaProperty unloaded');
+
+    return true;
+  }
+
+  /////////////////////////////////////////////////////////////////
+  //
+  //
+  /////////////////////////////////////////////////////////////////
+  addProperties (properties) {
+
+    //suppress "no properties" in panel
+    if(properties.length) {
+
+      $('div.noProperties', this._panel.container).remove()
+    }
+
+    properties.forEach((property) => {
+
+      this._panel.addProperty(property)
+    })
+
+    this._panel.resizeToContent()
+  }
+
+  /////////////////////////////////////////////////////////////////
+  //
+  //
+  /////////////////////////////////////////////////////////////////
+  updateProperties (properties) {
+
+    properties.forEach((property) => {
+
+      this._panel.updateProperty(property)
+    })
 
     return true;
   }
 }
 
 Autodesk.Viewing.theExtensionManager.registerExtension(
-  CustomPropertyExtension.ExtensionId,
-  CustomPropertyExtension)
+  MetaPropertyExtension.ExtensionId,
+  MetaPropertyExtension)

@@ -84,8 +84,8 @@ const createInitialState = () => {
   const defaultState = {
     layoutType: 'splitLayoutRight',
     theme: {
-      name: 'Snow-White',
       css: '/resources/themes/snow-white.css',
+      name: 'snow-white-theme',
       viewer: {
         backgroundColor: [
           245, 245, 245,

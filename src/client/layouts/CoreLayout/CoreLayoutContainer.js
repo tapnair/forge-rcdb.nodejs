@@ -3,13 +3,15 @@ import CoreLayout from './CoreLayout'
 import {
   databaseChange,
   layoutChange,
+  themeChange,
   saveAppState
   } from '../../store/app'
 
 const mapDispatchToProps = {
   databaseChange,
   layoutChange,
-  saveAppState
+  saveAppState,
+  themeChange
 }
 
 const mapStateToProps = (state) => ({

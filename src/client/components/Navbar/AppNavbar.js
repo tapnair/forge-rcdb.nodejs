@@ -160,6 +160,7 @@ export default class AppNavbar extends React.Component {
             close={()=>{ this.setState(Object.assign({}, this.state, {
               themeOpen: false
             }))}}
+            saveAppState={this.props.saveAppState}
             themeChange={this.props.themeChange}
             open={this.state.themeOpen}
           />

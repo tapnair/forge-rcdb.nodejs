@@ -1,15 +1,20 @@
 .tabs {
+  user-select: none;
   overflow:hidden;
   height: 100%;
   clear:both;
 }
 
-.tabs ul {
+.tabs .headers {
   list-style-type:none;
   position:relative;
   bottom: -1px;
+  width: 100%;
+  z-index: 0;
   padding: 0;
   margin: 0;
+  margin-bottom: 30px;
+  margin-left: 3px;
 }
 
 .tabs > div {
@@ -28,27 +33,13 @@
   border: 1px solid #aeaeae;
 }
 
-.tabs .headers {
-  margin-bottom: 30px;
-  margin-left: 3px;
-  width: 100%;
-  z-index: 0;
-}
-
-.tabs ul {
-  list-style-type:none;
-  bottom: -1px;
-  position:relative;
-}
-
-.tabs li {
+.tabs .headers li {
   margin-right: 2px;
   height: 20px;
   float:left;
 }
 
-.tabs a, .tab-link,
-.tabs a, .tab-link:hover {
+.tab-link, .tab-link:hover {
   cursor: pointer;
   display:block;
   padding:5px 5px;

@@ -1,4 +1,4 @@
-import CustomPropertyExtension from 'Viewing.Extension.CustomProperty'
+import MetaPropertyExtension from 'Viewing.Extension.MetaProperty'
 import StateManagerExtension from 'Viewing.Extension.StateManager'
 import VisualReportExtension from 'Viewing.Extension.VisualReport'
 import ContextMenuExtension from 'Viewing.Extension.ContextMenu'
@@ -123,6 +123,15 @@ class ViewerView extends React.Component {
       filteredDbItems,
       chartData
     }))
+
+    const dbProperties = this.buildViewerPanelProperties(
+      updatedDbItem)
+
+    const metaPropExtension =
+      this.viewer.getExtension(MetaPropertyExtension)
+
+    metaPropExtension.updateProperties(
+      dbProperties)
   }
 
   /////////////////////////////////////////////////////////
@@ -142,7 +151,7 @@ class ViewerView extends React.Component {
       this.viewer.model,
       dbIds)
 
-    if(propagate) {
+    if (propagate) {
 
       this.setState(Object.assign({}, this.state, {
         selectedDbItem
@@ -329,10 +338,16 @@ class ViewerView extends React.Component {
         }
       })
 
-      viewer.loadExtension(CustomPropertyExtension, {
-        getCustomProperties: (nodeId) => {
-          return this.getCustomProperties(nodeId)
-        }
+      viewer.loadExtension(MetaPropertyExtension)
+
+      const metaPropExtension = viewer.getExtension(
+        MetaPropertyExtension)
+
+      metaPropExtension.on('setProperties', (data) => {
+
+        return this.onSetComponentProperties(
+          data.properties,
+          data.nodeId)
       })
 
       viewer.loadExtension(VisualReportExtension,
@@ -398,46 +413,79 @@ class ViewerView extends React.Component {
   //
   //
   /////////////////////////////////////////////////////////////////
-  getCustomProperties (nodeId) {
+  onSetComponentProperties (viewerProps, nodeId) {
 
-    return new Promise(async(resolve, reject) => {
+    let materialName = null
 
-      try {
+    // filter out material because
+    // it is added in 'Database' category
+    let properties = _.filter(viewerProps, (prop)=> {
 
-        const prop = await ViewerToolkit.getProperty(
-          this.viewer.model, nodeId, 'Material')
+      if (prop.displayName === 'Material') {
 
-        const material = this.materialMap[
-          prop.displayValue].dbMaterial
-
-        resolve([ {
-            name: 'Material',
-            value: material.name,
-            dataType: 'text',
-            category: 'Database'
-          },{
-            name: 'Supplier',
-            value: material.supplier,
-            dataType: 'text',
-            category: 'Database'
-          },{
-            name: 'Price',
-            value: material.price,
-            dataType: 'text',
-            category: 'Database'
-          },{
-            name: 'Currency',
-            value: material.currency,
-            dataType: 'text',
-            category: 'Database'
-          }
-        ])
-
-      } catch (ex) {
-
-        reject(ex)
+        materialName = prop.displayValue
       }
+
+      return prop.displayName !== 'Material'
     })
+
+    if (this.materialMap[materialName]) {
+
+      const material = this.materialMap[
+        materialName].dbMaterial
+
+      const dbProperties =
+        this.buildViewerPanelProperties(
+          material)
+
+      properties = [
+        ...properties,
+        ...dbProperties
+      ]
+    }
+
+    return Promise.resolve(properties)
+  }
+
+  /////////////////////////////////////////////////////////////////
+  //
+  //
+  /////////////////////////////////////////////////////////////////
+  buildViewerPanelProperties (material) {
+
+    return [ {
+
+      id: material._id + '-material',
+      displayName: 'Material',
+      displayValue: material.name,
+      dataType: 'text',
+      displayCategory: 'Database'
+
+    },{
+
+      id: material._id + '-supplier',
+      displayName: 'Supplier',
+      displayValue: material.supplier,
+      dataType: 'text',
+      displayCategory: 'Database'
+
+    },{
+
+      id: material._id + '-price',
+      displayName: 'Price',
+      displayValue: material.price,
+      dataType: 'text',
+      displayCategory: 'Database'
+
+    },{
+
+      id: material._id + '-currency',
+      displayName: 'Currency',
+      displayValue: material.currency,
+      dataType: 'text',
+      displayCategory: 'Database'
+
+    }]
   }
 
   /////////////////////////////////////////////////////////////////
@@ -699,21 +747,16 @@ class ViewerView extends React.Component {
 
   //createDBItems() {
   //
-  //  const componentIds = await ViewerToolkit.getLeafNodes(
-  //    this.viewer.model)
+  //  const componentIds = await ViewerToolkit.getLeafNodes(this.viewer.model)
   //
   //  var componentsMap = await ViewerToolkit.mapComponentsByProp(
-  //    this.viewer.model,
-  //    'Material',
-  //    componentIds);
+  //    this.viewer.model, 'Material', componentIds)
   //
-  //  const materialSvc = ServiceManager.getService(
-  //    'MaterialSvc')
+  //  const materialSvc = ServiceManager.getService('MaterialSvc')
   //
   //  Object.keys(componentsMap).forEach(async(key) => {
   //
-  //    const res = await
-  //    materialSvc.postMaterial('forge-rcdb', {
+  //    const res = await materialSvc.postMaterial('forge-rcdb', {
   //      name: key,
   //      supplier: 'Autodesk',
   //      currency: 'USD',

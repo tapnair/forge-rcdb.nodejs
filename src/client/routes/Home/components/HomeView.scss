@@ -26,6 +26,7 @@
     background-color: white;
     top: calc(50% - 150px);
     left: calc(50% - 225px);
+    overflow: auto;
     height: 250px;
     width: 450px;
   }
@@ -75,6 +76,7 @@
     background-color: white;
     top: calc(50% - 100px);
     left: calc(50% - 150px);
+    overflow: auto;
     height: 164px;
     width: 300px;
   }

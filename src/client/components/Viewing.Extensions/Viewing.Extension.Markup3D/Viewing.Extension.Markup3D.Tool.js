@@ -341,23 +341,6 @@ export default class Markup3DTool extends EventsEmitter {
 
         this.markupCollection[markup.id] = markup
       })
-
-      const onStateRestored = () => {
-
-        this.viewer.removeEventListener(
-          Autodesk.Viewing.VIEWER_STATE_RESTORED_EVENT,
-          onStateRestored);
-
-        setTimeout(() => {
-
-
-
-        }, 1250);
-      }
-
-      this.viewer.addEventListener(
-        Autodesk.Viewing.VIEWER_STATE_RESTORED_EVENT,
-        onStateRestored);
     }
   }
 }

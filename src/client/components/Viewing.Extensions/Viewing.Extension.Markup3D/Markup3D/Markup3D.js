@@ -188,20 +188,6 @@ export default class Markup3D extends EventsEmitter {
   }
 
   /////////////////////////////////////////////////////////////////
-  //
-  //
-  /////////////////////////////////////////////////////////////////
-  worldToScreen (screenPoint) {
-
-    var n = this.normalize(screenPoint)
-
-    var worldPoint = this.viewer.utilities.getHitPoint(
-      n.x, n.y)
-
-    return worldPoint
-  }
-
-  /////////////////////////////////////////////////////////////////
   // Return hit data
   // {
   //  dbId: nb

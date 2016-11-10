@@ -12,7 +12,7 @@ import TabManager from 'TabManager'
 import Dropdown from 'Dropdown'
 import d3 from 'd3'
 
-export default class VisualReportPanel extends ToolPanelBase{
+export default class VisualReportPanel extends ToolPanelBase {
 
   constructor(viewer, properties, componentIds, buttonElement) {
 
@@ -215,9 +215,10 @@ export default class VisualReportPanel extends ToolPanelBase{
 
     var colors = d3.scale.linear()
       .domain([0, keys.length * .33, keys.length * .66, keys.length])
-      .range(['#B58929','#C61C6F', '#268BD2', '#85992C']) //Orange to Green.
+      .range(['#FCB843', '#C2149F', '#0CC4BD', '#0270E9']) //adsk colors
+      //.range(['#B58929','#C61C6F', '#268BD2', '#85992C']) //Orange to Green.
 
-    this.data = keys.map((key, idx)=> {
+    this.data = keys.map((key, idx) => {
 
       var color = colors(idx);
 

@@ -13,18 +13,32 @@ export default class ThemeDlg extends React.Component {
     super()
 
     this.items = [
-      //{
-      //  img: '/resources/img/forge-theme.png',
-      //  layoutType: 'forge-theme',
-      //  caption: 'Forge',
-      //  key: '1'
-      //},
-      //{
-      //  img: '/resources/img/snow-white-theme.png',
-      //  theme: 'snow-white-theme',
-      //  caption: 'Snow White',
-      //  key: '2'
-      //}
+      {
+        img: '/resources/img/forge-theme.png',
+        css: '/resources/themes/forge.css',
+        name: 'forge-theme',
+        caption: 'Forge',
+        viewer: {
+          backgroundColor: [
+            255, 226, 110,
+            219, 219, 219
+          ]
+        },
+        key: '1'
+      },
+      {
+        img: '/resources/img/snow-white-theme.png',
+        css: '/resources/themes/snow-white.css',
+        name: 'snow-white-theme',
+        caption: 'Snow White',
+        viewer: {
+          backgroundColor: [
+            245, 245, 245,
+            245, 245, 245
+          ]
+        },
+        key: '2'
+      }
     ]
   }
 
@@ -43,7 +57,8 @@ export default class ThemeDlg extends React.Component {
   /////////////////////////////////////////////////////////////////
   onClick (item) {
 
-    this.props.onSelectItem(item)
+    this.props.themeChange(item)
+    this.props.saveAppState()
     this.props.close()
   }
 
@@ -65,8 +80,6 @@ export default class ThemeDlg extends React.Component {
           </div>
 
           <div className="content responsive-grid">
-
-            NOT YET IMPLEMENTED :( ...
 
             {this.items.map((item) => {
               return (

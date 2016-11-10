@@ -53,7 +53,7 @@ export default class AboutDlg extends React.Component {
                Source on github:
                <br/>
                <a href="https://github.com/Autodesk-Forge/forge-rcdb.nodejs" target="_blank">
-               https://github.com/Autodesk-Forge/forge-rcdb.nodejs
+               Forge RCDB
                </a>
              </div>
           </div>

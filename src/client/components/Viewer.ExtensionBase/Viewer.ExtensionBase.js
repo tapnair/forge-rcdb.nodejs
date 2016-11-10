@@ -3,14 +3,16 @@
 //
 //
 ///////////////////////////////////////////////////////////////////////////////
+import EventsEmitter from 'EventsEmitter'
 
-export default class ExtensionBase extends Autodesk.Viewing.Extension {
+export default class ExtensionBase extends
+  EventsEmitter.Composer (Autodesk.Viewing.Extension) {
 
   /////////////////////////////////////////////////////////////////
   // Class constructor
   //
   /////////////////////////////////////////////////////////////////
-  constructor(viewer, options = {}) {
+  constructor (viewer, options = {}) {
 
     super(viewer, options)
 
@@ -65,52 +67,6 @@ export default class ExtensionBase extends Autodesk.Viewing.Extension {
   unload() {
 
     return true
-  }
-
-  ///////////////////////////////////////////////////////////////////
-  //
-  //
-  ///////////////////////////////////////////////////////////////////
-  on(event, fct) {
-
-    this._events[event] = this._events[event]	|| []
-    this._events[event].push(fct)
-    return fct
-  }
-
-  ///////////////////////////////////////////////////////////////////
-  //
-  //
-  ///////////////////////////////////////////////////////////////////
-  off(event, fct) {
-
-    if(event in this._events === false)
-      return
-
-    this._events[event].splice(
-      this._events[event].indexOf(fct), 1)
-  }
-
-  ///////////////////////////////////////////////////////////////////
-  //
-  //
-  ///////////////////////////////////////////////////////////////////
-  emit(event /* , args... */) {
-
-    if(this._events[event] === undefined)
-      return
-
-    var tmpArray = this._events[event].slice()
-
-    for(var i = 0; i < tmpArray.length; ++i) {
-      var result = tmpArray[i].apply(this,
-        Array.prototype.slice.call(arguments, 1))
-
-      if(result !== undefined )
-        return result
-    }
-
-    return undefined
   }
 }
 

@@ -2,7 +2,9 @@
 //
 //
 /////////////////////////////////////////////////////////////////
-import './ToolPanelBase.css'
+import EventsEmitter from 'EventsEmitter'
+import velocity from 'velocity-animate'
+import './ToolPanelBase.scss'
 
 function getDefaultOptions () {
 
@@ -14,7 +16,7 @@ function getDefaultOptions () {
 }
 
 export default class ToolPanelBase extends
-  Autodesk.Viewing.UI.DockingPanel {
+  EventsEmitter.Composer (Autodesk.Viewing.UI.DockingPanel) {
 
   ///////////////////////////////////////////////////////////////////
   //
@@ -47,8 +49,6 @@ export default class ToolPanelBase extends
       Object.assign(getDefaultOptions(), options))
 
     this._dialogResult = 'CANCEL'
-
-    this._events = {}
 
     this._isVisible = false
     this._isMinimized = false
@@ -89,7 +89,14 @@ export default class ToolPanelBase extends
   // setVisible override
   //
   /////////////////////////////////////////////////////////////
-  setVisible(show = false) {
+  setVisible (show = false) {
+
+    if (show) {
+
+      $(this.container).velocity({
+        rotateY: [0, -90]
+      })
+    }
 
     if (show !== this._isVisible) {
 
@@ -166,7 +173,7 @@ export default class ToolPanelBase extends
   //
   /////////////////////////////////////////////////////////////
   createTitleBar (title) {
-    
+
     var titleBar = document.createElement("div")
 
     titleBar.className = "dockingPanelTitle"
@@ -185,17 +192,17 @@ export default class ToolPanelBase extends
     $(titleBar).append(html)
 
     this.addEventListener(titleBar, 'click', (event)=> {
-      
+
       if (!this.movedSinceLastClick) {
-        
+
         this.onTitleClick(event)
       }
-      
+
       this.movedSinceLastClick = false
     })
 
     this.addEventListener(titleBar, 'dblclick', (event) => {
-      
+
       this.onTitleDoubleClick(event)
     })
 
@@ -207,13 +214,13 @@ export default class ToolPanelBase extends
   //
   /////////////////////////////////////////////////////////////
   setTitle (text, options) {
-  
+
     if (options && options.localizeTitle) {
 
       $(`#${this.titleTextId}`).attr('data-i18n', text)
 
       text = Autodesk.Viewing.i18n.translate(text)
-      
+
     } else {
 
       $(`#${this.titleTextId}`).removeAttr('data-i18n')
@@ -235,63 +242,18 @@ export default class ToolPanelBase extends
       this._height = $(this.container).css('height')
 
       $(this.container).css({
-        'height':'32px',
-        'min-height':'32px'
+        'min-height':'32px',
+        overflow: 'hidden',
+        height:'32px'
       })
-    }
-    else {
+
+    } else {
 
       $(this.container).css({
-        'height':this._height,
-        'min-height':'100px'
+        height:this._height,
+        'min-height':'100px',
+        overflow: 'visible'
       })
     }
-  }
-
-  ///////////////////////////////////////////////////////////////////
-  //
-  //
-  ///////////////////////////////////////////////////////////////////
-  on(event, fct) {
-
-    this._events[event] = this._events[event]	|| []
-    this._events[event].push(fct)
-    return fct
-  }
-
-  ///////////////////////////////////////////////////////////////////
-  //
-  //
-  ///////////////////////////////////////////////////////////////////
-  off(event, fct) {
-
-    if(event in this._events === false)
-      return
-
-    this._events[event].splice(
-      this._events[event].indexOf(fct), 1)
-  }
-
-  ///////////////////////////////////////////////////////////////////
-  //
-  //
-  ///////////////////////////////////////////////////////////////////
-  emit(event /* , args... */) {
-
-    if(this._events[event] === undefined)
-      return
-
-    var handlers = this._events[event].slice()
-
-    for(var i = 0; i < handlers.length; ++i) {
-
-      var result = handlers[i].apply(this,
-        Array.prototype.slice.call(arguments, 1))
-
-      if(result !== undefined )
-        return result
-    }
-
-    return undefined
   }
 }
