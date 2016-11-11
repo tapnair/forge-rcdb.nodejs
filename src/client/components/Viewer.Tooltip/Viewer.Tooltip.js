@@ -1,3 +1,4 @@
+import Snap from 'imports-loader?this=>window,fix=>module.exports=0!snapsvg/dist/snap.svg.js'
 import EventsEmitter from 'EventsEmitter'
 import './Viewer.Tooltip.scss'
 
@@ -11,11 +12,74 @@ export default class ViewerTooltip extends EventsEmitter {
 
     super()
 
+    this.markerId = this.guid()
+
+    this.svgId = this.guid()
+
+    const htmlMarker = `
+      <div id="${this.markerId}" class="tooltip-marker">
+        <svg id="${this.svgId}"></svg>
+      </div>`
+
     viewer.toolController.registerTool(this)
+
+    $(viewer.container).append(htmlMarker)
+
+    this.$marker = $(`#${this.markerId}`)
+
+    this.pointer = this.createPointer(
+      $(`#${this.svgId}`)[0])
 
     this.viewer = viewer
 
     this.active = false
+  }
+
+  /////////////////////////////////////////////////////////////////
+  //
+  //
+  /////////////////////////////////////////////////////////////////
+  createPointer (element) {
+
+    const snap = Snap(element)
+
+    let circle = snap.paper.circle(
+      25, 25, 0)
+
+    circle.attr({
+      stroke: '#FF0000',
+      fillOpacity: 0.4,
+      fill: '#FF0000',
+      strokeWidth: 2,
+      opacity: 1
+    })
+
+    return circle
+  }
+
+  /////////////////////////////////////////////////////////////////
+  //
+  //
+  /////////////////////////////////////////////////////////////////
+  animatePointer (id) {
+
+    if(this.animateId === id) {
+
+      this.pointer.animate(
+        { r: 12 },
+        2000,
+        mina.easein, () => {
+
+          this.pointer.attr({
+            r: 0
+          })
+
+          if (this.pointerVisible) {
+
+            this.animatePointer(id)
+          }
+        })
+    }
   }
 
   /////////////////////////////////////////////////////////////////
@@ -85,6 +149,12 @@ export default class ViewerTooltip extends EventsEmitter {
         display: 'none'
       })
 
+      this.pointerVisible = false
+
+      this.$marker.css({
+        display: 'none'
+      })
+
       this.emit('deactivate')
     }
   }
@@ -106,7 +176,7 @@ export default class ViewerTooltip extends EventsEmitter {
 
     $(this.tooltipSelector).css({
       left : event.clientX + 'px',
-      top  : event.clientY - 95 + 'px'
+      top  : event.clientY - 100 + 'px'
     })
 
     const screenPoint = {
@@ -119,6 +189,36 @@ export default class ViewerTooltip extends EventsEmitter {
     if (worldPoint && this.active) {
 
       //console.log(worldPoint)
+
+      const offset = $(this.viewer.container).offset()
+
+      this.$marker.css({
+        left: screenPoint.x - offset.left - this.$marker.width()/2,
+        top: screenPoint.y - offset.top - this.$marker.height()/2,
+        display: 'block'
+      })
+
+      if (!this.pointerVisible) {
+
+        this.pointerVisible = true
+
+        this.animateId = this.guid()
+
+        this.animatePointer(
+          this.animateId)
+      }
+
+    } else {
+
+      this.pointerVisible = false
+
+      this.$marker.css({
+        display: 'none'
+      })
+
+      this.pointer.attr({
+        r: 0
+      })
     }
 
     return false

@@ -319,6 +319,7 @@ export default class Markup3DTool extends EventsEmitter {
       if (markup.bindToState) {
 
         markup.remove()
+
         delete this.markupCollection[id]
       }
     }

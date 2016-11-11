@@ -6,4 +6,6 @@ coverage
 .idea/
 resources/models
 bin/static
+push-to-prod.sh
+
 
