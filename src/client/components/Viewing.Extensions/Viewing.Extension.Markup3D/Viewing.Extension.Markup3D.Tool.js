@@ -66,19 +66,17 @@ export default class Markup3DTool extends EventsEmitter {
   /////////////////////////////////////////////////////////////////
   startCreate () {
 
-    if(!this.create) {
+    if (!this.create) {
 
       this.create = true
 
       this.currentMarkup = null
 
-      this.eventHandlers = [
-        {
+      this.eventHandlers = [{
           event: Autodesk.Viewing.AGGREGATE_SELECTION_CHANGED_EVENT,
           handler: this.onSelectionChangedHandler,
           removeOnDeactivate: true
-        }
-      ]
+      }]
 
       this.eventHandlers.forEach((entry) => {
 
@@ -97,7 +95,7 @@ export default class Markup3DTool extends EventsEmitter {
   /////////////////////////////////////////////////////////////////
   stopCreate () {
 
-    if(this.create) {
+    if (this.create) {
 
       this.create = false
 
@@ -130,20 +128,15 @@ export default class Markup3DTool extends EventsEmitter {
       y: event.clientY
     }
 
-    //console.log('-------------------')
-    //console.log('Tool:handleSingleClick(event, button)')
-    //console.log(event)
-
-    var viewport = this.viewer.navigation.getScreenViewport()
-
-    var n = {
-      x: (event.clientX - viewport.left) / viewport.width,
-      y: (event.clientY - viewport.top) / viewport.height
-    }
-
-    var worldPoint = this.viewer.utilities.getHitPoint(
-      n.x,
-      n.y)
+    //var viewport = this.viewer.navigation.getScreenViewport()
+    //
+    //var n = {
+    //  x: (event.clientX - viewport.left) / viewport.width,
+    //  y: (event.clientY - viewport.top) / viewport.height
+    //}
+    //
+    //var worldPoint = this.viewer.utilities.getHitPoint(
+    //  n.x, n.y)
 
     //console.log(worldPoint)
 
@@ -232,6 +225,16 @@ export default class Markup3DTool extends EventsEmitter {
           sel.fragIdsArray[0],
           null,
           this.options.properties)
+
+        markup.labelMarker.on('mouseover', () => {
+
+          this.emit('markupLabel.mouseover', markup)
+        })
+
+        markup.labelMarker.on('mouseout', () => {
+
+          this.emit('markupLabel.mouseout', markup)
+        })
 
         markup.on('created', () => {
 

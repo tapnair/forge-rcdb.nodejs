@@ -18,7 +18,7 @@ class Markup3DExtension extends ExtensionBase {
   constructor (viewer, options) {
 
     super (viewer, options)
-    
+
     this.markupCollection = {}
 
     this.markup3DTool = new Markup3DTool(
@@ -31,7 +31,7 @@ class Markup3DExtension extends ExtensionBase {
 
     this.tooltip.setContent(`
       <div id="markup3D-tooltipId" class="markup3D-tooltip">
-        <b>Place markup ...</b>
+        <b>Place new markup (or ESC) ...</b>
       </div>`, '#markup3D-tooltipId')
 
     this._viewer.toolController.registerTool(
@@ -107,8 +107,6 @@ class Markup3DExtension extends ExtensionBase {
 
     this.markup3DTool.on('markupCreated', () => {
 
-      //TODO more work to handle proper behavior
-      //this.tooltip.activate()
     })
 
     this.markup3DTool.on('stopCreate', () => {
@@ -116,6 +114,31 @@ class Markup3DExtension extends ExtensionBase {
       this.tooltip.deactivate()
 
       this._control.container.classList.remove('active')
+    })
+
+    this.markup3DTool.on('markupLabel.mouseover', (markup) => {
+
+      this.tooltip.deactivate()
+    })
+
+    this.markup3DTool.on('markupLabel.mouseout', (markup) => {
+
+      if (this.markup3DTool.create) {
+
+        const markup = this.markup3DTool.currentMarkup
+
+        if (markup) {
+
+          if(markup.created && !markup.dragging) {
+
+            this.tooltip.activate()
+          }
+
+        } else {
+
+          this.tooltip.activate()
+        }
+      }
     })
 
     this.eventHandlers = [

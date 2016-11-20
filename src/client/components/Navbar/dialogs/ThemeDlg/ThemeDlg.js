@@ -14,8 +14,8 @@ export default class ThemeDlg extends React.Component {
 
     this.items = [
       {
-        img: '/resources/img/forge-theme.png',
         css: '/resources/themes/forge.css',
+        className: 'forge-theme',
         name: 'forge-theme',
         caption: 'Forge',
         viewer: {
@@ -27,10 +27,10 @@ export default class ThemeDlg extends React.Component {
         key: '1'
       },
       {
-        img: '/resources/img/snow-white-theme.png',
         css: '/resources/themes/snow-white.css',
+        className: 'snow-theme',
         name: 'snow-white-theme',
-        caption: 'Snow White',
+        caption: 'Snow',
         viewer: {
           backgroundColor: [
             245, 245, 245,
@@ -85,7 +85,7 @@ export default class ThemeDlg extends React.Component {
               return (
                 <a key={item.key} href="#" onClick={()=>{this.onClick(item)}}>
                   <figure>
-                    <img src={item.img}/>
+                    <img className={item.className}/>
                     <figcaption>
                     {item.caption}
                     </figcaption>

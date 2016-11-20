@@ -17,6 +17,8 @@ export default class LabelMarker extends GraphicMarker {
 
     this.properties = properties
 
+    this.labelId = this.guid()
+
     this.svgId = this.guid()
 
     this.viewer = viewer
@@ -25,11 +27,14 @@ export default class LabelMarker extends GraphicMarker {
 
     this.dbId = dbId
 
-    this.setContent(
-      `<svg id="${this.svgId}" class="markup3D"></svg>
-       <div id="${this.controlsId}" class="markup3D"></div>
-      `
-    )
+    this.setContent(`
+      <div id="${this.labelId}" class="markup3D-label">
+        <svg id="${this.svgId}" class="markup3D">
+        </svg>
+        <div id="${this.controlsId}" class="markup3D">
+        </div>
+      </div>
+    `)
 
     $(`#${this._markerId}`).css({
       'pointer-events': 'auto'
@@ -54,6 +59,9 @@ export default class LabelMarker extends GraphicMarker {
 
     this.setScreenPoint(screenPoint)
 
+    this.onMouseMoveHandler = (event)=>
+      this.onMouseMove(event)
+
     this.onMouseUpHandler = (event)=>
       this.onMouseUp(event)
 
@@ -62,6 +70,14 @@ export default class LabelMarker extends GraphicMarker {
 
     this.onDoubleClickHandler = (event)=>
       this.onDoubleClick(event)
+
+    $(`#${this.labelId}`)
+      .mouseover(() => {
+        this.emit('mouseover')
+      })
+      .mouseout(() => {
+        this.emit('mouseout')
+      })
 
     $(`#${this.svgId}`).on(
       'mouseup',
@@ -123,6 +139,10 @@ export default class LabelMarker extends GraphicMarker {
 
     this.parent.dragging = true
 
+    $(`#${this.svgId}`).on(
+      'mousemove',
+      this.onMouseMoveHandler)
+
     this.parent.emit('drag.start', this.parent)
   }
 
@@ -133,6 +153,10 @@ export default class LabelMarker extends GraphicMarker {
   async endDrag () {
 
     this.parent.dragging = false
+
+    $(`#${this.svgId}`).off(
+      'mousemove',
+      this.onMouseMoveHandler)
 
     this.parent.emit('drag.end', this.parent)
 
@@ -171,12 +195,12 @@ export default class LabelMarker extends GraphicMarker {
         name: prop.displayName
       }
 
-      this.emit('labelSelected')
-
     } else {
 
       this.showControls(true)
     }
+
+    this.emit('created')
   }
 
   /////////////////////////////////////////////////////////////////
@@ -356,6 +380,21 @@ export default class LabelMarker extends GraphicMarker {
     $(`#${this._markerId}`).css({
       width: width + 10
     })
+  }
+
+  /////////////////////////////////////////////////////////////////
+  //
+  //
+  /////////////////////////////////////////////////////////////////
+  onMouseMove (event) {
+
+    if (this.parent.dragging) {
+
+      this.parent.setLeaderEndPoint({
+        x: event.clientX,
+        y: event.clientY
+      })
+    }
   }
 
   /////////////////////////////////////////////////////////////////

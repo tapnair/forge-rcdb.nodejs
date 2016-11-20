@@ -121,7 +121,7 @@ class HomeView extends React.Component {
                       {model.name}
                     </figcaption>
                     <img className={model.thumbnail ? "":"default-thumbnail"}
-                      src={model.thumbnail ? "data:image/png;base64," + model.thumbnail : ""}/>
+                      src={model.thumbnail ? model.thumbnail : ""}/>
                   </figure>
                 </a>)
               })

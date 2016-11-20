@@ -65,14 +65,19 @@ export default class ViewerTooltip extends EventsEmitter {
 
     if(this.animateId === id) {
 
-      this.pointer.animate(
-        { r: 12 },
+      this.pointer.attr({
+        fillOpacity: 0.8,
+        opacity: 1,
+        r: 0
+      })
+
+      this.pointer.animate({
+          fillOpacity: 0.2,
+          opacity: 0.4,
+          r: 16
+        },
         2000,
         mina.easein, () => {
-
-          this.pointer.attr({
-            r: 0
-          })
 
           if (this.pointerVisible) {
 
@@ -174,9 +179,11 @@ export default class ViewerTooltip extends EventsEmitter {
   /////////////////////////////////////////////////////////////////
   handleMouseMove (event) {
 
+    const $offset = $(this.viewer.container).offset()
+
     $(this.tooltipSelector).css({
-      left : event.clientX + 'px',
-      top  : event.clientY - 100 + 'px'
+      top  : event.clientY - $offset.top - 30 + 'px',
+      left : event.clientX - $offset.left + 'px'
     })
 
     const screenPoint = {

@@ -28,6 +28,8 @@ export default class Markup3D extends EventsEmitter {
 
     this.visible = false
 
+    this.created = false
+
     this.dbId = dbId
 
     this.initialMeshPos = this.meshPosition(
@@ -96,9 +98,11 @@ export default class Markup3D extends EventsEmitter {
       this.startPoint,
       properties)
 
-    this.labelMarker.on('labelSelected', () => {
+    this.labelMarker.on('created', () => {
 
-      this.labelMarker.off()
+      this.labelMarker.off('created')
+
+      this.created = true
 
       this.emit('created')
     })
@@ -306,7 +310,7 @@ export default class Markup3D extends EventsEmitter {
   //
   //
   /////////////////////////////////////////////////////////////////
-  update(){
+  update () {
 
     var dir = this.direction()
 
