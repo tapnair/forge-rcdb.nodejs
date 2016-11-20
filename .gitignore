@@ -4,7 +4,8 @@ node_modules
 dist
 coverage
 .idea/
-resources/models
+resources/models/office
+resources/models/seat
 bin/static
 push-to-prod.sh
 
