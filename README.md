@@ -82,22 +82,18 @@ It may be a bit tricky to deploy that sample in the Cloud because it requires tw
 
  * 1/ You need to translate at least one model using your own Forge credentials, so it can be loaded by your app. In order to do that take a look at the [step-by-step tutorial](https://developer.autodesk.com/en/docs/model-derivative/v2/tutorials/prepare-file-for-viewer/) from the [Model Derivative API](https://developer.autodesk.com/en/docs/model-derivative/v2/overview/) to understand exactly what this is about.
 
-If you want to skip that manual process you can use one of our live sample: [https://models.autodesk.io](https://models.autodesk.io)
-
-Which lets you put your credentials and translate a model on your behalf. Another option would be to deploy to heroku the [Forge boiler plate sample #5](https://github.com/Autodesk-Forge/forge-boilers.nodejs)
-
-Make sure you deploy Project #5. This set up is more straightforward since it doesn't require any Cloud database or pre-translated models. It will let you upload, translate and manage further models as well.
+If you want to skip that manual process you can use one of our live sample: [https://models.autodesk.io](https://models.autodesk.io). This app lets you put your credentials and translate a model on your behalf. Another option would be to deploy to heroku the [Forge boiler plate sample #5](https://github.com/Autodesk-Forge/forge-boilers.nodejs). Make sure you deploy Project #5. This set up is more straightforward since it doesn't require any Cloud database or pre-translated models. It will let you upload, translate and manage further models as well.
 
 Once you have translated at least one model, take note of its URN, that's the base64 encoded objectId. You also need a model which has some "Material" properties to be compatible with forge-rcdb because it is expecting components with that property. You can use Engine.dwf placed in the [resource/models](https://github.com/Autodesk-Forge/forge-rcdb.nodejs/tree/master/resources/models) directory of this project.
 
- * 2/ You need valid credentials to a mongoDB Cloud database that holds materials and models records. I suggest [https://mlab.com](https://mlab.com). You can set up an account and run a DB with 500MB storage for free, that's way enough for running multiple samples. Creating the database, with one user, will give you the credentials you need: dbname, dbhost, user, pass and dbport.
- Important! your database name needs to be "forge-rcdb", it is currently hardcoded in the sample, or you need to change that accordingly in the project config.
+ * 2/ You need valid credentials to a mongoDB Cloud database that holds materials and models records. I suggest [https://mlab.com](https://mlab.com). You can set up an account and run a DB with 500MB storage for free, that's way enough for running multiple samples. Creating the database, with one user, will give you the credentials you need: dbname, dbhost, user, password and dbport.
+ **Important:** your database name needs to be "forge-rcdb", it is currently hardcoded in the sample, or you need to change that accordingly in the project config.
 
-With those credentialss you can use a tool such as [http://3t.io/mongochef](http://3t.io/mongochef) a mongoDB GUI which lets you easily connect remotely to the database from your machine in order to administrate it. With Mongochef you can easily import the two sample collections I placed in the [resources/db directory](https://github.com/Autodesk-Forge/forge-rcdb.nodejs/tree/master/resources/db)
+With those credentials you can use a tool such as [http://3t.io/mongochef](http://3t.io/mongochef) a mongoDB GUI which lets you easily connect remotely to the database from your machine in order to administrate it. With Mongochef you can easily import the two sample collections I placed in the [resources/db directory](https://github.com/Autodesk-Forge/forge-rcdb.nodejs/tree/master/resources/db)
 
 Import the two collections as 'rcdb.materials' and 'rcdb.models', then edit rcdb.model to replace the URN of your custom translated Engine.dwf model from step 1/
 
-You should be ready to deploy to heroku, providing the same forge credentials used to translate the model and valid credentials of the database when prompted for the environment settings.
+You should be ready to deploy to heroku, providing the same Forge credentials used to translate the model and valid credentials of the database when prompted for the environment settings.
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
