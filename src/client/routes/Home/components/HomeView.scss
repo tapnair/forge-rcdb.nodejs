@@ -24,10 +24,10 @@
     border-radius: 4px;
     position: absolute;
     background-color: white;
-    top: calc(50% - 150px);
+    top: calc(50% - 200px);
     left: calc(50% - 225px);
     overflow: auto;
-    height: 250px;
+    height: 390px;
     width: 450px;
   }
 
@@ -58,11 +58,20 @@
   }
 
   .home .models .title {
-    margin-bottom: 26px;
+    margin-bottom: 20px;
     border-bottom: 2px solid #EAEAEA;
     text-align: center;
     overflow: hidden;
     padding: 11px 0;
+  }
+
+  .home .models .responsive-grid a:nth-of-type(4n),
+  .home .models .responsive-grid a:first-child {
+    margin-left: 0;
+  }
+
+  .home .models .responsive-grid a:nth-of-type(3n) {
+    margin-right: 0;
   }
 }
 
@@ -74,21 +83,22 @@
     position: absolute;
     border: 1px solid #b3b3b3;
     background-color: white;
-    top: calc(50% - 100px);
+    top: calc(50% - 250px);
     left: calc(50% - 150px);
     overflow: auto;
-    height: 164px;
+    height: 480px;
     width: 300px;
   }
 
   .home .models .responsive-grid a {
     text-decoration: none;
     display: inline-block;
-    margin-bottom: 4px;
-    margin-right: 4px;
-    margin-left: 4px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
     color: #606060;
-    width: 100px;
+    width: 125px;
+    height: 125px;
   }
 
   .home .models .responsive-grid img {
@@ -96,26 +106,43 @@
     max-width: 100%;
     display: block;
     border: none;
-    width: 90px;
-    height: 82px;
+    width: 115px;
+    height: 115px;
     margin: 4px;
   }
 
   .home .models .responsive-grid figure {
     background-color: white;
-    border: 1px solid #d2d2d2;
     border-radius: 4px;
     overflow: hidden;
-    height: 118px;
+    height: 150px;
     margin: 0;
   }
 
   .home .models .title {
     border-bottom: 1px solid #cccccc;
+    margin-bottom: 10px;
     text-align: center;
     overflow: hidden;
     padding-top: 3px;
     height: 30px;
+  }
+
+  .home .models .responsive-grid a:nth-of-type(2n + 1),
+  .home .models .responsive-grid a:first-child {
+    margin-left: 0;
+  }
+
+  .home .models .responsive-grid a:nth-of-type(2n) {
+    margin-right: 0;
+  }
+}
+
+@media screen and (max-height: 660px) {
+
+  .home .models {
+    top: calc(50% - 90px);
+    height: 260px;
   }
 }
 
@@ -137,15 +164,6 @@
   justify-content: center;
   flex-wrap: wrap;
   display: flex;
-}
-
-.home .models .responsive-grid a:nth-of-type(4n),
-.home .models .responsive-grid a:first-child {
-  margin-left: 0;
-}
-
-.home .models .responsive-grid a:nth-of-type(3n) {
-  margin-right: 0;
 }
 
 .home .models .responsive-grid a:hover figcaption{

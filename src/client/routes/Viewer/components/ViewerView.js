@@ -421,12 +421,12 @@ class ViewerView extends React.Component {
     // it is added in 'Database' category
     let properties = _.filter(viewerProps, (prop)=> {
 
-      if (prop.displayName === 'Material') {
+      if (prop.displayName.indexOf('Material') > -1) {
 
         materialName = prop.displayValue
       }
 
-      return prop.displayName !== 'Material'
+      return (prop.displayName.indexOf('Material') < 0)
     })
 
     if (this.materialMap[materialName]) {
@@ -454,37 +454,29 @@ class ViewerView extends React.Component {
   buildViewerPanelProperties (material) {
 
     return [ {
-
       id: material._id + '-material',
       displayName: 'Material',
       displayValue: material.name,
       dataType: 'text',
       displayCategory: 'Database'
-
     },{
-
       id: material._id + '-supplier',
       displayName: 'Supplier',
       displayValue: material.supplier,
       dataType: 'text',
       displayCategory: 'Database'
-
     },{
-
       id: material._id + '-price',
       displayName: 'Price',
       displayValue: material.price,
       dataType: 'text',
       displayCategory: 'Database'
-
     },{
-
       id: material._id + '-currency',
       displayName: 'Currency',
       displayValue: material.currency,
       dataType: 'text',
       displayCategory: 'Database'
-
     }]
   }
 
@@ -503,31 +495,38 @@ class ViewerView extends React.Component {
         const componentIds = await ViewerToolkit.getLeafNodes(
           viewer.model)
 
-        let materialTasks = componentIds.map((dbId) => {
+        const materialPropResults = await ViewerToolkit.getBulkPropertiesAsync(
+          viewer.model, componentIds,
+          this.dbModel.materialCategories)
 
-          return ViewerToolkit.getProperty(
-            viewer.model, dbId, (propName) => {
-              return (propName.indexOf('Material') > -1)
-            }, 'undefined')
+        const materialResults = materialPropResults.map((result) => {
+
+          return Object.assign({}, result.properties[0], {
+            dbId: result.dbId
+          })
         })
 
-        let materials = await Promise.all(materialTasks)
+        const massPropResults = await ViewerToolkit.getBulkPropertiesAsync(
+          viewer.model, componentIds, ['Mass'])
 
-        let massTasks = componentIds.map((dbId) => {
+        const massResults = massPropResults.map((result) => {
 
-          return ViewerToolkit.getProperty(
-            viewer.model, dbId, 'Mass', 1.0)
+          return Object.assign({}, result.properties[0], {
+            dbId: result.dbId
+          })
         })
 
-        let masses = await Promise.all(massTasks)
+        componentIds.forEach((dbId) => {
 
-        componentIds.forEach((dbId, idx) => {
+          const materialProp = _.find(materialResults, { dbId })
 
-          const materialName = materials[idx].displayValue
+          const materialName = materialProp ?
+            materialProp.displayValue :
+            null
 
           if(materialName !== 'undefined') {
 
-            let dbMaterial = _.find(dbMaterials, {
+            const dbMaterial = _.find(dbMaterials, {
               name: materialName
             })
 
@@ -535,7 +534,7 @@ class ViewerView extends React.Component {
 
               if (!materialMap[materialName]) {
 
-                materialMap[ materialName] = {
+                materialMap[materialName] = {
                   dbMaterial: dbMaterial,
                   components: [],
                   totalMass: 0.0,
@@ -545,9 +544,13 @@ class ViewerView extends React.Component {
 
               let item = materialMap[materialName]
 
-              if(item) {
+              if (item) {
 
-                item.totalMass += masses[idx].displayValue
+                const massProp = _.find(massResults, { dbId })
+
+                const mass = massProp ? massProp.displayValue : 1.0
+
+                item.totalMass += mass
 
                 item.components.push(dbId)
 
@@ -663,6 +666,8 @@ class ViewerView extends React.Component {
 
     const { layoutType } = this.props.appState
 
+    //const  layoutType  = 'flexLayoutRight'
+
     switch (layoutType) {
 
       case 'gridLayout':
@@ -745,16 +750,98 @@ class ViewerView extends React.Component {
     }
   }
 
-  //createDBItems() {
+  //async getAllMaterials(model) {
   //
-  //  const componentIds = await ViewerToolkit.getLeafNodes(this.viewer.model)
+  //  const componentIds = await ViewerToolkit.getLeafNodes(model)
+  //
+  //  let materialTasks = componentIds.map((dbId) => {
+  //
+  //    return ViewerToolkit.getProperty(
+  //      model, dbId, (propName) => {
+  //        return (propName.indexOf('Material') > -1)
+  //      }, 'undefined')
+  //  })
+  //
+  //  let materials = await Promise.all(materialTasks)
+  //
+  //  var names = {}
+  //
+  //  materials.forEach((m) => {
+  //    names[m.displayName] = true
+  //  })
+  //
+  //  const rnames = Object.keys(names)
+  //
+  //  const snames = _.sortBy(rnames,
+  //    (name) => {
+  //      return name
+  //    })
+  //
+  //  console.log(snames)
+  //}
+  //
+  //async createDBItems() {
+  //
+  //  const propFilter = (propName) => {
+  //    return propName.indexOf('Material') > -1
+  //  }
+  //
+  //  const componentIds = await ViewerToolkit.getLeafNodes(
+  //    this.viewer.model)
   //
   //  var componentsMap = await ViewerToolkit.mapComponentsByProp(
-  //    this.viewer.model, 'Material', componentIds)
+  //    this.viewer.model, propFilter, componentIds)
+  //
+  //  console.log(Object.keys(componentsMap))
+  //
+  //  const keys = [
+  //
+  //    //seat
+  //    "Stainless Steel",
+  //    "Steel",
+  //    "Polyaryletherketone Resin",
+  //    "Brass, Soft Yellow",
+  //    "Nylon-6/6",
+  //    "Steel, High Strength Low Alloy",
+  //    "Steel, Mild",
+  //    "Acetal Resin, Black",
+  //    "ABS Plastic",
+  //    "Nylon Composite (Nylon, molybdenum disulphide)",
+  //    "Acetal Resin, White",
+  //    "Aluminum-6061",
+  //    "Rubber",
+  //
+  //    //engine
+  //    "Cast Steel",
+  //    "Generic",
+  //    "Silicone",
+  //    "Stainless Steel, 440C",
+  //    "Aluminum-6061",
+  //    "Steel, High Strength Low Alloy",
+  //    "Steel, Mild",
+  //    "Stainless Steel",
+  //    "Brass, Soft Yellow",
+  //    "Titanium",
+  //
+  //    //office
+  //    "Concrete - Cast-in-Place Concrete",
+  //    "Metal - Stud Layer",
+  //    "Glass",
+  //    "Metal - Steel",
+  //    "Default Floor",
+  //    "Wood - Stud Layer",
+  //    "Wood - Cherry",
+  //    "Metal - Chrome",
+  //    "Wood - Birch",
+  //    "Metal - Aluminum",
+  //    "Plastic",
+  //    "Copper",
+  //    "Glass - Frosted"
+  //  ]
   //
   //  const materialSvc = ServiceManager.getService('MaterialSvc')
   //
-  //  Object.keys(componentsMap).forEach(async(key) => {
+  //  keys.forEach(async(key) => {
   //
   //    const res = await materialSvc.postMaterial('forge-rcdb', {
   //      name: key,

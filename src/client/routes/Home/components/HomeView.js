@@ -108,14 +108,14 @@ class HomeView extends React.Component {
         <img className='logo-hero'/>
         <div className="models">
           <div className="title">
-            Choose Model:
+            Choose Model
           </div>
 
           <div className="content responsive-grid">
 
-            {this.state.models.map((model) => {
+            {this.state.models.map((model, idx) => {
               return (
-                <a key={model.urn} href={`/viewer?id=${model._id}`}>
+                <a key={idx} href={`/viewer?id=${model._id}`}>
                   <figure>
                     <figcaption>
                       {model.name}

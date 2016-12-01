@@ -201,12 +201,23 @@ export default class VisualReportPanel extends ToolPanelBase {
   // Dropdown selected item changed
   //
   /////////////////////////////////////////////////////////////////
-  async onPropertyChanged (propName) {
+  async onPropertyChanged (propFilter) {
 
     var componentsMap = await ViewerToolkit.mapComponentsByProp(
       this.viewer.model,
-      propName,
+      //(propName) => {
+      //  return (propName.indexOf(propFilter) > -1)
+      //},
+      propFilter,
       this.componentIds)
+
+    for(const key in componentsMap) {
+
+      if (!key.length || key.indexOf('<') > -1) {
+
+        delete componentsMap[key]
+      }
+    }
 
     var groupedMap = this.groupMap(
       componentsMap, 'Other', 1.5);

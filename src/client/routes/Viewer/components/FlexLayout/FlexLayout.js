@@ -37,13 +37,21 @@ class FlexLayout extends React.Component {
 
         return (
           <div>
-            <Layout layoutWidth={500} layoutHeight={500}>
-              <Layout layoutWidth={100}>
-                Column1
+            <Layout layoutWidth={1000} layoutHeight={500}>
+              <Layout layoutHeight={100}>
+                Row 1
               </Layout>
-              <LayoutSplitter/>
-              <Layout layoutWidth={100}>
-                Column2
+              <LayoutSplitter orientation='horizontal'/>
+              <Layout layoutHeight={100}>
+                Row 2
+              </Layout>
+              <LayoutSplitter orientation='horizontal'/>
+              <Layout layoutHeight={100}>
+                Row 3
+              </Layout>
+              <LayoutSplitter orientation='horizontal'/>
+              <Layout layoutHeight={100}>
+                Row 4
               </Layout>
             </Layout>
           </div>

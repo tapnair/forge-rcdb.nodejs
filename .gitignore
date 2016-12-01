@@ -4,6 +4,7 @@ node_modules
 dist
 coverage
 .idea/
+resources/models/210 King
 resources/models/office
 resources/models/seat
 bin/static

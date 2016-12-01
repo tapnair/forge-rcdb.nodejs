@@ -88,6 +88,7 @@ module.exports = function() {
         db + '-ModelSvc')
 
       var pageQuery = {
+        materialCategories: 1,
         options: 1,
         path: 1,
         name: 1,
