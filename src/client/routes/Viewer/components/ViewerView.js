@@ -417,7 +417,7 @@ class ViewerView extends React.Component {
 
     let materialName = null
 
-    // filter out material because
+    // filter out all 'Material' props because
     // it is added in 'Database' category
     let properties = _.filter(viewerProps, (prop)=> {
 

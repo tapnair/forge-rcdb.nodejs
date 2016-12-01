@@ -55,6 +55,7 @@ Model Schema:
       "name" : "Model name",
       "path" : "...path of local svf for dev env ...",
       "env" : "AutodeskProduction" || "Local",
+      "materialCategories": ["Material"],
       "sequence" : [],
       "states" : [],
       "options" : {
