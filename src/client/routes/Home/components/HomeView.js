@@ -115,7 +115,7 @@ class HomeView extends React.Component {
 
             {this.state.models.map((model, idx) => {
               return (
-                <a key={idx} href={`/viewer?id=${model._id}`}>
+                <Link key={idx} to={`/viewer?id=${model._id}`}>
                   <figure>
                     <figcaption>
                       {model.name}
@@ -123,7 +123,7 @@ class HomeView extends React.Component {
                     <img className={model.thumbnail ? "":"default-thumbnail"}
                       src={model.thumbnail ? model.thumbnail : ""}/>
                   </figure>
-                </a>)
+                </Link>)
               })
             }
           </div>

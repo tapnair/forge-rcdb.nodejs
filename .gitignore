@@ -7,6 +7,7 @@ coverage
 resources/models/210 King
 resources/models/office
 resources/models/seat
+resources/models/V8
 bin/static
 push-to-prod.sh
 

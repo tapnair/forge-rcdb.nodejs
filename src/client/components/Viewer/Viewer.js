@@ -18,6 +18,7 @@
 import ReactDOM from 'react-dom'
 import React from 'react'
 import './Viewer.scss'
+import './style.css'
 
 class Viewer extends React.Component {
 
@@ -182,8 +183,11 @@ class Viewer extends React.Component {
 
     if(this.viewer) {
 
-      this.viewer.finish()
-      this.viewer = null
+      if(this.viewer.impl.selector) {
+
+        this.viewer.finish()
+        this.viewer = null
+      }
     }
   }
 

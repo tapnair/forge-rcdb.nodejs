@@ -120,4 +120,12 @@ export default class PieChart extends EventsEmitter {
       })
     }, 100)
   }
+
+  destroy () {
+
+    if(this.pie) {
+
+      this.pie.destroy()
+    }
+  }
 }

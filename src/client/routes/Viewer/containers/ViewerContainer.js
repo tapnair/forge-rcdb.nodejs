@@ -43,4 +43,6 @@ const mapStateToProps = (state) => (
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps)(ViewerView)
+  mapDispatchToProps, null, {
+    pure: false
+  })(ViewerView)

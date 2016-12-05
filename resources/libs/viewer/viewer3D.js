@@ -697,8 +697,8 @@ typeof window!=="undefined"&&(!function(a,b,c,d){"use strict";function e(a,b,c){
 ;/*
  * @author mrdoob / http://mrdoob.com/
  */
- 
-function init_three_dds_loader() { 
+
+function init_three_dds_loader() {
 
 THREE.DDSLoader = function () {
 	this._parser = THREE.DDSLoader.parse;
@@ -864,9 +864,9 @@ THREE.DDSLoader.parse = function ( buffer, loadMipmaps ) {
 
 		default:
 
-			if ( header[off_RGBBitCount] == 32 
+			if ( header[off_RGBBitCount] == 32
 				&& header[off_RBitMask]&0xff0000
-				&& header[off_GBitMask]&0xff00 
+				&& header[off_GBitMask]&0xff00
 				&& header[off_BBitMask]&0xff
 				&& header[off_ABitMask]&0xff000000  ) {
 				isRGBAUncompressed = true;
@@ -913,7 +913,7 @@ THREE.DDSLoader.parse = function ( buffer, loadMipmaps ) {
 				var dataLength = Math.max( 4, width ) / 4 * Math.max( 4, height ) / 4 * blockBytes;
 				var byteArray = new Uint8Array( buffer, dataOffset, dataLength );
 			}
-			
+
 			var mipmap = { "data": byteArray, "width": width, "height": height };
 			dds.mipmaps.push( mipmap );
 
@@ -1764,12 +1764,12 @@ module.exports={"version": "1.3.5"}
 /*
  * Poly2Tri Copyright (c) 2009-2014, Poly2Tri Contributors
  * http://code.google.com/p/poly2tri/
- * 
+ *
  * poly2tri.js (JavaScript port) (c) 2009-2014, Poly2Tri Contributors
  * https://github.com/r3mi/poly2tri.js
- * 
+ *
  * All rights reserved.
- * 
+ *
  * Distributed under the 3-clause BSD License, see LICENSE.txt
  */
 
@@ -1782,7 +1782,7 @@ module.exports={"version": "1.3.5"}
  * Note
  * ====
  * the structure of this JavaScript version of poly2tri intentionally follows
- * as closely as possible the structure of the reference C++ version, to make it 
+ * as closely as possible the structure of the reference C++ version, to make it
  * easier to keep the 2 versions in sync.
  */
 
@@ -1980,12 +1980,12 @@ module.exports = assert;
 /*
  * Poly2Tri Copyright (c) 2009-2014, Poly2Tri Contributors
  * http://code.google.com/p/poly2tri/
- * 
+ *
  * poly2tri.js (JavaScript port) (c) 2009-2014, Poly2Tri Contributors
  * https://github.com/r3mi/poly2tri.js
- * 
+ *
  * All rights reserved.
- * 
+ *
  * Distributed under the 3-clause BSD License, see LICENSE.txt
  */
 
@@ -1996,7 +1996,7 @@ module.exports = assert;
  * Note
  * ====
  * the structure of this JavaScript version of poly2tri intentionally follows
- * as closely as possible the structure of the reference C++ version, to make it 
+ * as closely as possible the structure of the reference C++ version, to make it
  * easier to keep the 2 versions in sync.
  */
 
@@ -2228,7 +2228,7 @@ Point.cross = function(a, b) {
 
 // -----------------------------------------------------------------"Point-Like"
 /*
- * The following functions operate on "Point" or any "Point like" object 
+ * The following functions operate on "Point" or any "Point like" object
  * with {x,y} (duck typing).
  */
 
@@ -2257,12 +2257,12 @@ module.exports = Point;
 /*
  * Poly2Tri Copyright (c) 2009-2014, Poly2Tri Contributors
  * http://code.google.com/p/poly2tri/
- * 
+ *
  * poly2tri.js (JavaScript port) (c) 2009-2014, Poly2Tri Contributors
  * https://github.com/r3mi/poly2tri.js
- * 
+ *
  * All rights reserved.
- * 
+ *
  * Distributed under the 3-clause BSD License, see LICENSE.txt
  */
 
@@ -2312,7 +2312,7 @@ module.exports = PointError;
 /*
  * Poly2Tri Copyright (c) 2009-2014, Poly2Tri Contributors
  * http://code.google.com/p/poly2tri/
- * 
+ *
  * poly2tri.js (JavaScript port) (c) 2009-2014, Poly2Tri Contributors
  * https://github.com/r3mi/poly2tri.js
  *
@@ -2431,12 +2431,12 @@ exports.sweep = {Triangulate: sweep.triangulate};
 /*
  * Poly2Tri Copyright (c) 2009-2014, Poly2Tri Contributors
  * http://code.google.com/p/poly2tri/
- * 
+ *
  * poly2tri.js (JavaScript port) (c) 2009-2014, Poly2Tri Contributors
  * https://github.com/r3mi/poly2tri.js
- * 
+ *
  * All rights reserved.
- * 
+ *
  * Distributed under the 3-clause BSD License, see LICENSE.txt
  */
 
@@ -2456,7 +2456,7 @@ exports.sweep = {Triangulate: sweep.triangulate};
  * Note
  * ====
  * the structure of this JavaScript version of poly2tri intentionally follows
- * as closely as possible the structure of the reference C++ version, to make it 
+ * as closely as possible the structure of the reference C++ version, to make it
  * easier to keep the 2 versions in sync.
  */
 
@@ -3267,12 +3267,12 @@ exports.triangulate = triangulate;
 /*
  * Poly2Tri Copyright (c) 2009-2014, Poly2Tri Contributors
  * http://code.google.com/p/poly2tri/
- * 
+ *
  * poly2tri.js (JavaScript port) (c) 2009-2014, Poly2Tri Contributors
  * https://github.com/r3mi/poly2tri.js
- * 
+ *
  * All rights reserved.
- * 
+ *
  * Distributed under the 3-clause BSD License, see LICENSE.txt
  */
 
@@ -3285,7 +3285,7 @@ exports.triangulate = triangulate;
  * Note
  * ====
  * the structure of this JavaScript version of poly2tri intentionally follows
- * as closely as possible the structure of the reference C++ version, to make it 
+ * as closely as possible the structure of the reference C++ version, to make it
  * easier to keep the 2 versions in sync.
  */
 
@@ -3392,7 +3392,7 @@ var EdgeEvent = function() {
  */
 /**
  * Constructor for the triangulation context.
- * It accepts a simple polyline (with non repeating points), 
+ * It accepts a simple polyline (with non repeating points),
  * which defines the constrained edges.
  *
  * @example
@@ -3420,7 +3420,7 @@ var SweepContext = function(contour, options) {
     this.points_ = (options.cloneArrays ? contour.slice(0) : contour);
     this.edge_list = [];
 
-    // Bounding box of all points. Computed at the start of the triangulation, 
+    // Bounding box of all points. Computed at the start of the triangulation,
     // it is stored in case it is needed by the caller.
     this.pmin_ = this.pmax_ = null;
 
@@ -3597,8 +3597,8 @@ SweepContext.prototype.triangulate = function() {
 
 
 /**
- * Get the bounding box of the provided constraints (contour, holes and 
- * Steinter points). Warning : these values are not available if the triangulation 
+ * Get the bounding box of the provided constraints (contour, holes and
+ * Steinter points). Warning : these values are not available if the triangulation
  * has not been done yet.
  * @public
  * @returns {{min:Point,max:Point}} object with 'min' and 'max' Point
@@ -3810,12 +3810,12 @@ module.exports = SweepContext;
 /*
  * Poly2Tri Copyright (c) 2009-2014, Poly2Tri Contributors
  * http://code.google.com/p/poly2tri/
- * 
+ *
  * poly2tri.js (JavaScript port) (c) 2009-2014, Poly2Tri Contributors
  * https://github.com/r3mi/poly2tri.js
  *
  * All rights reserved.
- * 
+ *
  * Distributed under the 3-clause BSD License, see LICENSE.txt
  */
 
@@ -3828,7 +3828,7 @@ module.exports = SweepContext;
  * Note
  * ====
  * the structure of this JavaScript version of poly2tri intentionally follows
- * as closely as possible the structure of the reference C++ version, to make it 
+ * as closely as possible the structure of the reference C++ version, to make it
  * easier to keep the 2 versions in sync.
  */
 
@@ -4277,7 +4277,7 @@ Triangle.prototype.legalize = function(opoint, npoint) {
 };
 
 /**
- * Returns the index of a point in the triangle. 
+ * Returns the index of a point in the triangle.
  * The point *must* be a reference to one of the triangle's vertices.
  * @private
  * @param {XY} p - point object with {x,y}
@@ -4354,7 +4354,7 @@ Triangle.prototype.markConstrainedEdgeByEdge = function(edge) {
  */
 Triangle.prototype.markConstrainedEdgeByPoints = function(p, q) {
     var points = this.points_;
-    // Here we are comparing point references, not values        
+    // Here we are comparing point references, not values
     if ((q === points[0] && p === points[1]) || (q === points[1] && p === points[0])) {
         this.constrained_edge[2] = true;
     } else if ((q === points[0] && p === points[2]) || (q === points[2] && p === points[0])) {
@@ -4373,12 +4373,12 @@ module.exports = Triangle;
 /*
  * Poly2Tri Copyright (c) 2009-2014, Poly2Tri Contributors
  * http://code.google.com/p/poly2tri/
- * 
+ *
  * poly2tri.js (JavaScript port) (c) 2009-2014, Poly2Tri Contributors
  * https://github.com/r3mi/poly2tri.js
- * 
+ *
  * All rights reserved.
- * 
+ *
  * Distributed under the 3-clause BSD License, see LICENSE.txt
  */
 
@@ -4484,12 +4484,12 @@ exports.isAngleObtuse = isAngleObtuse;
 /*
  * Poly2Tri Copyright (c) 2009-2014, Poly2Tri Contributors
  * http://code.google.com/p/poly2tri/
- * 
+ *
  * poly2tri.js (JavaScript port) (c) 2009-2014, Poly2Tri Contributors
  * https://github.com/r3mi/poly2tri.js
- * 
+ *
  * All rights reserved.
- * 
+ *
  * Distributed under the 3-clause BSD License, see LICENSE.txt
  */
 
@@ -4560,7 +4560,7 @@ function toString(p) {
  * @param {!XY} a - point object with {x,y}
  * @param {!XY} b - point object with {x,y}
  * @return {number} <code>&lt; 0</code> if <code>a &lt; b</code>,
- *         <code>&gt; 0</code> if <code>a &gt; b</code>, 
+ *         <code>&gt; 0</code> if <code>a &gt; b</code>,
  *         <code>0</code> otherwise.
  */
 function compare(a, b) {
@@ -6771,7 +6771,7 @@ if (typeof window !== 'undefined')
 
         var _serverURL = Array.isArray(serverUrls) ? serverUrls : [serverUrls];
         var _currentServer = 0;
-        
+
         var _pendingJoins = {};
 
         var _channels = {
@@ -6801,7 +6801,7 @@ if (typeof window !== 'undefined')
 
 				case "joinok":  onJoinOK(msg);
 								break;
-								
+
 				case "join_error": break;
 
 				case "sessionId":
@@ -6918,36 +6918,36 @@ if (typeof window !== 'undefined')
                 _this.dispatchEvent({ type: "userListChange", data: evt, channelId: evt.roomId });
             }
         }
-        
+
         function onConnectError(evt) {
 
             //Attempt to connect to another server in case
             //the primary fails. If they all fail, then we give up.
             if (_currentServer < _serverURL.length) {
-                
+
                 avp.logger.info("Connect failed, trying another server...");
-                
+
                 _socket.disconnect();
                 _socket = null;
                 _currentServer++;
                 _this.connect(_this.sessionID);
-            
+
             } else {
 
                 _this.dispatchEvent({ type: "socketError", data: evt });
 
             }
         }
-        
+
         function onError(evt) {
 
             _this.dispatchEvent({ type: "socketError", data: evt });
 
         }
-        
+
         function onConnect(evt) {
             _currentServer = 0;
-            
+
             //Join any channels that were delayed while the
             //connection is established.
             for (var p in _pendingJoins) {
@@ -6994,7 +6994,7 @@ if (typeof window !== 'undefined')
                 _pendingJoins[channelId] = 1;
                 return;
             }
-            
+
             delete _pendingJoins[channelId];
 
             _channels[channelId] = {
@@ -7093,7 +7093,7 @@ if (typeof window !== 'undefined')
 
         if (!Array.isArray(serverUrls))
             serverUrls = [serverUrls];
-        
+
         var mc = _activeClients[serverUrls[0]];
         if (mc)
             return mc;
@@ -7841,7 +7841,7 @@ avp.Autocam = avp.Autocam || function(camera, navApi) {
 
         _changing = false;
     }
-    
+
     this.dtor = function() {
         this.cube = null;
         this.cameraChangedCallback = null;
@@ -11462,7 +11462,7 @@ avp.Autocam.ViewCube = function (tagId, autocam, cubeContainer, localizeResource
         event.preventDefault();
         event.stopPropagation();
 
-        if( !cam.navApi.isActionEnabled('orbit') ) 
+        if( !cam.navApi.isActionEnabled('orbit') )
             return;
 
         if (cam.currentlyAnimating) { return; }
@@ -12317,7 +12317,7 @@ avp.Autocam.ViewCube = function (tagId, autocam, cubeContainer, localizeResource
     };
 
     var onDocumentMouseMove = function (event) {
-        if( cam.navApi.isActionEnabled('orbit') ) 
+        if( cam.navApi.isActionEnabled('orbit') )
             self.processMouseMove(event);
     };
 
@@ -12947,8 +12947,8 @@ Autodesk.Viewing.ToolController = function( viewerImpl, viewerApi, autocam, util
         }
         return false;
     };
-    
-    this.setToolActiveName = function(toolName) 
+
+    this.setToolActiveName = function(toolName)
     {
         var tool = _tools[toolName];
         if (tool) {
@@ -13743,7 +13743,7 @@ Autodesk.Viewing.ViewingUtilities = function( viewerImplIn, autocam, navapi )
 	var _camera = navapi.getCamera();
     var _savePivot = {};
     var _savePivotSet = {};
-    
+
     function PivotIndicator( viewerImpl )
     {
         var kFadeTimeMilliseconds = 500;
@@ -13862,7 +13862,7 @@ Autodesk.Viewing.ViewingUtilities = function( viewerImplIn, autocam, navapi )
         var upVec = reorient ? computeOrthogonalUp(pos, coi, worldUp) : up;
         if( !upVec )
             upVec = _camera.up;
-        
+
         pivot = pivot || coi;
 
         var targetView = {
@@ -15057,7 +15057,7 @@ Autodesk.Viewing.OrbitDollyPanTool = function( viewerImpl, viewerApi )
                     var view = vview.copy(_camera.position).sub(_camera.target).normalize();
                     qrotate.setFromAxisAngle( view, _deltaRoll * 1.2 );
                     up.applyQuaternion( qrotate );
-                    if (!_navapi.getIs2D()) 
+                    if (!_navapi.getIs2D())
                         _navapi.setCameraUpVector(up);
 
                     _prevPinchLength = _pinchLength;
@@ -15582,7 +15582,7 @@ Autodesk.Viewing.HotGestureTool = function( viewerApi )
     this.deactivate = function(name)
     {
     };
-    
+
     this.__checkStart = function()
     {
         // Since the start event triggers the tool change we re-send the
@@ -16064,7 +16064,7 @@ Autodesk.Viewing.FovTool = function( viewerApi )
     var _moveXYZ  = new THREE.Vector3();
     var _motionDelta = new THREE.Vector3();
     var _touchType = null;
-    
+
     this.getNames = function()
     {
         return _names;
@@ -16084,7 +16084,7 @@ Autodesk.Viewing.FovTool = function( viewerApi )
     {
         _activeTrigger = kNone;
     };
-    
+
     this.getCursor = function()
     {
         return _mouseButtons !== 0 && _activeTrigger === kNone ? null : "url(data:image/x-icon;base64,AAACAAEAGBgAAAAAAACICQAAFgAAACgAAAAYAAAAMAAAAAEAIAAAAAAAYAkAABMLAAATCwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlgAAAP8AAAD/AAAAlgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAACEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////////////AAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAnAwMD/yEhIf8AAABmAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////////////AAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFAAAAGknJyf/goKC/8/Pz/8aGhr/AAAALQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////////////AAAA/wAAAAAAAAAAAAAAAAAAAAAAAABTFBQU/2lpaf/MzMz///////////+Wlpb/AAAAlgAAAAAAAAAAAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAAAAAAAlgAAAP8AAAD/AAAAlgAAAAAAAAAAAAAAOAAAAKFTU1P/t7e3////////////8PDw////////////AQEB/wAAAAEAAAAAAAAAFAAAAH0KCgr/AAAAYwAAAAAAAAAAAAAAlgAAAP8AAAD/AAAAlgAAAAAAAAAjCwsL/6Ghof/t7e3///////Dw8P9MTEz/LS0t//Pz8///////Ghoa/wAAABoAAAANDQ0N/319ff+rq6v/Y2Nj/wAAAK8AAABGAAAA////////////AAAA/wAAAF0hISH/jIyM////////////sLCw/xEREf8AAACHAAAArKysrP//////V1dX/wAAAFcAAABSUlJS//f39///////8PDw/6+vr/86Ojr/LS0t////////////FRUV/1xcXP/Gxsb/+Pj4//Hx8f9MTEz/AAAAsAAAAEcAAAAAAAAAZ2dnZ///////pKSk/wAAAKQAAACtra2t///////////////////////m5ub/kZGR/wAAAP8AAAD/q6ur//Hx8f//////vb29/x0dHf8AAACIAAAAAAAAAAAAAAAAAAAAOjo6Ov//////5+fn/wAAAOcAAADd3d3d////////////////////////////+/v7/9bW1v/i4uL//v7+//Pz8/9hYWH/AAAAvQAAAFQAAAAAAAAAAAAAAAAAAAAAAAAAJycnJ//6+vr//////wMDA/8AAADv7+/v/////////////////////////////////////////////////7y8vP8ODg7/AAAAKwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJiYmJv/6+vr//////wkJCf8AAADv7+/v//////////////////////////////////f39//9/f3//////+np6f+UlJT/GBgY/wAAAH0AAAACAAAAAAAAAAAAAAAAAAAAKSkpKf///////v7+/w0NDf8AAADd3d3d////////////////////////////29vb/39/f/+Xl5f/5+fn////////////5ubm/1RUVP8CAgL/AAAAPwAAAAAAAAAAAAAAOTk5Of//////8PDw/wgICP8AAAChoaGh/////////////////+np6f+YmJj/QkJC/wAAAP8AAAD/UFBQ/7e3t//39/f///////////+oqKj/EBAQ/wAAAIgAAAAAAAAAZ2dnZ///////29vb/wEBAf8AAAA4NTU1/9zc3P/t7e3/tbW1/01NTf8AAACYAAAA////////////AwMD/wsLC/9oaGj/y8vL////////////8fHx/zg4OP8AAACWAAAApaWlpf//////n5+f/wAAAJ8AAAAAAAAAczg4OP9LS0v/EhIS/wAAAE0AAAAAAAAA////////////FRUV/wAAABUAAABoJSUl/4GBgf/i4uL///////////9+fn7/Pz8///b29v//////SkpK/wAAAEoAAAAAAAAAAAAAADgAAABLAAAAEgAAAAAAAAAAAAAAlgAAAP8AAAD/AAAAlgAAAAAAAAAAAAAAJQAAAIE8PDz/np6e//z8/P/////////////////8/Pz/CQkJ/wAAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlgAAAP8AAAD/AAAAlgAAAAAAAAAAAAAAAAAAAAAAAAA8DAwM/09PT/+7u7v///////////+QkJD/AAAAkwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////////////Dw8P/wAAAA8AAAAAAAAAAAAAAAAAAAAAAAAADAAAAFIYGBj/aGho/729vf8WFhb/AAAAJwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////////////FRUV/wAAABUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAQEB/w8PD/8AAABUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA////////////DAwM/wAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAA8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlgAAAP8AAAD/AAAAlgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///8x/h/nO/4fw1D+HwFy/h4BRu4YAHOGEABkAAAAXAAAIFwAAOBnAAHgIAAD4GUAAOB4AABgXAAAIGMAAABtggAAVMYYAHT+HgE7/g8BcP4Pw2/+D+dc/h//XP///2c=), auto";
@@ -16181,7 +16181,7 @@ Autodesk.Viewing.FovTool = function( viewerApi )
                         _navapi.setVerticalFov(_navapi.getVerticalFov() * (1.0 + deltaZ), true);
                     }
                 }
-                else 
+                else
                 {
                     // Translate wheelAccum backwards to determine the number of wheel stops.
                     var deltaFocalLength = this.getAccumulatedWheelDelta() / 3;
@@ -16221,7 +16221,7 @@ Autodesk.Viewing.FovTool = function( viewerApi )
 
     this.interactionStart = function(trigger, force)
     {
-        // Just a simple way to give device input a sort of priority 
+        // Just a simple way to give device input a sort of priority
         // so we don't have to track all active triggers. Just remember
         // the most recent with highest "priority".
         if( force || trigger > _activeTrigger )
@@ -16253,7 +16253,7 @@ Autodesk.Viewing.FovTool = function( viewerApi )
     // Event handler callbacks:
     // These can use "this".
 
-    
+
     this.handleWheelInput = function(delta)
     {
         if( _activeTrigger > kWheel )
@@ -17462,7 +17462,7 @@ function Selector(viewer, model) {
             }, false);
         }
     }
-    
+
 
     function markObject(dbId, isChild) {
 
@@ -17474,7 +17474,7 @@ function Selector(viewer, model) {
             viewer.highlightObjectNode(model, dbId, true, isChild);
             selectedParentMap[dbId] = 1;
         }
-        
+
         if (it) {
             it.enumNodeChildren(dbId, function(childId) {
                 markObject(childId, true);
@@ -17633,7 +17633,7 @@ function Selector(viewer, model) {
 
         var instanceTree = getInstanceTree();
         var fragList = model.getFragmentList();
-        
+
         var sset = _this.selectedObjectIds;
         for (var p in sset) {
             var dbId = parseInt(p);
@@ -17642,7 +17642,7 @@ function Selector(viewer, model) {
                 bounds.union(box);
             }, true);
         }
-        
+
         return bounds;
     };
 
@@ -18024,9 +18024,9 @@ avp.MultiModelSelector = MultiModelSelector;
 //Makes the children of a given node visible and
 //everything else not visible
     VisibilityManager.prototype.hide = function (node) {
-        
+
         var event;
-        
+
         if (Array.isArray(node)) {
             for (var i = 0; i < node.length; ++i) {
                 this.setVisibilityOnNode(node[i], false);
@@ -18045,17 +18045,17 @@ avp.MultiModelSelector = MultiModelSelector;
     };
 
     VisibilityManager.prototype.show = function (node) {
-        
+
         var event;
-        
+
         if (Array.isArray(node)) {
             for (var i = 0; i < node.length; ++i) {
                 this.setVisibilityOnNode(node[i], true);
             }
-    
+
             if (node.length > 0) {
                 event = {type: av.SHOW_EVENT, nodeIdArray: node};
-            }        
+            }
         } else {
             this.setVisibilityOnNode(node, true);
             event = {type: av.SHOW_EVENT, nodeIdArray: [node]};
@@ -18178,16 +18178,16 @@ avp.MultiModelSelector = MultiModelSelector;
 
 
     av.Private.VisibilityManager = VisibilityManager;
-    
-    
-    
+
+
+
     function MultiModelVisibilityManager(viewer) {
-    
+
         this.viewer = viewer;
         this.models = [];
-    
+
     }
-    
+
     MultiModelVisibilityManager.prototype.addModel = function(model) {
         if (this.models.indexOf(model) == -1) {
             model.visibilityManager = new VisibilityManager(this.viewer, model);
@@ -18211,7 +18211,7 @@ avp.MultiModelSelector = MultiModelSelector;
         }
     };
 
-    
+
     MultiModelVisibilityManager.prototype.getIsolatedNodes = function (model) {
         if (!model) {
             this.warn();
@@ -18267,7 +18267,7 @@ avp.MultiModelSelector = MultiModelSelector;
             this.warn();
             model = this.models[0];
         }
-        model.visibilityManager.toggleVisibility(node);        
+        model.visibilityManager.toggleVisibility(node);
     };
 
     MultiModelVisibilityManager.prototype.setVisibilityOnNode = function (node, visible, model) {
@@ -18286,8 +18286,8 @@ avp.MultiModelSelector = MultiModelSelector;
         model.visibilityManager.setNodeOff(node, isOff);
     };
 
-    
-    
+
+
     av.Private.MultiModelVisibilityManager = MultiModelVisibilityManager;
 
 })();
@@ -18451,7 +18451,7 @@ avp.createWorker = function() {
 
     return w;
 };
-    
+
 
 avp.createWorkerWithIntercept = function() {
     var worker = avp.createWorker();
@@ -18482,7 +18482,7 @@ avp.createWorkerWithIntercept = function() {
     }
 
     worker.addEventListenerWithIntercept = function (listener) {
-        
+
         var callbackFn = function(ew) {
             if (worker.checkEvent(ew))
                 return;
@@ -18513,7 +18513,7 @@ avp.createWorkerWithIntercept = function() {
 
     return worker;
 }
-    
+
 
 
 
@@ -19074,7 +19074,7 @@ SvfLoader.prototype.loadSvfCB = function(path, options, onSuccess, onError, onWo
                     scope.onGeomLoadDone();
                 }
                 else {
-                    
+
                     if (scope.model.getFragmentList().onDemandLoadingEnabled()) {
                         // On demand loading is enabled, then
                         // Defer to launch jobs for loading some geometry packs,
@@ -19335,7 +19335,7 @@ SvfLoader.prototype.loadGeometryPack = function (packId, path) {
     var workerId;
     var i, j;
     var scope = this;
-    
+
     if(!this.svf) {
         return;
     }
@@ -19519,7 +19519,7 @@ SvfLoader.prototype.processReceivedMesh = function(mdata) {
 
     // Let's do a culling when process the received meshes,
     // which cull those won't be rendered in current frame.
-    // 
+    //
     // ??? TODO: look at this later, may not needed.
     // if (avp.cullGeometryOnLoading) {
     //     var culled = true;
@@ -19633,11 +19633,11 @@ SvfLoader.prototype.onModelRootLoadDone = function(svf) {
     // Let's set the options through for each model that control how memory saving mode start,
     // which decide how to load geometry pack files, and whether paging out if needed.
     // And assume the performance tuning options passed through viewer's config.
-    var memPerfOpts = this.viewer3DImpl.api.config ? 
-                      (this.viewer3DImpl.api.config.memPerfOpts || {}) : 
+    var memPerfOpts = this.viewer3DImpl.api.config ?
+                      (this.viewer3DImpl.api.config.memPerfOpts || {}) :
                       {};
 
-    // So, for now do not support on paging for multiple models. 
+    // So, for now do not support on paging for multiple models.
     if (this.viewer3DImpl.modelQueue().getModels().length > 0) {
         // If already a model loaded into viewer, then disable paging for the other ones.
         memPerfOpts.pageOutGeometryEnabled = false;
@@ -19645,35 +19645,35 @@ SvfLoader.prototype.onModelRootLoadDone = function(svf) {
 
     model.initialize({
 
-        fragsPersistentCont: memPerfOpts.fragsPersistentCont > 0 ? 
-                             memPerfOpts.fragsPersistentCont : 
+        fragsPersistentCont: memPerfOpts.fragsPersistentCont > 0 ?
+                             memPerfOpts.fragsPersistentCont :
                              avp.FRAGS_PERSISTENT_COUNT,
 
-        fragsPersistentMaxCount: memPerfOpts.fragsPersistentMaxCount > 0 ? 
-                                 memPerfOpts.fragsPersistentMaxCount : 
+        fragsPersistentMaxCount: memPerfOpts.fragsPersistentMaxCount > 0 ?
+                                 memPerfOpts.fragsPersistentMaxCount :
                                  avp.FRAGS_PERSISTENT_MAX_COUNT,
 
-        geomCountLimit: memPerfOpts.geomCountLimit > 0 ? 
-                        memPerfOpts.geomCountLimit : 
+        geomCountLimit: memPerfOpts.geomCountLimit > 0 ?
+                        memPerfOpts.geomCountLimit :
                         avp.GEOMS_COUNT_LIMIT,
 
         pageOutPercentage: memPerfOpts.pageOutPercentage > 0 && memPerfOpts.pageOutPercentage < 1 ?
-                           memPerfOpts.pageOutPercentage : 
+                           memPerfOpts.pageOutPercentage :
                            avp.PAGEOUT_PERCENTAGE,
 
-        maxQueuedGeomPFForLoading: memPerfOpts.maxQueuedGeomPFForLoading > 0 ? 
-                                   memPerfOpts.maxQueuedGeomPFForLoading : 
+        maxQueuedGeomPFForLoading: memPerfOpts.maxQueuedGeomPFForLoading > 0 ?
+                                   memPerfOpts.maxQueuedGeomPFForLoading :
                                    WGS.MAX_QUEUED_GEOM_PF_FOR_LOADING,
 
         pixelCullingEnable: memPerfOpts.pixelCullingEnable !== undefined ?
-                            memPerfOpts.pixelCullingEnable : 
+                            memPerfOpts.pixelCullingEnable :
                             WGS.pixelCullingEnable,
 
         pixelCullingThreshold: memPerfOpts.pixelCullingThreshold > 0 ?
                                memPerfOpts.pixelCullingThreshold :
                                WGS.PIXEL_CULLING_THRESHOLD,
 
-        onDemandLoading: memPerfOpts.onDemandLoading !== undefined  ? 
+        onDemandLoading: memPerfOpts.onDemandLoading !== undefined  ?
                          memPerfOpts.onDemandLoading :
                          avp.onDemandLoading,
 
@@ -19775,9 +19775,9 @@ SvfLoader.prototype.makeBVH = function(svf) {
 };
 
 SvfLoader.prototype.onDemandGeomLoadDone = function() {
-    
+
     // Launch the texture loads only on those materials that are required by current rendered geometries.
-    if (!this.svf.proteinMaterials || !PROTEIN_ROOT || !PRISM_ROOT) { 
+    if (!this.svf.proteinMaterials || !PROTEIN_ROOT || !PRISM_ROOT) {
         // TODO:
     }
 
@@ -19785,7 +19785,7 @@ SvfLoader.prototype.onDemandGeomLoadDone = function() {
     var t1 = Date.now();
     var msg = "[On Demand Loading]: On demand requested geometries load time: " + (t1 - this.t0);
     // clear the start time, which can be set again if on demand loading geometry again.
-    this.t0 = null; 
+    this.t0 = null;
 
     avp.logger.log(msg);
 
@@ -19803,7 +19803,7 @@ SvfLoader.prototype.onDemandGeomLoadDone = function() {
     };
     avp.logger.track(modelStats, true);
 
-    // TODO: send recorded assets to ios. 
+    // TODO: send recorded assets to ios.
 
     this.loadedPacksCount = 0;
     this.svf.partPacksLoadDone = true;
@@ -19988,11 +19988,11 @@ F2DLoader.prototype.loadFile = function(path, options, onSuccess, onError, onWor
 
     this.isf2d = true;
     var scope = this;
-    
+
     avp.initWorkerScript(function() {
         scope.loadFydoCB(path, options, onSuccess, onError, onWorkerStart);
     });
-    
+
     return true;
 };
 
@@ -20094,7 +20094,7 @@ F2DLoader.prototype.loadFydoCB = function(path, options, onSuccess, onError, onW
             var f = scope.svf = ew.data.f2d;
 
             parsingWorker.terminate();
-            
+
             avp.logger.info("Num polylines: " + f.numPolylines);
             avp.logger.info("Line segments: " + f.numLineSegs);
             avp.logger.info("Circular arcs: " + f.numCircles);
@@ -20108,7 +20108,7 @@ F2DLoader.prototype.loadFydoCB = function(path, options, onSuccess, onError, onW
                 onSuccess(scope.model);
 
             scope.viewer3DImpl.api.fireEvent({type:av.MODEL_ROOT_LOADED_EVENT, svf:scope.svf, model:scope.model});
-            
+
 
             for (var i=0; i < f.meshes.length; i++) {
                 scope.processReceivedMesh2D(f.meshes[i], i);
@@ -20231,7 +20231,7 @@ F2DLoader.prototype.processReceivedMesh = function(mdata) {
     var numInstances = fragIndexes.length;
 
     var rm = this.model;
-    
+
     //Reuse previous index of this geometry, if available
     var geomId = rm.getGeometryList().addGeometry(mdata.geometry, numInstances);
 
@@ -20449,14 +20449,14 @@ av.FileLoaderManager.registerFileLoader("f2d", ["f2d"], avp.F2DLoader);
 var av = Autodesk.Viewing;
 var avp = Autodesk.Viewing.Private;
 
-/** Loader for leaflet image pyramids and simple image files. 
+/** Loader for leaflet image pyramids and simple image files.
  *   @param {Viewer3DImpl} parent
  */
 function LeafletLoader(parent) {
 
     var _parent = parent;
-    
-    /** 
+
+    /**
      * @callback LoadSuccessCB
      *   @param {RenderModel}
      *
@@ -20469,11 +20469,11 @@ function LeafletLoader(parent) {
 
      /*
      * @param {string}        path
-     * @param {Object}        [options]              Dictionary with options parsed from query string. 
+     * @param {Object}        [options]              Dictionary with options parsed from query string.
      * @para  {Object}        [options.loadOptions]  For leaflets, this must contain additional params like tileSize, texWidth etc. (see TexQuadConfig.initFromLoadOptions)
-     * @param {number}        [options.acmSessionId] Required when requesting non-public image files. 
-     * @param {LoadSuccessCB} onSuccess 
-     * @param {LoadErrorCB}   onError   
+     * @param {number}        [options.acmSessionId] Required when requesting non-public image files.
+     * @param {LoadSuccessCB} onSuccess
+     * @param {LoadErrorCB}   onError
      */
     this.loadFile = function(path, options, onSuccess, onError, onWorkerStart) {
 
@@ -20499,8 +20499,8 @@ function LeafletLoader(parent) {
 
             // Create ModelData. Will be returned when calling model.getData() on the data model
             function LeafletModelData(loadOptions) {
-                // used by Viewer3DImpl for initial camera adjustment     
-                this.bbox     = new THREE.Box3();                
+                // used by Viewer3DImpl for initial camera adjustment
+                this.bbox     = new THREE.Box3();
 
                 this.basePath = path;
 
@@ -20568,33 +20568,33 @@ function LeafletLoader(parent) {
             config.initForSimpleImage(path, onLoad);
         }
 
-        // create iterator 
+        // create iterator
         iter = new avp.ModelIteratorTexQuad(config, _parent.getMaterials());
 
         // when loading leaflets, we know texWidth/texHeight in advance and can
-        // add finish loading right away. 
+        // add finish loading right away.
         if (!isSimpleImage) {
             onLoad();
         }
-        
+
     }
 }
 
 // For standard leaflet hierarchies, the root level 0 is the only one with only one tile,
-// i.e., there are already 2-4 tiles at level 1. 
+// i.e., there are already 2-4 tiles at level 1.
 // In contrast, the hierarchies produced by cloud translation start at a root resolution of 1x1,
-// thus containing several levels that we have to skip. The number of skipped levels is controlled 
-// by the 'levelOffset' parameter. 
+// thus containing several levels that we have to skip. The number of skipped levels is controlled
+// by the 'levelOffset' parameter.
 // The level offset that we need for a hierarchy with a root resolution of 1x1 resolution depends
 // on the tileSize and is computed by this function,
 LeafletLoader.computeLevelOffset = function(tileSize) {
-        
+
     // when reaching this, we abort the loop, because there is something strange
     // with the tileSize parameter.
     var MaxCycles = 20;
-    
+
     var pixelSize = 1;
-    var level     = 0;    
+    var level     = 0;
     for (var i=0; i<MaxCycles; i++) {
         // will the next level still fit into a single tile?
         pixelSize *= 2;
@@ -21176,7 +21176,7 @@ Autodesk.Viewing.Private.Triangulator = (function() {
     function isZero(f) {
         return Math.abs(f) < TOL;
     }
-    
+
     function isEqual(a, b) {
         return isZero(a - b);
     }
@@ -21203,7 +21203,7 @@ Autodesk.Viewing.Private.Triangulator = (function() {
 
 
     function IntervalNode() {
-        
+
         this.bbox = new THREE.Box2();
         this.left = null;
         this.right = null;
@@ -21219,29 +21219,29 @@ Autodesk.Viewing.Private.Triangulator = (function() {
         this.pipResult = false;
 
     }
-    
+
 
 
     IntervalTree.prototype.splitNode = function(node) {
-    
+
         if (node.bbox.min.y >= node.bbox.max.y)
             return;
-            
+
         if (node.node_edges.length < 3)
             return;
-    
+
         var split = 0.5 * (node.bbox.min.y + node.bbox.max.y);
-        
+
         //node.bbox.makeEmpty();
 
         node.left = new IntervalNode();
         node.right = new IntervalNode();
-        
+
         var pts = this.pts;
         var ne = node.node_edges;
         var remaining_node_edges = [];
         var tmpPt = new THREE.Vector2();
-        
+
         for (var i=0; i<ne.length; i++) {
 
             var e = this.edges[ne[i]];
@@ -21254,9 +21254,9 @@ Autodesk.Viewing.Private.Triangulator = (function() {
                 p1y = p2y;
                 p2y = tmp;
             }
-            
+
             var boxPtr = null;
-            
+
             if (p2y < split) {
                 node.left.node_edges.push(ne[i]);
                 boxPtr = node.left.bbox;
@@ -21267,7 +21267,7 @@ Autodesk.Viewing.Private.Triangulator = (function() {
                 remaining_node_edges.push(ne[i]);
                 //boxPtr = node.bbox;
             }
-            
+
             if (boxPtr) {
                 tmpPt.set(pts[e.p1].x, pts[e.p1].y);
                 boxPtr.expandByPoint(tmpPt);
@@ -21275,15 +21275,15 @@ Autodesk.Viewing.Private.Triangulator = (function() {
                 boxPtr.expandByPoint(tmpPt);
             }
         }
-        
+
         node.node_edges = remaining_node_edges;
-        
+
         if (node.left.node_edges.length)
             this.splitNode(node.left);
         if (node.right.node_edges.length)
             this.splitNode(node.right);
     };
-    
+
 
     IntervalTree.prototype.build = function() {
 
@@ -21303,14 +21303,14 @@ Autodesk.Viewing.Private.Triangulator = (function() {
 
 
     IntervalTree.prototype.pointInPolygonRec = function(node, x, y) {
-    
+
         if (node.bbox.min.y <= y && node.bbox.max.y >= y) {
-        
+
             var pts = this.pts;
             var ne = node.node_edges;
-        
+
             for (var i=0, iEnd=ne.length; i<iEnd; i++) {
-            
+
                 var e = this.edges[ne[i]];
 
                 // get the last point in the polygon
@@ -21353,42 +21353,42 @@ Autodesk.Viewing.Private.Triangulator = (function() {
                 }
 
             }
-        
+
         }
-        
+
         var nl = node.left;
         if (nl && nl.bbox.min.y <= y && nl.bbox.max.y >= y) {
             this.pointInPolygonRec(nl, x, y);
         }
-        
+
         var nr = node.right;
         if (nr && nr.bbox.min.y <= y && nr.bbox.max.y >= y) {
             this.pointInPolygonRec(nr, x, y);
         }
 
     };
-    
+
     IntervalTree.prototype.pointInPolygon = function(x, y) {
-    
+
           this.pipResult = false;
-          
+
           this.pointInPolygonRec(this.root, x, y);
-          
+
           return this.pipResult;
-    
+
     };
 
 
 
-    
+
     //Functionality for converting a list of two point segments into a connected
     //set of (hopefully) closed contour lines. The contour set is then used
     //for triangulation
     function ContourSet(edges, bbox) {
-    
+
         this.edges = edges;
         this.bbox = bbox;
-    
+
         this.pts = [];
         this.idmap = {};
         this.xymap = {};
@@ -21396,9 +21396,9 @@ Autodesk.Viewing.Private.Triangulator = (function() {
 
         this.scale = (1e6) / this.bbox.size().length();
     }
-    
-    
-    
+
+
+
     ContourSet.prototype.getPointIndex = function(px, py, eid) {
         var findByEdgeId = this.idmap[eid];
         if (findByEdgeId !== undefined) {
@@ -21431,9 +21431,9 @@ Autodesk.Viewing.Private.Triangulator = (function() {
 
         return my;
     };
-    
+
     ContourSet.prototype.snapEdges = function() {
-        
+
         for (var i=0; i<this.edges.length; i++) {
 
             var e = this.edges[i];
@@ -21464,42 +21464,42 @@ Autodesk.Viewing.Private.Triangulator = (function() {
     };
 
     ContourSet.prototype.stitchContours = function() {
-        
+
         //Create jump table from edge to edge
         //and back
         var edge_table = {};
-        
+
         for (var i=0; i<this.edges.length; i++) {
             var e = this.edges[i];
-            
+
             if (e.p1 === e.p2)
                 continue;
-            
+
             if (edge_table[e.p1] !== undefined)
                 edge_table[e.p1].push(e.p2);
-            else                
+            else
                 edge_table[e.p1] = [e.p2];
-            
+
             if (edge_table[e.p2] !== undefined)
                 edge_table[e.p2].push(e.p1);
             else
                 edge_table[e.p2] = [e.p1];
         }
-        
+
         var cur_cntr = [];
-        
+
         for (var p in edge_table) {
             if (edge_table[p].length !== 2) {
                 avp.logger.warn("Incomplete edge table");
                 break;
             }
         }
-        
+
         //Start with the first edge, and stitch until we can no longer
         while (true) {
-        
+
             var sfrom = undefined;
-        
+
             //Look for doubly connected point first
             for (var p in edge_table) {
                 if (edge_table[p].length > 1) {
@@ -21509,9 +21509,9 @@ Autodesk.Viewing.Private.Triangulator = (function() {
             }
 
             //If no double-connected point found, we know
-            //the it will be an open contour, but stitch as much 
+            //the it will be an open contour, but stitch as much
             //as we can anyway.
-            if (!sfrom) {            
+            if (!sfrom) {
                 for (var p in edge_table) {
                     if (edge_table[p].length > 0) {
                         sfrom = p;
@@ -21531,9 +21531,9 @@ Autodesk.Viewing.Private.Triangulator = (function() {
             cur_cntr.push(cur);
 
             while (cur_segs && cur_segs.length) {
-                
+
                 var toPt = cur_segs.shift();
-                
+
                 //skip backpointer if we hit it
                 if (toPt === prev)
                     toPt = cur_segs.shift();
@@ -21542,19 +21542,19 @@ Autodesk.Viewing.Private.Triangulator = (function() {
                     delete edge_table[cur];
                     break;
                 }
-                        
+
                 cur_cntr.push(toPt);
-                
+
                 if (cur_segs.length == 0)
                     delete edge_table[cur];
                 else if (cur_segs[0] === prev)
                     delete edge_table[cur];
-                
+
                 prev = cur;
                 cur = toPt;
                 cur_segs = edge_table[toPt];
             }
-            
+
             if (cur_cntr.length) {
                 this.contours.push(cur_cntr);
                 cur_cntr = [];
@@ -21571,30 +21571,30 @@ Autodesk.Viewing.Private.Triangulator = (function() {
 
         if (openCntrs.length) {
             //avp.logger.warn("Incomplete stitch");
-            
+
             var didSomething = true;
             while (didSomething) {
-                
+
                 didSomething = false;
 
                 //Try to combine contours
                 var cntr_edge_table = {};
                 var contours = this.contours;
-                
+
                 for (var i=0; i<contours.length; i++) {
                     var cntr = contours[i];
                     var start = cntr[0];
                     var end = cntr[cntr.length-1];
-                    
+
                     if (start === end)
                         continue;
-                    
+
                     if (!cntr_edge_table[start])
                         cntr_edge_table[start] = [-i-1];
                     else
                         cntr_edge_table[start].push(-i-1);
-                        
-                    
+
+
                     if (!cntr_edge_table[end])
                         cntr_edge_table[end] = [i];
                     else
@@ -21638,7 +21638,7 @@ Autodesk.Viewing.Private.Triangulator = (function() {
                             Array.prototype.push.apply(contours[c1], contours[c2].reverse());
                             toerase = c2;
                         }
-                        
+
                         if (toerase !== undefined) {
                             contours.splice(toerase, 1);
                             didSomething = true;
@@ -21648,7 +21648,7 @@ Autodesk.Viewing.Private.Triangulator = (function() {
                 }
 
             }
-            
+
         }
 
 
@@ -21657,7 +21657,7 @@ Autodesk.Viewing.Private.Triangulator = (function() {
 
 
 
-    
+
 
     function TriangulatedSurface(cset) {
 
@@ -21665,7 +21665,7 @@ Autodesk.Viewing.Private.Triangulator = (function() {
 
         this.cset = cset;
         var _pts = this.pts = cset.pts;
-        
+
         this.intervalTree = new IntervalTree(cset.pts, cset.edges, cset.bbox);
         this.intervalTree.build();
 
@@ -21673,67 +21673,67 @@ Autodesk.Viewing.Private.Triangulator = (function() {
         for (var i=0; i<_pts.length; i++) {
             _pts[i].id = i;
         }
-        
+
         var sweepCtx = new lmv_poly2tri.SweepContext([]);
-        
+
         sweepCtx.points_  = _pts.slice();
 
 
 
         if (cset.contours) {
-        
+
             var contours = this.cset.contours;
-            
+
             for (var j=0; j<contours.length; j++) {
-            
+
                 var cntr = contours[j];
-                
+
                 //Contour is not closed
                 var isOpen = (cntr[0] !== cntr[cntr.length-1]);
-                
+
                 //if (isOpen)
                 //    continue;
-                
+
                 var edge = [];
-                
+
                 for (var k=0; k<cntr.length-1; k++) {
                     edge.push(_pts[cntr[k]]);
                 }
-                
+
                 sweepCtx.initEdges(edge, isOpen);
             }
 
         } else {
-        
+
             var edges = this.cset.edges;
-        
+
             for (var i=0; i<edges.length; i++) {
-                
+
                 var e = edges[i];
-                
+
                 if (e.p1 == e.p2)
                     continue;
-                
+
                 var triedge = [_pts[e.p1], _pts[e.p2]];
                 sweepCtx.initEdges(triedge, true);
             }
-            
+
         }
-        
+
         this.triangulate(sweepCtx);
         this.processResult(sweepCtx);
     }
-    
-    
+
+
     TriangulatedSurface.prototype.triangulate = function(sweepCtx) {
-    
+
         try {
             sweepCtx.triangulate();
         } catch (e) {
         }
     };
-    
-    
+
+
     TriangulatedSurface.prototype.processResult = function(sweepCtx) {
         for (var i=0; i<sweepCtx.map_.length; i++) {
             var t = sweepCtx.map_[i];
@@ -21746,9 +21746,9 @@ Autodesk.Viewing.Private.Triangulator = (function() {
 
         }
     };
-    
-    
-    
+
+
+
     TriangulatedSurface.prototype.pointInEdgeList = function(x, y) {
         var yflag0, yflag1;
         var vtx0X, vtx0Y, vtx1X, vtx1Y;
@@ -21805,14 +21805,14 @@ Autodesk.Viewing.Private.Triangulator = (function() {
         return inside_flag;
     };
 
-    
-    
+
+
     TriangulatedSurface.prototype.pointInContour = function(x, y, cntr) {
         var yflag0, yflag1;
         var vtx0X, vtx0Y, vtx1X, vtx1Y;
 
         var inside_flag = false;
-        
+
         var pts = this.cset.pts;
 
         // get the last point in the polygon
@@ -21876,7 +21876,7 @@ Autodesk.Viewing.Private.Triangulator = (function() {
         return inside;
     };
 
-    
+
     TriangulatedSurface.prototype.filterFace = function(i0, i1, i2) {
 
         var p0 = this.pts[i0];
@@ -21905,8 +21905,8 @@ Autodesk.Viewing.Private.Triangulator = (function() {
 
         }
     };
-    
-    
+
+
 
 
     return {
@@ -21961,7 +21961,7 @@ Autodesk.Viewing.Private.Intersector = (function() {
             // line is coplanar
             return 2;
         }
-        
+
         denominator = 1.0 / denominator;
 
         var t = - ( pt0.dot( plane.normal ) * denominator + plane.constant * denominator);
@@ -22018,7 +22018,7 @@ Autodesk.Viewing.Private.Intersector = (function() {
                 res.push(new Edge(pt0.clone(), pt1.clone(), i0, i0, i1, i1, meshId));
                 return;
             } else if (numInts == 1) {
-                i1From = i0; 
+                i1From = i0;
                 i1To = i1;
                 tmp1 = res1.clone();
             } else {
@@ -22036,7 +22036,7 @@ Autodesk.Viewing.Private.Intersector = (function() {
                     // Avoid the singular scenario where the signs are 0, -1 and +1
                     if (res1.distanceTo(tmp1) > TOL) {
                         i2From = i1;
-                        i2To = i2;    
+                        i2To = i2;
                         tmp2 = res1.clone();
                     }
                 }
@@ -22079,20 +22079,20 @@ Autodesk.Viewing.Private.Intersector = (function() {
         }
 
     }
-    
+
     var point = new THREE.Vector3();
-    
+
     function xBoxPlane(plane, box) {
-    
+
         point.set( box.min.x, box.min.y, box.min.z ); // 000
         var d = plane.distanceToPoint(point);
         var s = Math.sign(d);
-        
+
         point.set( box.min.x, box.min.y, box.max.z ); // 001
         var d2 = plane.distanceToPoint(point);
         if (Math.sign(d2) !== s)
             return true;
-        
+
         point.set( box.min.x, box.max.y, box.min.z ); // 010
         d2 = plane.distanceToPoint(point);
         if (Math.sign(d2) !== s)
@@ -22118,7 +22118,7 @@ Autodesk.Viewing.Private.Intersector = (function() {
         if (Math.sign(d2) !== s)
             return true;
 
-        point.set( box.max.x, box.max.y, box.max.z ); // 111        
+        point.set( box.max.x, box.max.y, box.max.z ); // 111
         d2 = plane.distanceToPoint(point);
         if (Math.sign(d2) !== s)
             return true;
@@ -22138,7 +22138,7 @@ Autodesk.Viewing.Private.Intersector = (function() {
         var baseIndex = intersects.length;
 
         var attributes = geometry.attributes;
-        
+
         var matrixWorld = mesh.matrixWorld;
         mi.getInverse(matrixWorld);
         pi.copy(plane).applyMatrix4(mi);
@@ -22173,13 +22173,13 @@ Autodesk.Viewing.Private.Intersector = (function() {
                     vA.x = positions[a*stride]; vA.y = positions[a*stride+1]; vA.z = positions[a*stride+2];
                     vB.x = positions[b*stride]; vB.y = positions[b*stride+1]; vB.z = positions[b*stride+2];
                     vC.x = positions[c*stride]; vC.y = positions[c*stride+1]; vC.z = positions[c*stride+2];
-                    
+
                     /*
                     vA.fromArray(positions, a * stride);
                     vB.fromArray(positions, b * stride);
                     vC.fromArray(positions, c * stride);
                     */
-                    
+
                     xTrianglePlane(pi, vA, vB, vC, a, b, c, intersects, mesh.fragId);
                 }
 
@@ -23245,7 +23245,7 @@ function RenderContext() {
                     stencilBuffer: false
                 });
             // three.js has a flaw in its constructor: the generateMipmaps value is always initialized to true
-            _colorTarget.generateMipmaps = false; 
+            _colorTarget.generateMipmaps = false;
 
             _overlayTarget = new THREE.WebGLRenderTarget(sw, sh,
                 {  minFilter: THREE.NearestFilter,
@@ -23253,7 +23253,7 @@ function RenderContext() {
                     format: THREE.RGBAFormat,
                     stencilBuffer: false
                 });
-            _overlayTarget.generateMipmaps = false; 
+            _overlayTarget.generateMipmaps = false;
 
 
             _overlayTarget.shareDepthFrom = _colorTarget;
@@ -23280,7 +23280,7 @@ function RenderContext() {
                         stencilBuffer: false,
                         depthBuffer: false
                     });
-                _postTarget1.generateMipmaps = false; 
+                _postTarget1.generateMipmaps = false;
            }
         }
 
@@ -23350,7 +23350,7 @@ function RenderContext() {
                             type: THREE.UnsignedByteType,
                             stencilBuffer: false
                         });
-                    _idTargets[i].generateMipmaps = false; 
+                    _idTargets[i].generateMipmaps = false;
 
                     _idTargets[i].shareDepthFrom = _colorTarget;
 
@@ -23469,7 +23469,7 @@ function RenderContext() {
     };
 
     this.setAOOptions = function (radius, intensity) {
-        
+
         if (radius !== undefined) {
             _saoPass.uniforms[ 'radius' ].value = radius;
             _saoPass.uniforms[ 'bias' ].value = radius * av.isMobileDevice() ? 0.1 : 0.01;
@@ -26516,7 +26516,7 @@ var MeshAnimation = function(root, data, animator) {
     Animation.call(this, root, data, animator);
     //this.originalMatrix = root.matrix.clone();
     this.localMatrix = new THREE.Matrix4();
-    
+
     this.root.getAnimTransform();
     this.relativeTransform = (data.custom && data.custom.transform && data.custom.transform === "abs")? false: true;
 
@@ -26524,7 +26524,7 @@ var MeshAnimation = function(root, data, animator) {
     if (this.relativeTransform) {
         //this.root.updateMatrixWorld();
     } else {
-        
+
     }
     */
 };
@@ -26541,11 +26541,11 @@ MeshAnimation.prototype.update = (function() {
     var newQuat;
     var tmpMatrix1;
     var tmpMatrix2;
-    
+
     function init_three() {
         if (target)
             return;
-    
+
         target = new THREE.Vector3();
         newVector = new THREE.Vector3();
         newQuat = new THREE.Quaternion();
@@ -26684,7 +26684,7 @@ CameraAnimation.prototype.defaultKey = {pos: 0, up: 0, target: 0, fov: 0, perspe
 
 CameraAnimation.prototype.update = (function() {
     var points = [];
-    
+
     var target;
     var newVector;
     function init_three() {
@@ -26698,7 +26698,7 @@ CameraAnimation.prototype.update = (function() {
         if (this.isPlaying === false) return;
 
         this.currentTime += delta * this.timeScale;
-        
+
         init_three();
 
         this.resetIfLooped();
@@ -26865,10 +26865,10 @@ VisibilityAnimation.prototype.update = (function() {
                     if (scale < 0) scale = 0;
                     if (scale > 1) scale = 1;
                     var opacity = prevVis + (nextVis - prevVis) * scale;
-                    
+
                     material.transparent = (opacity !== 1);
                     material.opacity = opacity;
-                    if (opacity > 0) 
+                    if (opacity > 0)
                         this.viewer.visibilityManager.setNodeOff(this.nodeId, false);
                 }
             }
@@ -27335,7 +27335,7 @@ KeyFrameAnimator.prototype.add = function(animation) {
         that.animations.push(anim);
     }
     else if (animation.type === "mesh" || animation.type === "visibility") {
-    
+
         that.viewer.model.getData().instanceTree.enumNodeFragments(animation.id, function(fragId) {
 
             var mesh = that.viewer.getFragmentProxy(that.viewer.model, fragId);
@@ -27345,12 +27345,12 @@ KeyFrameAnimator.prototype.add = function(animation) {
                     anim = new avp.MeshAnimation(mesh, animation, that);
                 else
                     anim = new avp.VisibilityAnimation(mesh, animation, animation.id, that);
-                    
+
                 that.animations.push(anim);
             }
-        
+
         }, true);
-    
+
     }
 
 
@@ -27397,7 +27397,7 @@ KeyFrameAnimator.prototype.update = function(time) {
         this.currentTime = Math.min(this.currentTime, this.duration);
         if (this.onPlayCallback) {
             // send playback percentage
-            this.onPlayCallback(this.duration > 0? this.currentTime / this.duration * 100 : 0);    
+            this.onPlayCallback(this.duration > 0? this.currentTime / this.duration * 100 : 0);
         }
         if (this.currentTime >= this.duration) {
             this.pause();
@@ -29092,7 +29092,7 @@ function Viewer3DImpl(thecanvas, theapi)
                 this.api.navigation.setConstraints2D(modelData.bbox, modelData.maxPixelPerUnit);
             }
             else {
-                // If it is not a leaflet model, clear constrain 2d. 
+                // If it is not a leaflet model, clear constrain 2d.
                 // Otherwise, it will leak to the next model that viewer could open up.
                 this.api.navigation.setConstraints2D();
             }
@@ -29222,7 +29222,7 @@ function Viewer3DImpl(thecanvas, theapi)
         // make sense in this scenario.
 
         _isLoading = false;
-        
+
         this.signalProgress(100);
         this.invalidate(false, true);
 
@@ -30770,7 +30770,7 @@ Autodesk.Viewing.Private.ViewerState = function( viewer )
         if (!viewport) {
             viewport = viewerState["viewport"] = {};
         }
-        
+
         var bPerspectiveCam = nav.getCamera().isPerspective;
         viewport["name"] = ""; // TODO: Populate accordingly; Requested by the mobile team.
         viewport["eye"] = nav.getPosition().toArray();
@@ -31523,7 +31523,7 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
             return -1;
         }
     }
-    
+
     // add lastIndexOf to non ECMA-262 standard compliant browsers
     if (!Array.prototype.lastIndexOf) {
         Array.prototype.lastIndexOf = function(searchElement /*, fromIndex*/) {
@@ -31554,11 +31554,11 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
             return -1;
         };
     }
-    
+
     // Add string trim for IE8.
     if (typeof String.prototype.trim !== 'function') {
         String.prototype.trim = function() {
-            return this.replace(/^\s+|\s+$/g, ''); 
+            return this.replace(/^\s+|\s+$/g, '');
         }
     }
 
@@ -31571,7 +31571,7 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
       , languages = []
       , initialized = false;
 
-    // Export the i18next object for **CommonJS**. 
+    // Export the i18next object for **CommonJS**.
     // If we're not in CommonJS, add `i18n` to the
     // global object or to jquery.
     if (typeof module !== 'undefined' && module.exports) {
@@ -31600,22 +31600,22 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
         keyseparator: '.',
         selectorAttr: 'data-i18n',
         debug: false,
-        
+
         resGetPath: 'res/locales/__lng__/__ns__.json',
         resPostPath: 'res/locales/add/__lng__/__ns__',
-    
+
         getAsync: true,
         postAsync: true,
-    
+
         resStore: undefined,
         useLocalStorage: false,
         localStorageExpirationTime: 7*24*60*60*1000,
-    
+
         dynamicLoad: false,
         sendMissing: false,
         sendMissingTo: 'fallback', // current | all
         sendType: 'POST',
-    
+
         interpolationPrefix: '__',
         interpolationSuffix: '__',
         reusePrefix: '$t(',
@@ -31631,11 +31631,11 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
         useCookie: true,
         cookieName: 'i18next',
         cookieDomain: undefined,
-    
+
         objectTreeKeyHandler: undefined,
         postProcess: undefined,
         parseMissingKey: undefined,
-    
+
         shortcutFunction: 'sprintf' // or: defaultValue
     };
 
@@ -31643,16 +31643,16 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
         if (!source || typeof source === 'function') {
             return target;
         }
-    
+
         for (var attr in source) { target[attr] = source[attr]; }
         return target;
     }
-    
+
     function _each(object, callback, args) {
         var name, i = 0,
             length = object.length,
             isObj = length === undefined || Object.prototype.toString.apply(object) !== '[object Array]' || typeof object === "function";
-    
+
         if (args) {
             if (isObj) {
                 for (name in object) {
@@ -31667,7 +31667,7 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
                     }
                 }
             }
-    
+
         // A special, fast, case for the most common use of each
         } else {
             if (isObj) {
@@ -31684,10 +31684,10 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
                 }
             }
         }
-    
+
         return object;
     }
-    
+
     var _entityMap = {
         "&": "&amp;",
         "<": "&lt;",
@@ -31696,7 +31696,7 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
         "'": '&#39;',
         "/": '&#x2F;'
     };
-    
+
     function _escape(data) {
         if (typeof data === 'string') {
             return data.replace(/[&<>"'\/]/g, function (s) {
@@ -31759,7 +31759,7 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
     };
 
     function _ajax(options) {
-    
+
         // v0.5.0 of https://github.com/goloroden/http.js
         var getXhr = function (callback) {
             // Use the native XHR object if the browser supports it.
@@ -31773,33 +31773,33 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
                     return callback(null, new ActiveXObject("Microsoft.XMLHTTP"));
                 }
             }
-    
+
             // If no XHR support was found, throw an error.
             return callback(new Error());
         };
-    
+
         var encodeUsingUrlEncoding = function (data) {
             if(typeof data === 'string') {
                 return data;
             }
-    
+
             var result = [];
             for(var dataItem in data) {
                 if(data.hasOwnProperty(dataItem)) {
                     result.push(encodeURIComponent(dataItem) + '=' + encodeURIComponent(data[dataItem]));
                 }
             }
-    
+
             return result.join('&');
         };
-    
+
         var utf8 = function (text) {
             text = text.replace(/\r\n/g, '\n');
             var result = '';
-    
+
             for(var i = 0; i < text.length; i++) {
                 var c = text.charCodeAt(i);
-    
+
                 if(c < 128) {
                         result += String.fromCharCode(c);
                 } else if((c > 127) && (c < 2048)) {
@@ -31811,35 +31811,35 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
                         result += String.fromCharCode((c & 63) | 128);
                 }
             }
-    
+
             return result;
         };
-    
+
         var base64 = function (text) {
             var keyStr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
-    
+
             text = utf8(text);
             var result = '',
                     chr1, chr2, chr3,
                     enc1, enc2, enc3, enc4,
                     i = 0;
-    
+
             do {
                 chr1 = text.charCodeAt(i++);
                 chr2 = text.charCodeAt(i++);
                 chr3 = text.charCodeAt(i++);
-    
+
                 enc1 = chr1 >> 2;
                 enc2 = ((chr1 & 3) << 4) | (chr2 >> 4);
                 enc3 = ((chr2 & 15) << 2) | (chr3 >> 6);
                 enc4 = chr3 & 63;
-    
+
                 if(isNaN(chr2)) {
                     enc3 = enc4 = 64;
                 } else if(isNaN(chr3)) {
                     enc4 = 64;
                 }
-    
+
                 result +=
                     keyStr.charAt(enc1) +
                     keyStr.charAt(enc2) +
@@ -31848,14 +31848,14 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
                 chr1 = chr2 = chr3 = '';
                 enc1 = enc2 = enc3 = enc4 = '';
             } while(i < text.length);
-    
+
             return result;
         };
-    
+
         var mergeHeaders = function () {
             // Use the first header object as base.
             var result = arguments[0];
-    
+
             // Iterate through the remaining header objects and add them.
             for(var i = 1; i < arguments.length; i++) {
                 var currentHeaders = arguments[i];
@@ -31865,7 +31865,7 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
                     }
                 }
             }
-    
+
             // Return the merged headers.
             return result;
         };
@@ -31877,7 +31877,7 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
                 callback = options;
                 options = {};
             }
-    
+
             // Set default parameter values.
             options.doNotCache = options.doNotCache || false;
             options.data = options.data || {};
@@ -31890,7 +31890,7 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
                 'accept': '*/*',
                 'content-type': 'application/x-www-form-urlencoded;charset=UTF-8'
             }, ajax.headers, options.headers);
-    
+
             // Encode the data according to the content-type.
             var payload;
             if (headers['content-type'] === 'application/json') {
@@ -31898,7 +31898,7 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
             } else {
                 payload = encodeUsingUrlEncoding(options.data);
             }
-    
+
             // Specially prepare GET requests: Setup the query string, handle caching and make a JSONP call
             // if neccessary.
             if(method === 'GET') {
@@ -31908,18 +31908,18 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
                     queryString.push(payload);
                     payload = null;
                 }
-    
+
                 // Handle caching.
                 if(options.doNotCache) {
                     queryString.push('_=' + (new Date()).getTime());
                 }
-    
+
                 // If neccessary prepare the query string for a JSONP call.
                 if(options.jsonp) {
                     queryString.push('callback=' + options.jsonp);
                     queryString.push('jsonp=' + options.jsonp);
                 }
-    
+
                 // Merge the query string and attach it to the url.
                 queryString = queryString.join('&');
                 if (queryString.length > 1) {
@@ -31929,7 +31929,7 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
                         url += '?' + queryString;
                     }
                 }
-    
+
                 // Make a JSONP call if neccessary.
                 if(options.jsonp) {
                     var head = document.getElementsByTagName('head')[0];
@@ -31940,21 +31940,21 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
                     return;
                 }
             }
-    
+
             // Since we got here, it is no JSONP request, so make a normal XHR request.
             getXhr(function (err, xhr) {
                 if(err) return callback(err);
-    
+
                 // Open the request.
                 xhr.open(method, url, options.async);
-    
+
                 // Set the request headers.
                 for(var header in headers) {
                     if(headers.hasOwnProperty(header)) {
                         xhr.setRequestHeader(header, headers[header]);
                     }
                 }
-    
+
                 // Handle the request events.
                 xhr.onreadystatechange = function () {
                     if(xhr.readyState === 4) {
@@ -31964,74 +31964,74 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
                         if(!callback) {
                             return;
                         }
-    
+
                         // Return an object that provides access to the data as text and JSON.
                         callback(xhr.status, data );
 
                     }
                 };
-    
+
                 // Actually send the XHR request.
                 xhr.send(payload);
             });
         };
-    
+
         // Define the external interface.
         var http = {
             authBasic: function (username, password) {
                 ajax.headers['Authorization'] = 'Basic ' + base64(username + ':' + password);
             },
-    
+
             connect: function (url, options, callback) {
                 return ajax('CONNECT', url, options, callback);
             },
-    
+
             del: function (url, options, callback) {
                 return ajax('DELETE', url, options, callback);
             },
-    
+
             get: function (url, options, callback) {
                 return ajax('GET', url, options, callback);
             },
-    
+
             head: function (url, options, callback) {
                 return ajax('HEAD', url, options, callback);
             },
-    
+
             headers: function (headers) {
                 ajax.headers = headers || {};
             },
-    
+
             isAllowed: function (url, verb, callback) {
                 this.options(url, function (status, data) {
                     callback(data.text().indexOf(verb) !== -1);
                 });
             },
-    
+
             options: function (url, options, callback) {
                 return ajax('OPTIONS', url, options, callback);
             },
-    
+
             patch: function (url, options, callback) {
                 return ajax('PATCH', url, options, callback);
             },
-    
+
             post: function (url, options, callback) {
                 return ajax('POST', url, options, callback);
             },
-    
+
             put: function (url, options, callback) {
                 return ajax('PUT', url, options, callback);
             },
-    
+
             trace: function (url, options, callback) {
                 return ajax('TRACE', url, options, callback);
             }
         };
-    
-    
+
+
         var methode = options.type ? options.type.toLowerCase() : 'get';
-    
+
         http[methode](options.url, options, function (status, data) {
             if (status === 200) {
                 options.success(data, status, null);
@@ -32040,7 +32040,7 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
             }
         });
     }
-    
+
     var _cookie = {
         create: function(name,value,minutes,domain) {
             var expires;
@@ -32053,7 +32053,7 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
             domain = (domain)? "domain="+domain+";" : "";
             document.cookie = name+"="+value+expires+";"+domain+"path=/";
         },
-    
+
         read: function(name) {
             var nameEQ = name + "=";
             var ca = document.cookie.split(';');
@@ -32064,20 +32064,20 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
             }
             return null;
         },
-    
+
         remove: function(name) {
             this.create(name,"",-1);
         }
     };
-    
+
     var cookie_noop = {
         create: function(name,value,minutes,domain) {},
         read: function(name) { return null; },
         remove: function(name) {}
     };
-    
-    
-    
+
+
+
     // move dependent functions to a container so that
     // they can be overriden easier in no jquery environment (node.js)
     var f = {
@@ -32094,21 +32094,21 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
             var languages = [];
             if (typeof lng === 'string' && lng.indexOf('-') > -1) {
                 var parts = lng.split('-');
-    
+
                 lng = o.lowerCaseLng ?
                     parts[0].toLowerCase() +  '-' + parts[1].toLowerCase() :
                     parts[0].toLowerCase() +  '-' + parts[1].toUpperCase();
-    
+
                 if (o.load !== 'unspecific') languages.push(lng);
                 if (o.load !== 'current') languages.push(parts[0]);
             } else {
                 languages.push(lng);
             }
-    
+
             for (var i = 0; i < o.fallbackLng.length; i++) {
                 if (languages.indexOf(o.fallbackLng[i]) === -1 && o.fallbackLng[i]) languages.push(o.fallbackLng[i]);
             }
-    
+
             return languages;
         },
         regexEscape: function(str) {
@@ -32117,37 +32117,37 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
     };
 
     function init(options, cb) {
-        
+
         if (typeof options === 'function') {
             cb = options;
             options = {};
         }
         options = options || {};
-        
+
         // override defaults with passed in options
         f.extend(o, options);
         delete o.fixLng; /* passed in each time */
-    
+
         // create namespace object if namespace is passed in as string
         if (typeof o.ns == 'string') {
             o.ns = { namespaces: [o.ns], defaultNs: o.ns};
         }
-    
+
         // fallback namespaces
         if (typeof o.fallbackNS == 'string') {
             o.fallbackNS = [o.fallbackNS];
         }
-    
+
         // fallback languages
         if (typeof o.fallbackLng == 'string' || typeof o.fallbackLng == 'boolean') {
             o.fallbackLng = [o.fallbackLng];
         }
-    
+
         // escape prefix/suffix
         o.interpolationPrefixEscaped = f.regexEscape(o.interpolationPrefix);
         o.interpolationSuffixEscaped = f.regexEscape(o.interpolationSuffix);
-    
-        if (!o.lng) o.lng = f.detectLanguage(); 
+
+        if (!o.lng) o.lng = f.detectLanguage();
         if (o.lng) {
             // set cookie with lng set (as detectLanguage will set cookie on need)
             if (o.useCookie) f.cookie.create(o.cookieName, o.lng, o.cookieExpirationTime, o.cookieDomain);
@@ -32155,11 +32155,11 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
             o.lng =  o.fallbackLng[0];
             if (o.useCookie) f.cookie.remove(o.cookieName);
         }
-    
+
         languages = f.toLanguages(o.lng);
         currentLng = languages[0];
         f.log('currentLng set to: ' + currentLng);
-    
+
         var lngTranslate = translate;
         if (options.fixLng) {
             lngTranslate = function(key, options) {
@@ -32169,7 +32169,7 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
             };
             lngTranslate.lng = currentLng;
         }
-    
+
         pluralExtensions.setCurrentLng(currentLng);
 
         // return immidiatly if res are passed in
@@ -32179,7 +32179,7 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
             if (cb) cb(lngTranslate);
             return;
         }
-    
+
         // languages to load
         var lngsToLoad = f.toLanguages(o.lng);
         if (typeof o.preload === 'string') o.preload = [o.preload];
@@ -32191,12 +32191,12 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
                 }
             }
         }
-    
+
         // else load them
         Autodesk.Viewing.i18n.sync.load(lngsToLoad, o, function(err, store) {
             resStore = store;
             initialized = true;
-    
+
             if (cb) cb(lngTranslate);
         });
     }
@@ -32210,7 +32210,7 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
         }
         return init(cb);
     }
-    
+
     function addResourceBundle(lng, ns, resources) {
         if (typeof ns !== 'string') {
             resources = ns;
@@ -32218,30 +32218,30 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
         } else if (o.ns.namespaces.indexOf(ns) < 0) {
             o.ns.namespaces.push(ns);
         }
-    
+
         resStore[lng] = resStore[lng] || {};
         resStore[lng][ns] = resStore[lng][ns] || {};
-    
+
         f.extend(resStore[lng][ns], resources);
     }
-    
+
     function removeResourceBundle(lng, ns) {
         if (typeof ns !== 'string') {
             ns = o.ns.defaultNs;
         }
-    
+
         resStore[lng] = resStore[lng] || {};
         resStore[lng][ns] = {};
     }
-    
+
     function setDefaultNamespace(ns) {
         o.ns.defaultNs = ns;
     }
-    
+
     function loadNamespace(namespace, cb) {
         loadNamespaces([namespace], cb);
     }
-    
+
     function loadNamespaces(namespaces, cb) {
         var opts = {
             dynamicLoad: o.dynamicLoad,
@@ -32250,7 +32250,7 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
             customLoad: o.customLoad,
             ns: { namespaces: namespaces, defaultNs: ''} /* new namespaces to load */
         };
-    
+
         // languages to load
         var lngsToLoad = f.toLanguages(o.lng);
         if (typeof o.preload === 'string') o.preload = [o.preload];
@@ -32262,7 +32262,7 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
                 }
             }
         }
-    
+
         // check if we have to load
         var lngNeedLoad = [];
         for (var a = 0, lenA = lngsToLoad.length; a < lenA; a++) {
@@ -32275,26 +32275,26 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
             } else {
                 needLoad = true;
             }
-    
+
             if (needLoad) lngNeedLoad.push(lngsToLoad[a]);
         }
-    
+
         if (lngNeedLoad.length) {
             Autodesk.Viewing.i18n.sync._fetch(lngNeedLoad, opts, function(err, store) {
                 var todo = namespaces.length * lngNeedLoad.length;
-    
+
                 // load each file individual
                 f.each(namespaces, function(nsIndex, nsValue) {
-    
+
                     // append namespace to namespace array
                     if (o.ns.namespaces.indexOf(nsValue) < 0) {
                         o.ns.namespaces.push(nsValue);
                     }
-    
+
                     f.each(lngNeedLoad, function(lngIndex, lngValue) {
                         resStore[lngValue] = resStore[lngValue] || {};
                         resStore[lngValue][nsValue] = store[lngValue][nsValue];
-    
+
                         todo--; // wait for all done befor callback
                         if (todo === 0 && cb) {
                             if (o.useLocalStorage) Autodesk.Viewing.i18n.sync._storeLocal(resStore);
@@ -32307,7 +32307,7 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
             if (cb) cb();
         }
     }
-    
+
     function setLng(lng, options, cb) {
         if (typeof options === 'function') {
             cb = options;
@@ -32315,25 +32315,25 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
         } else if (!options) {
             options = {};
         }
-    
+
         options.lng = lng;
         return init(options, cb);
     }
-    
+
     function lng() {
         return currentLng;
     }
 
     function applyReplacement(str, replacementHash, nestedKey, options) {
         if (!str) return str;
-    
+
         options = options || replacementHash; // first call uses replacement hash combined with options
         if (str.indexOf(options.interpolationPrefix || o.interpolationPrefix) < 0) return str;
-    
+
         var prefix = options.interpolationPrefix ? f.regexEscape(options.interpolationPrefix) : o.interpolationPrefixEscaped
           , suffix = options.interpolationSuffix ? f.regexEscape(options.interpolationSuffix) : o.interpolationSuffixEscaped
           , unEscapingSuffix = 'HTML'+suffix;
-    
+
         f.each(replacementHash, function(key, value) {
             var nextKey = nestedKey ? nestedKey + o.keyseparator + key : key;
             if (typeof value === 'object' && value !== null) {
@@ -32350,18 +32350,18 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
         });
         return str;
     }
-    
+
     // append it to functions
     f.applyReplacement = applyReplacement;
-    
+
     function applyReuse(translated, options) {
         var comma = ',';
         var options_open = '{';
         var options_close = '}';
-    
+
         var opts = f.extend({}, options);
         delete opts.postProcess;
-    
+
         while (translated.indexOf(o.reusePrefix) != -1) {
             replacementCounter++;
             if (replacementCounter > o.maxRecursion) { break; } // safety net for too much recursion
@@ -32369,8 +32369,8 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
             var index_of_end_of_closing = translated.indexOf(o.reuseSuffix, index_of_opening) + o.reuseSuffix.length;
             var token = translated.substring(index_of_opening, index_of_end_of_closing);
             var token_without_symbols = token.replace(o.reusePrefix, '').replace(o.reuseSuffix, '');
-    
-    
+
+
             if (token_without_symbols.indexOf(comma) != -1) {
                 var index_of_token_end_of_closing = token_without_symbols.indexOf(comma);
                 if (token_without_symbols.indexOf(options_open, index_of_token_end_of_closing) != -1 && token_without_symbols.indexOf(options_close, index_of_token_end_of_closing) != -1) {
@@ -32383,33 +32383,33 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
                     }
                 }
             }
-    
+
             var translated_token = _translate(token_without_symbols, opts);
             translated = translated.replace(token, translated_token);
         }
         return translated;
     }
-    
+
     function hasContext(options) {
         return (options.context && (typeof options.context == 'string' || typeof options.context == 'number'));
     }
-    
+
     function needsPlural(options) {
         return (options.count !== undefined && typeof options.count != 'string' && options.count !== 1);
     }
-    
+
     function exists(key, options) {
         options = options || {};
-    
+
         var notFound = _getDefaultValue(key, options)
             , found = _find(key, options);
-    
+
         return found !== undefined || found === notFound;
     }
-    
+
     function translate(key, options) {
         options = options || {};
-    
+
         if (!initialized) {
             f.log('i18next not finished initialization. you might have called t function before loading resources finished.');
             var colon = key.indexOf(":");
@@ -32426,26 +32426,26 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
         replacementCounter = 0;
         return _translate.apply(null, arguments);
     }
-    
+
     function _getDefaultValue(key, options) {
         return (options.defaultValue !== undefined) ? options.defaultValue : key;
     }
-    
+
     function _injectSprintfProcessor() {
-    
+
         var values = [];
-    
+
         // mh: build array from second argument onwards
         for (var i = 1; i < arguments.length; i++) {
             values.push(arguments[i]);
         }
-    
+
         return {
             postProcess: 'sprintf',
             sprintf:     values
         };
     }
-    
+
     function _translate(potentialKeys, options) {
         if (options && typeof options !== 'object') {
             if (o.shortcutFunction === 'sprintf') {
@@ -32459,15 +32459,15 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
         } else {
             options = options || {};
         }
-    
+
         if (potentialKeys === undefined || potentialKeys === null) return '';
-    
+
         if (typeof potentialKeys == 'string') {
             potentialKeys = [potentialKeys];
         }
-    
+
         var key = potentialKeys[0];
-    
+
         if (potentialKeys.length > 1) {
             for (var i = 0; i < potentialKeys.length; i++) {
                 key = potentialKeys[i];
@@ -32476,7 +32476,7 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
                 }
             }
         }
-    
+
         var notFound = _getDefaultValue(key, options)
             , found = _find(key, options)
             , lngs = options.lng ? f.toLanguages(options.lng) : languages
@@ -32497,7 +32497,7 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
                 sync.postMissing(o.lng, ns, key, notFound, lngs);
             }
         }
-    
+
         var postProcessor = options.postProcess || o.postProcess;
         if (found !== undefined && postProcessor) {
             if (postProcessors[postProcessor]) {
@@ -32507,7 +32507,7 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
 
         // return localization test string, if a key is found and debugLocString is enabled
         if (debugLocString && found !== undefined) return debugLocString;
-    
+
         // process notFound if function exists
         var splitNotFound = notFound;
         if (notFound.indexOf(o.nsseparator) > -1) {
@@ -32517,11 +32517,11 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
         if (splitNotFound === key && o.parseMissingKey) {
             notFound = o.parseMissingKey(notFound);
         }
-    
+
         if (found === undefined) {
             notFound = applyReplacement(notFound, options);
             notFound = applyReuse(notFound, options);
-    
+
             if (postProcessor && postProcessors[postProcessor]) {
                 var val = _getDefaultValue(key, options);
                 found = postProcessors[postProcessor](val, key, options);
@@ -32529,59 +32529,59 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
         }
         return (found !== undefined) ? found : notFound;
     }
-    
+
     function _find(key, options) {
         options = options || {};
-    
+
         var optionWithoutCount, translated
             , notFound = _getDefaultValue(key, options)
             , lngs = languages;
-    
+
         if (!resStore) { return notFound; } // no resStore to translate from
-    
+
         // CI mode
         if (lngs[0].toLowerCase() === 'cimode') return notFound;
-    
+
         // passed in lng
         if (options.lng) {
             lngs = f.toLanguages(options.lng);
-    
+
             if (!resStore[lngs[0]]) {
                 var oldAsync = o.getAsync;
                 o.getAsync = false;
-    
+
                 Autodesk.Viewing.i18n.sync.load(lngs, o, function(err, store) {
                     f.extend(resStore, store);
                     o.getAsync = oldAsync;
                 });
             }
         }
-    
+
         var ns = options.ns || o.ns.defaultNs;
         if (key.indexOf(o.nsseparator) > -1) {
             var parts = key.split(o.nsseparator);
             ns = parts[0];
             key = parts[1];
         }
-    
+
         if (hasContext(options)) {
             optionWithoutCount = f.extend({}, options);
             delete optionWithoutCount.context;
             optionWithoutCount.defaultValue = o.contextNotFound;
-    
+
             var contextKey = ns + o.nsseparator + key + '_' + options.context;
-    
+
             translated = translate(contextKey, optionWithoutCount);
             if (translated != o.contextNotFound) {
                 return applyReplacement(translated, { context: options.context }); // apply replacement for context only
             } // else continue translation with original/nonContext key
         }
-    
+
         if (needsPlural(options)) {
             optionWithoutCount = f.extend({}, options);
             delete optionWithoutCount.count;
             optionWithoutCount.defaultValue = o.pluralNotFound;
-    
+
             var pluralKey = ns + o.nsseparator + key + o.pluralSuffix;
             var pluralExtension = pluralExtensions.get(lngs[0], options.count);
             if (pluralExtension >= 0) {
@@ -32589,7 +32589,7 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
             } else if (pluralExtension === 1) {
                 pluralKey = ns + o.nsseparator + key; // singular
             }
-    
+
             translated = translate(pluralKey, optionWithoutCount);
             if (translated != o.pluralNotFound) {
                 return applyReplacement(translated, {
@@ -32599,14 +32599,14 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
                 }); // apply replacement for count only
             } // else continue translation with original/singular key
         }
-    
+
         var found;
         var keys = key.split(o.keyseparator);
         for (var i = 0, len = lngs.length; i < len; i++ ) {
             if (found !== undefined) break;
-    
+
             var l = lngs[i];
-    
+
             var x = 0;
             var value = resStore[l] && resStore[l][ns];
             while (keys[x]) {
@@ -32641,28 +32641,28 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
                         value = copy;
                     }
                 }
-    
+
                 if (typeof value === 'string' && value.trim() === '' && o.fallbackOnEmpty === true)
                     value = undefined;
-    
+
                 found = value;
             }
         }
-    
+
         if (found === undefined && !options.isFallbackLookup && (o.fallbackToDefaultNS === true || (o.fallbackNS && o.fallbackNS.length > 0))) {
             // set flag for fallback lookup - avoid recursion
             options.isFallbackLookup = true;
-    
+
             if (o.fallbackNS.length) {
-    
+
                 for (var y = 0, lenY = o.fallbackNS.length; y < lenY; y++) {
                     found = _find(o.fallbackNS[y] + o.nsseparator + key, options);
-    
+
                     if (found) {
                         /* compare value without namespace */
                         var foundValue = found.indexOf(o.nsseparator) > -1 ? found.split(o.nsseparator)[1] : found
                           , notFoundValue = notFound.indexOf(o.nsseparator) > -1 ? notFound.split(o.nsseparator)[1] : notFound;
-    
+
                         if (foundValue !== notFoundValue) break;
                     }
                 }
@@ -32670,12 +32670,12 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
                 found = _find(key, options); // fallback to default NS
             }
         }
-    
+
         return found;
     }
     function detectLanguage() {
         var detectedLng;
-    
+
         // get from qs
         var qsParm = [];
         if (typeof window !== 'undefined') {
@@ -32695,22 +32695,22 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
                 detectedLng = qsParm[o.detectLngQS];
             }
         }
-    
+
         // get from cookie
         if (!detectedLng && typeof document !== 'undefined' && o.useCookie ) {
             var c = f.cookie.read(o.cookieName);
             if (c) detectedLng = c;
         }
-    
+
         // get from navigator
         if (!detectedLng && typeof navigator !== 'undefined') {
             detectedLng =  (navigator.language) ? navigator.language : navigator.userLanguage;
         }
-        
+
         return detectedLng;
     }
     var sync = {
-    
+
         load: function(lngs, options, cb) {
             if (options.useLocalStorage) {
                 sync._loadLocal(lngs, options, function(err, store) {
@@ -32718,12 +32718,12 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
                     for (var i = 0, len = lngs.length; i < len; i++) {
                         if (!store[lngs[i]]) missingLngs.push(lngs[i]);
                     }
-    
+
                     if (missingLngs.length > 0) {
                         sync._fetch(missingLngs, options, function(err, fetched) {
                             f.extend(store, fetched);
                             sync._storeLocal(fetched);
-    
+
                             cb(null, store);
                         });
                     } else {
@@ -32736,32 +32736,32 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
                 });
             }
         },
-    
+
         _loadLocal: function(lngs, options, cb) {
             var store = {}
               , nowMS = new Date().getTime();
-    
+
             if(window.localStorage) {
-    
+
                 var todo = lngs.length;
-    
+
                 f.each(lngs, function(key, lng) {
                     var local = window.localStorage.getItem('res_' + lng);
-    
+
                     if (local) {
                         local = JSON.parse(local);
-    
+
                         if (local.i18nStamp && local.i18nStamp + options.localStorageExpirationTime > nowMS) {
                             store[lng] = local;
                         }
                     }
-    
+
                     todo--; // wait for all done befor callback
                     if (todo === 0) cb(null, store);
                 });
             }
         },
-    
+
         _storeLocal: function(store) {
             if(window.localStorage) {
                 for (var m in store) {
@@ -32771,11 +32771,11 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
             }
             return;
         },
-    
+
         _fetch: function(lngs, options, cb) {
             var ns = options.ns
               , store = {};
-            
+
             if (!options.dynamicLoad) {
                 var todo = ns.namespaces.length * lngs.length
                   , errors;
@@ -32784,7 +32784,7 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
                 // Load each file individually.
                 f.each(ns.namespaces, function(nsIndex, nsValue) {
                     f.each(lngs, function(lngIndex, lngValue) {
-                        
+
                         // Call this once our translation has returned.
                         var loadComplete = function(err, data) {
                             if (err) {
@@ -32793,11 +32793,11 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
                             }
                             store[lngValue] = store[lngValue] || {};
                             store[lngValue][nsValue] = data;
-    
+
                             todo--; // wait for all done befor callback
                             if (todo === 0) cb(errors, store);
                         };
-                        
+
                         if(typeof options.customLoad == 'function'){
                             // Use the specified custom callback.
                             options.customLoad(lngValue, nsValue, options, loadComplete);
@@ -32813,7 +32813,7 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
                 var loadComplete = function(err, data) {
                     cb(null, data);
                 };
-    
+
                 if(typeof options.customLoad == 'function'){
                     // Use the specified custom callback.
                     options.customLoad(lngs, ns.namespaces, options, loadComplete);
@@ -32835,10 +32835,10 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
                         dataType: "text",
                         async : options.getAsync
                     });
-                }    
+                }
             }
         },
-    
+
         _fetchOne: function(lng, ns, options, done) {
 
             var url = applyReplacement(options.resGetPath, { lng: lng, ns: ns });
@@ -32861,20 +32861,20 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
                         var theStatus = status ? status : ((xhr && xhr.status) ? xhr.status : null);
                         f.log(theStatus + ' when loading ' + url);
                     }
-                    
+
                     done(error, {});
                 },
                 dataType: "text",
                 async : options.getAsync
             });
         },
-    
+
         postMissing: function(lng, ns, key, defaultValue, lngs) {
             var payload = {};
             payload[key] = defaultValue;
-    
+
             var urls = [];
-    
+
             if (o.sendMissingTo === 'fallback' && o.fallbackLng[0] !== false) {
                 for (var i = 0; i < o.fallbackLng.length; i++) {
                     urls.push({lng: o.fallbackLng[i], url: applyReplacement(o.resPostPath, { lng: o.fallbackLng[i], ns: ns })});
@@ -32886,7 +32886,7 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
                     urls.push({lng: lngs[i], url: applyReplacement(o.resPostPath, { lng: lngs[i], ns: ns })});
                 }
             }
-    
+
             for (var y = 0, len = urls.length; y < len; y++) {
                 var item = urls[y];
                 f.ajax({
@@ -32895,7 +32895,7 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
                     data: payload,
                     success: function(data, status, xhr) {
                         f.log('posted missing key \'' + key + '\' to: ' + item.url);
-    
+
                         // add key to resStore
                         var keys = key.split('.');
                         var x = 0;
@@ -32921,1081 +32921,1081 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
 
     // definition http://translate.sourceforge.net/wiki/l10n/pluralforms
     var pluralExtensions = {
-    
+
         rules: {
             "ach": {
-                "name": "Acholi", 
+                "name": "Acholi",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n > 1); }
-            }, 
+            },
             "af": {
-                "name": "Afrikaans", 
+                "name": "Afrikaans",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n != 1); }
-            }, 
+            },
             "ak": {
-                "name": "Akan", 
+                "name": "Akan",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n > 1); }
-            }, 
+            },
             "am": {
-                "name": "Amharic", 
+                "name": "Amharic",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n > 1); }
-            }, 
+            },
             "an": {
-                "name": "Aragonese", 
+                "name": "Aragonese",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n != 1); }
-            }, 
+            },
             "ar": {
-                "name": "Arabic", 
+                "name": "Arabic",
                 "numbers": [
-                    0, 
-                    1, 
-                    2, 
-                    3, 
-                    11, 
-                    100
-                ], 
-                "plurals": function(n) { return Number(n===0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 ? 4 : 5); }
-            }, 
-            "arn": {
-                "name": "Mapudungun", 
-                "numbers": [
-                    1, 
-                    2
-                ], 
-                "plurals": function(n) { return Number(n > 1); }
-            }, 
-            "ast": {
-                "name": "Asturian", 
-                "numbers": [
-                    1, 
-                    2
-                ], 
-                "plurals": function(n) { return Number(n != 1); }
-            }, 
-            "ay": {
-                "name": "Aymar\u00e1", 
-                "numbers": [
-                    1
-                ], 
-                "plurals": function(n) { return 0; }
-            }, 
-            "az": {
-                "name": "Azerbaijani", 
-                "numbers": [
-                    1, 
-                    2
-                ], 
-                "plurals": function(n) { return Number(n != 1); }
-            }, 
-            "be": {
-                "name": "Belarusian", 
-                "numbers": [
-                    1, 
-                    2, 
-                    5
-                ], 
-                "plurals": function(n) { return Number(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2); }
-            }, 
-            "bg": {
-                "name": "Bulgarian", 
-                "numbers": [
-                    1, 
-                    2
-                ], 
-                "plurals": function(n) { return Number(n != 1); }
-            }, 
-            "bn": {
-                "name": "Bengali", 
-                "numbers": [
-                    1, 
-                    2
-                ], 
-                "plurals": function(n) { return Number(n != 1); }
-            }, 
-            "bo": {
-                "name": "Tibetan", 
-                "numbers": [
-                    1
-                ], 
-                "plurals": function(n) { return 0; }
-            }, 
-            "br": {
-                "name": "Breton", 
-                "numbers": [
-                    1, 
-                    2
-                ], 
-                "plurals": function(n) { return Number(n > 1); }
-            }, 
-            "bs": {
-                "name": "Bosnian", 
-                "numbers": [
-                    1, 
-                    2, 
-                    5
-                ], 
-                "plurals": function(n) { return Number(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2); }
-            }, 
-            "ca": {
-                "name": "Catalan", 
-                "numbers": [
-                    1, 
-                    2
-                ], 
-                "plurals": function(n) { return Number(n != 1); }
-            }, 
-            "cgg": {
-                "name": "Chiga", 
-                "numbers": [
-                    1
-                ], 
-                "plurals": function(n) { return 0; }
-            }, 
-            "cs": {
-                "name": "Czech", 
-                "numbers": [
-                    1, 
-                    2, 
-                    5
-                ], 
-                "plurals": function(n) { return Number((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2); }
-            }, 
-            "csb": {
-                "name": "Kashubian", 
-                "numbers": [
-                    1, 
-                    2, 
-                    5
-                ], 
-                "plurals": function(n) { return Number(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2); }
-            }, 
-            "cy": {
-                "name": "Welsh", 
-                "numbers": [
-                    1, 
-                    2, 
-                    3, 
-                    8
-                ], 
-                "plurals": function(n) { return Number((n==1) ? 0 : (n==2) ? 1 : (n != 8 && n != 11) ? 2 : 3); }
-            }, 
-            "da": {
-                "name": "Danish", 
-                "numbers": [
-                    1, 
-                    2
-                ], 
-                "plurals": function(n) { return Number(n != 1); }
-            }, 
-            "de": {
-                "name": "German", 
-                "numbers": [
-                    1, 
-                    2
-                ], 
-                "plurals": function(n) { return Number(n != 1); }
-            }, 
-            "dz": {
-                "name": "Dzongkha", 
-                "numbers": [
-                    1
-                ], 
-                "plurals": function(n) { return 0; }
-            }, 
-            "el": {
-                "name": "Greek", 
-                "numbers": [
-                    1, 
-                    2
-                ], 
-                "plurals": function(n) { return Number(n != 1); }
-            }, 
-            "en": {
-                "name": "English", 
-                "numbers": [
-                    1, 
-                    2
-                ], 
-                "plurals": function(n) { return Number(n != 1); }
-            }, 
-            "eo": {
-                "name": "Esperanto", 
-                "numbers": [
-                    1, 
-                    2
-                ], 
-                "plurals": function(n) { return Number(n != 1); }
-            }, 
-            "es": {
-                "name": "Spanish", 
-                "numbers": [
-                    1, 
-                    2
-                ], 
-                "plurals": function(n) { return Number(n != 1); }
-            }, 
-            "es_ar": {
-                "name": "Argentinean Spanish", 
-                "numbers": [
-                    1, 
-                    2
-                ], 
-                "plurals": function(n) { return Number(n != 1); }
-            }, 
-            "et": {
-                "name": "Estonian", 
-                "numbers": [
-                    1, 
-                    2
-                ], 
-                "plurals": function(n) { return Number(n != 1); }
-            }, 
-            "eu": {
-                "name": "Basque", 
-                "numbers": [
-                    1, 
-                    2
-                ], 
-                "plurals": function(n) { return Number(n != 1); }
-            }, 
-            "fa": {
-                "name": "Persian", 
-                "numbers": [
-                    1
-                ], 
-                "plurals": function(n) { return 0; }
-            }, 
-            "fi": {
-                "name": "Finnish", 
-                "numbers": [
-                    1, 
-                    2
-                ], 
-                "plurals": function(n) { return Number(n != 1); }
-            }, 
-            "fil": {
-                "name": "Filipino", 
-                "numbers": [
-                    1, 
-                    2
-                ], 
-                "plurals": function(n) { return Number(n > 1); }
-            }, 
-            "fo": {
-                "name": "Faroese", 
-                "numbers": [
-                    1, 
-                    2
-                ], 
-                "plurals": function(n) { return Number(n != 1); }
-            }, 
-            "fr": {
-                "name": "French", 
-                "numbers": [
-                    1, 
-                    2
-                ], 
-                "plurals": function(n) { return Number(n > 1); }
-            }, 
-            "fur": {
-                "name": "Friulian", 
-                "numbers": [
-                    1, 
-                    2
-                ], 
-                "plurals": function(n) { return Number(n != 1); }
-            }, 
-            "fy": {
-                "name": "Frisian", 
-                "numbers": [
-                    1, 
-                    2
-                ], 
-                "plurals": function(n) { return Number(n != 1); }
-            }, 
-            "ga": {
-                "name": "Irish", 
-                "numbers": [
-                    1, 
+                    0,
+                    1,
                     2,
                     3,
-                    7, 
-                    11
-                ], 
-                "plurals": function(n) { return Number(n==1 ? 0 : n==2 ? 1 : n<7 ? 2 : n<11 ? 3 : 4) ;}
-            }, 
-            "gd": {
-                "name": "Scottish Gaelic", 
+                    11,
+                    100
+                ],
+                "plurals": function(n) { return Number(n===0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 ? 4 : 5); }
+            },
+            "arn": {
+                "name": "Mapudungun",
                 "numbers": [
-                    1, 
-                    2, 
+                    1,
+                    2
+                ],
+                "plurals": function(n) { return Number(n > 1); }
+            },
+            "ast": {
+                "name": "Asturian",
+                "numbers": [
+                    1,
+                    2
+                ],
+                "plurals": function(n) { return Number(n != 1); }
+            },
+            "ay": {
+                "name": "Aymar\u00e1",
+                "numbers": [
+                    1
+                ],
+                "plurals": function(n) { return 0; }
+            },
+            "az": {
+                "name": "Azerbaijani",
+                "numbers": [
+                    1,
+                    2
+                ],
+                "plurals": function(n) { return Number(n != 1); }
+            },
+            "be": {
+                "name": "Belarusian",
+                "numbers": [
+                    1,
+                    2,
+                    5
+                ],
+                "plurals": function(n) { return Number(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2); }
+            },
+            "bg": {
+                "name": "Bulgarian",
+                "numbers": [
+                    1,
+                    2
+                ],
+                "plurals": function(n) { return Number(n != 1); }
+            },
+            "bn": {
+                "name": "Bengali",
+                "numbers": [
+                    1,
+                    2
+                ],
+                "plurals": function(n) { return Number(n != 1); }
+            },
+            "bo": {
+                "name": "Tibetan",
+                "numbers": [
+                    1
+                ],
+                "plurals": function(n) { return 0; }
+            },
+            "br": {
+                "name": "Breton",
+                "numbers": [
+                    1,
+                    2
+                ],
+                "plurals": function(n) { return Number(n > 1); }
+            },
+            "bs": {
+                "name": "Bosnian",
+                "numbers": [
+                    1,
+                    2,
+                    5
+                ],
+                "plurals": function(n) { return Number(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2); }
+            },
+            "ca": {
+                "name": "Catalan",
+                "numbers": [
+                    1,
+                    2
+                ],
+                "plurals": function(n) { return Number(n != 1); }
+            },
+            "cgg": {
+                "name": "Chiga",
+                "numbers": [
+                    1
+                ],
+                "plurals": function(n) { return 0; }
+            },
+            "cs": {
+                "name": "Czech",
+                "numbers": [
+                    1,
+                    2,
+                    5
+                ],
+                "plurals": function(n) { return Number((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2); }
+            },
+            "csb": {
+                "name": "Kashubian",
+                "numbers": [
+                    1,
+                    2,
+                    5
+                ],
+                "plurals": function(n) { return Number(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2); }
+            },
+            "cy": {
+                "name": "Welsh",
+                "numbers": [
+                    1,
+                    2,
+                    3,
+                    8
+                ],
+                "plurals": function(n) { return Number((n==1) ? 0 : (n==2) ? 1 : (n != 8 && n != 11) ? 2 : 3); }
+            },
+            "da": {
+                "name": "Danish",
+                "numbers": [
+                    1,
+                    2
+                ],
+                "plurals": function(n) { return Number(n != 1); }
+            },
+            "de": {
+                "name": "German",
+                "numbers": [
+                    1,
+                    2
+                ],
+                "plurals": function(n) { return Number(n != 1); }
+            },
+            "dz": {
+                "name": "Dzongkha",
+                "numbers": [
+                    1
+                ],
+                "plurals": function(n) { return 0; }
+            },
+            "el": {
+                "name": "Greek",
+                "numbers": [
+                    1,
+                    2
+                ],
+                "plurals": function(n) { return Number(n != 1); }
+            },
+            "en": {
+                "name": "English",
+                "numbers": [
+                    1,
+                    2
+                ],
+                "plurals": function(n) { return Number(n != 1); }
+            },
+            "eo": {
+                "name": "Esperanto",
+                "numbers": [
+                    1,
+                    2
+                ],
+                "plurals": function(n) { return Number(n != 1); }
+            },
+            "es": {
+                "name": "Spanish",
+                "numbers": [
+                    1,
+                    2
+                ],
+                "plurals": function(n) { return Number(n != 1); }
+            },
+            "es_ar": {
+                "name": "Argentinean Spanish",
+                "numbers": [
+                    1,
+                    2
+                ],
+                "plurals": function(n) { return Number(n != 1); }
+            },
+            "et": {
+                "name": "Estonian",
+                "numbers": [
+                    1,
+                    2
+                ],
+                "plurals": function(n) { return Number(n != 1); }
+            },
+            "eu": {
+                "name": "Basque",
+                "numbers": [
+                    1,
+                    2
+                ],
+                "plurals": function(n) { return Number(n != 1); }
+            },
+            "fa": {
+                "name": "Persian",
+                "numbers": [
+                    1
+                ],
+                "plurals": function(n) { return 0; }
+            },
+            "fi": {
+                "name": "Finnish",
+                "numbers": [
+                    1,
+                    2
+                ],
+                "plurals": function(n) { return Number(n != 1); }
+            },
+            "fil": {
+                "name": "Filipino",
+                "numbers": [
+                    1,
+                    2
+                ],
+                "plurals": function(n) { return Number(n > 1); }
+            },
+            "fo": {
+                "name": "Faroese",
+                "numbers": [
+                    1,
+                    2
+                ],
+                "plurals": function(n) { return Number(n != 1); }
+            },
+            "fr": {
+                "name": "French",
+                "numbers": [
+                    1,
+                    2
+                ],
+                "plurals": function(n) { return Number(n > 1); }
+            },
+            "fur": {
+                "name": "Friulian",
+                "numbers": [
+                    1,
+                    2
+                ],
+                "plurals": function(n) { return Number(n != 1); }
+            },
+            "fy": {
+                "name": "Frisian",
+                "numbers": [
+                    1,
+                    2
+                ],
+                "plurals": function(n) { return Number(n != 1); }
+            },
+            "ga": {
+                "name": "Irish",
+                "numbers": [
+                    1,
+                    2,
+                    3,
+                    7,
+                    11
+                ],
+                "plurals": function(n) { return Number(n==1 ? 0 : n==2 ? 1 : n<7 ? 2 : n<11 ? 3 : 4) ;}
+            },
+            "gd": {
+                "name": "Scottish Gaelic",
+                "numbers": [
+                    1,
+                    2,
                     3,
                     20
-                ], 
+                ],
                 "plurals": function(n) { return Number((n==1 || n==11) ? 0 : (n==2 || n==12) ? 1 : (n > 2 && n < 20) ? 2 : 3); }
-            }, 
+            },
             "gl": {
-                "name": "Galician", 
+                "name": "Galician",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n != 1); }
-            }, 
+            },
             "gu": {
-                "name": "Gujarati", 
+                "name": "Gujarati",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n != 1); }
-            }, 
+            },
             "gun": {
-                "name": "Gun", 
+                "name": "Gun",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n > 1); }
-            }, 
+            },
             "ha": {
-                "name": "Hausa", 
+                "name": "Hausa",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n != 1); }
-            }, 
+            },
             "he": {
-                "name": "Hebrew", 
+                "name": "Hebrew",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n != 1); }
-            }, 
+            },
             "hi": {
-                "name": "Hindi", 
+                "name": "Hindi",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n != 1); }
-            }, 
+            },
             "hr": {
-                "name": "Croatian", 
+                "name": "Croatian",
                 "numbers": [
-                    1, 
+                    1,
                     2,
                     5
-                ], 
+                ],
                 "plurals": function(n) { return Number(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2); }
-            }, 
+            },
             "hu": {
-                "name": "Hungarian", 
+                "name": "Hungarian",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n != 1); }
-            }, 
+            },
             "hy": {
-                "name": "Armenian", 
+                "name": "Armenian",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n != 1); }
-            }, 
+            },
             "ia": {
-                "name": "Interlingua", 
+                "name": "Interlingua",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n != 1); }
-            }, 
+            },
             "id": {
-                "name": "Indonesian", 
+                "name": "Indonesian",
                 "numbers": [
                     1
-                ], 
+                ],
                 "plurals": function(n) { return 0; }
-            }, 
+            },
             "is": {
-                "name": "Icelandic", 
+                "name": "Icelandic",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n%10!=1 || n%100==11); }
-            }, 
+            },
             "it": {
-                "name": "Italian", 
+                "name": "Italian",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n != 1); }
-            }, 
+            },
             "ja": {
-                "name": "Japanese", 
+                "name": "Japanese",
                 "numbers": [
                     1
-                ], 
+                ],
                 "plurals": function(n) { return 0; }
-            }, 
+            },
             "jbo": {
-                "name": "Lojban", 
+                "name": "Lojban",
                 "numbers": [
                     1
-                ], 
+                ],
                 "plurals": function(n) { return 0; }
-            }, 
+            },
             "jv": {
-                "name": "Javanese", 
+                "name": "Javanese",
                 "numbers": [
-                    0, 
+                    0,
                     1
-                ], 
+                ],
                 "plurals": function(n) { return Number(n !== 0); }
-            }, 
+            },
             "ka": {
-                "name": "Georgian", 
+                "name": "Georgian",
                 "numbers": [
                     1
-                ], 
+                ],
                 "plurals": function(n) { return 0; }
-            }, 
+            },
             "kk": {
-                "name": "Kazakh", 
+                "name": "Kazakh",
                 "numbers": [
                     1
-                ], 
+                ],
                 "plurals": function(n) { return 0; }
-            }, 
+            },
             "km": {
-                "name": "Khmer", 
+                "name": "Khmer",
                 "numbers": [
                     1
-                ], 
+                ],
                 "plurals": function(n) { return 0; }
-            }, 
+            },
             "kn": {
-                "name": "Kannada", 
+                "name": "Kannada",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n != 1); }
-            }, 
+            },
             "ko": {
-                "name": "Korean", 
+                "name": "Korean",
                 "numbers": [
                     1
-                ], 
+                ],
                 "plurals": function(n) { return 0; }
-            }, 
+            },
             "ku": {
-                "name": "Kurdish", 
+                "name": "Kurdish",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n != 1); }
-            }, 
+            },
             "kw": {
-                "name": "Cornish", 
+                "name": "Cornish",
                 "numbers": [
-                    1, 
-                    2, 
+                    1,
+                    2,
                     3,
                     4
-                ], 
+                ],
                 "plurals": function(n) { return Number((n==1) ? 0 : (n==2) ? 1 : (n == 3) ? 2 : 3); }
-            }, 
+            },
             "ky": {
-                "name": "Kyrgyz", 
+                "name": "Kyrgyz",
                 "numbers": [
                     1
-                ], 
+                ],
                 "plurals": function(n) { return 0; }
-            }, 
+            },
             "lb": {
-                "name": "Letzeburgesch", 
+                "name": "Letzeburgesch",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n != 1); }
-            }, 
+            },
             "ln": {
-                "name": "Lingala", 
+                "name": "Lingala",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n > 1); }
-            }, 
+            },
             "lo": {
-                "name": "Lao", 
+                "name": "Lao",
                 "numbers": [
                     1
-                ], 
+                ],
                 "plurals": function(n) { return 0; }
-            }, 
+            },
             "lt": {
-                "name": "Lithuanian", 
+                "name": "Lithuanian",
                 "numbers": [
-                    1, 
+                    1,
                     2,
                     10
-                ], 
+                ],
                 "plurals": function(n) { return Number(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2); }
-            }, 
+            },
             "lv": {
-                "name": "Latvian", 
+                "name": "Latvian",
                 "numbers": [
-                    1, 
-                    2, 
+                    1,
+                    2,
                     0
-                ], 
+                ],
                 "plurals": function(n) { return Number(n%10==1 && n%100!=11 ? 0 : n !== 0 ? 1 : 2); }
-            }, 
+            },
             "mai": {
-                "name": "Maithili", 
+                "name": "Maithili",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n != 1); }
-            }, 
+            },
             "mfe": {
-                "name": "Mauritian Creole", 
+                "name": "Mauritian Creole",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n > 1); }
-            }, 
+            },
             "mg": {
-                "name": "Malagasy", 
+                "name": "Malagasy",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n > 1); }
-            }, 
+            },
             "mi": {
-                "name": "Maori", 
+                "name": "Maori",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n > 1); }
-            }, 
+            },
             "mk": {
-                "name": "Macedonian", 
+                "name": "Macedonian",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n==1 || n%10==1 ? 0 : 1); }
-            }, 
+            },
             "ml": {
-                "name": "Malayalam", 
+                "name": "Malayalam",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n != 1); }
-            }, 
+            },
             "mn": {
-                "name": "Mongolian", 
+                "name": "Mongolian",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n != 1); }
-            }, 
+            },
             "mnk": {
-                "name": "Mandinka", 
+                "name": "Mandinka",
                 "numbers": [
-                    0, 
-                    1, 
+                    0,
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(0 ? 0 : n==1 ? 1 : 2); }
-            }, 
+            },
             "mr": {
-                "name": "Marathi", 
+                "name": "Marathi",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n != 1); }
-            }, 
+            },
             "ms": {
-                "name": "Malay", 
+                "name": "Malay",
                 "numbers": [
                     1
-                ], 
+                ],
                 "plurals": function(n) { return 0; }
-            }, 
+            },
             "mt": {
-                "name": "Maltese", 
+                "name": "Maltese",
                 "numbers": [
-                    1, 
-                    2, 
-                    11, 
+                    1,
+                    2,
+                    11,
                     20
-                ], 
+                ],
                 "plurals": function(n) { return Number(n==1 ? 0 : n===0 || ( n%100>1 && n%100<11) ? 1 : (n%100>10 && n%100<20 ) ? 2 : 3); }
-            }, 
+            },
             "nah": {
-                "name": "Nahuatl", 
+                "name": "Nahuatl",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n != 1); }
-            }, 
+            },
             "nap": {
-                "name": "Neapolitan", 
+                "name": "Neapolitan",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n != 1); }
-            }, 
+            },
             "nb": {
-                "name": "Norwegian Bokmal", 
+                "name": "Norwegian Bokmal",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n != 1); }
-            }, 
+            },
             "ne": {
-                "name": "Nepali", 
+                "name": "Nepali",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n != 1); }
-            }, 
+            },
             "nl": {
-                "name": "Dutch", 
+                "name": "Dutch",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n != 1); }
-            }, 
+            },
             "nn": {
-                "name": "Norwegian Nynorsk", 
+                "name": "Norwegian Nynorsk",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n != 1); }
-            }, 
+            },
             "no": {
-                "name": "Norwegian", 
+                "name": "Norwegian",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n != 1); }
-            }, 
+            },
             "nso": {
-                "name": "Northern Sotho", 
+                "name": "Northern Sotho",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n != 1); }
-            }, 
+            },
             "oc": {
-                "name": "Occitan", 
+                "name": "Occitan",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n > 1); }
-            }, 
+            },
             "or": {
-                "name": "Oriya", 
+                "name": "Oriya",
                 "numbers": [
-                    2, 
+                    2,
                     1
-                ], 
+                ],
                 "plurals": function(n) { return Number(n != 1); }
-            }, 
+            },
             "pa": {
-                "name": "Punjabi", 
+                "name": "Punjabi",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n != 1); }
-            }, 
+            },
             "pap": {
-                "name": "Papiamento", 
+                "name": "Papiamento",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n != 1); }
-            }, 
+            },
             "pl": {
-                "name": "Polish", 
+                "name": "Polish",
                 "numbers": [
-                    1, 
+                    1,
                     2,
                     5
-                ], 
+                ],
                 "plurals": function(n) { return Number(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2); }
-            }, 
+            },
             "pms": {
-                "name": "Piemontese", 
+                "name": "Piemontese",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n != 1); }
-            }, 
+            },
             "ps": {
-                "name": "Pashto", 
+                "name": "Pashto",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n != 1); }
-            }, 
+            },
             "pt": {
-                "name": "Portuguese", 
+                "name": "Portuguese",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n != 1); }
-            }, 
+            },
             "pt_br": {
-                "name": "Brazilian Portuguese", 
+                "name": "Brazilian Portuguese",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n != 1); }
-            }, 
+            },
             "rm": {
-                "name": "Romansh", 
+                "name": "Romansh",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n != 1); }
-            }, 
+            },
             "ro": {
-                "name": "Romanian", 
+                "name": "Romanian",
                 "numbers": [
-                    1, 
+                    1,
                     2,
                     20
-                ], 
+                ],
                 "plurals": function(n) { return Number(n==1 ? 0 : (n===0 || (n%100 > 0 && n%100 < 20)) ? 1 : 2); }
-            }, 
+            },
             "ru": {
-                "name": "Russian", 
+                "name": "Russian",
                 "numbers": [
-                    1, 
-                    2, 
+                    1,
+                    2,
                     5
-                ], 
+                ],
                 "plurals": function(n) { return Number(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2); }
-            }, 
+            },
             "sah": {
-                "name": "Yakut", 
+                "name": "Yakut",
                 "numbers": [
                     1
-                ], 
+                ],
                 "plurals": function(n) { return 0; }
-            }, 
+            },
             "sco": {
-                "name": "Scots", 
+                "name": "Scots",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n != 1); }
-            }, 
+            },
             "se": {
-                "name": "Northern Sami", 
+                "name": "Northern Sami",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n != 1); }
-            }, 
+            },
             "si": {
-                "name": "Sinhala", 
+                "name": "Sinhala",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n != 1); }
-            }, 
+            },
             "sk": {
-                "name": "Slovak", 
+                "name": "Slovak",
                 "numbers": [
-                    1, 
-                    2, 
+                    1,
+                    2,
                     5
-                ], 
+                ],
                 "plurals": function(n) { return Number((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2); }
-            }, 
+            },
             "sl": {
-                "name": "Slovenian", 
+                "name": "Slovenian",
                 "numbers": [
-                    5, 
-                    1, 
-                    2, 
+                    5,
+                    1,
+                    2,
                     3
-                ], 
+                ],
                 "plurals": function(n) { return Number(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n%100==4 ? 3 : 0); }
-            }, 
+            },
             "so": {
-                "name": "Somali", 
+                "name": "Somali",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n != 1); }
-            }, 
+            },
             "son": {
-                "name": "Songhay", 
+                "name": "Songhay",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n != 1); }
-            }, 
+            },
             "sq": {
-                "name": "Albanian", 
+                "name": "Albanian",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n != 1); }
-            }, 
+            },
             "sr": {
-                "name": "Serbian", 
+                "name": "Serbian",
                 "numbers": [
-                    1, 
+                    1,
                     2,
                     5
-                ], 
+                ],
                 "plurals": function(n) { return Number(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2); }
-            }, 
+            },
             "su": {
-                "name": "Sundanese", 
+                "name": "Sundanese",
                 "numbers": [
                     1
-                ], 
+                ],
                 "plurals": function(n) { return 0; }
-            }, 
+            },
             "sv": {
-                "name": "Swedish", 
+                "name": "Swedish",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n != 1); }
-            }, 
+            },
             "sw": {
-                "name": "Swahili", 
+                "name": "Swahili",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n != 1); }
-            }, 
+            },
             "ta": {
-                "name": "Tamil", 
+                "name": "Tamil",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n != 1); }
-            }, 
+            },
             "te": {
-                "name": "Telugu", 
+                "name": "Telugu",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n != 1); }
-            }, 
+            },
             "tg": {
-                "name": "Tajik", 
+                "name": "Tajik",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n > 1); }
-            }, 
+            },
             "th": {
-                "name": "Thai", 
+                "name": "Thai",
                 "numbers": [
                     1
-                ], 
+                ],
                 "plurals": function(n) { return 0; }
-            }, 
+            },
             "ti": {
-                "name": "Tigrinya", 
+                "name": "Tigrinya",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n > 1); }
-            }, 
+            },
             "tk": {
-                "name": "Turkmen", 
+                "name": "Turkmen",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n != 1); }
-            }, 
+            },
             "tr": {
-                "name": "Turkish", 
+                "name": "Turkish",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n > 1); }
-            }, 
+            },
             "tt": {
-                "name": "Tatar", 
+                "name": "Tatar",
                 "numbers": [
                     1
-                ], 
+                ],
                 "plurals": function(n) { return 0; }
-            }, 
+            },
             "ug": {
-                "name": "Uyghur", 
+                "name": "Uyghur",
                 "numbers": [
                     1
-                ], 
+                ],
                 "plurals": function(n) { return 0; }
-            }, 
+            },
             "uk": {
-                "name": "Ukrainian", 
+                "name": "Ukrainian",
                 "numbers": [
-                    1, 
+                    1,
                     2,
                     5
-                ], 
+                ],
                 "plurals": function(n) { return Number(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2); }
-            }, 
+            },
             "ur": {
-                "name": "Urdu", 
+                "name": "Urdu",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n != 1); }
-            }, 
+            },
             "uz": {
-                "name": "Uzbek", 
+                "name": "Uzbek",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n > 1); }
-            }, 
+            },
             "vi": {
-                "name": "Vietnamese", 
+                "name": "Vietnamese",
                 "numbers": [
                     1
-                ], 
+                ],
                 "plurals": function(n) { return 0; }
-            }, 
+            },
             "wa": {
-                "name": "Walloon", 
+                "name": "Walloon",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n > 1); }
-            }, 
+            },
             "wo": {
-                "name": "Wolof", 
+                "name": "Wolof",
                 "numbers": [
                     1
-                ], 
+                ],
                 "plurals": function(n) { return 0; }
-            }, 
+            },
             "yo": {
-                "name": "Yoruba", 
+                "name": "Yoruba",
                 "numbers": [
-                    1, 
+                    1,
                     2
-                ], 
+                ],
                 "plurals": function(n) { return Number(n != 1); }
-            }, 
+            },
             "zh": {
-                "name": "Chinese", 
+                "name": "Chinese",
                 "numbers": [
                     1
-                ], 
+                ],
                 "plurals": function(n) { return 0; }
             }
         },
-    
+
         // for demonstration only sl and ar is added but you can add your own pluralExtensions
         addRule: function(lng, obj) {
-            pluralExtensions.rules[lng] = obj;    
+            pluralExtensions.rules[lng] = obj;
         },
-    
+
         setCurrentLng: function(lng) {
             if (!pluralExtensions.currentRule || pluralExtensions.currentRule.lng !== lng) {
                 var parts = lng.split('-');
-    
+
                 pluralExtensions.currentRule = {
                     lng: lng,
                     rule: pluralExtensions.rules[parts[0]]
                 };
             }
         },
-    
+
         get: function(lng, count) {
             var parts = lng.split('-');
-    
+
             function getResult(l, c) {
                 var ext;
                 if (pluralExtensions.currentRule && pluralExtensions.currentRule.lng === lng) {
-                    ext = pluralExtensions.currentRule.rule; 
+                    ext = pluralExtensions.currentRule.rule;
                 } else {
                     ext = pluralExtensions.rules[l];
                 }
@@ -34003,7 +34003,7 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
                     var i = ext.plurals(c);
                     var number = ext.numbers[i];
                     if (ext.numbers.length === 2 && ext.numbers[0] === 1) {
-                        if (number === 2) { 
+                        if (number === 2) {
                             number = -1; // regular plural
                         } else if (number === 1) {
                             number = 1; // singular
@@ -34014,10 +34014,10 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
                     return c === 1 ? '1' : '-1';
                 }
             }
-                        
+
             return getResult(parts[0], count);
         }
-    
+
     };
     var postProcessors = {};
     var addPostProcessor = function(name, fc) {
@@ -34033,14 +34033,14 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
             for (var output = []; multiplier > 0; output[--multiplier] = input) {/* do nothing */}
             return output.join('');
         }
-    
+
         var str_format = function() {
             if (!str_format.cache.hasOwnProperty(arguments[0])) {
                 str_format.cache[arguments[0]] = str_format.parse(arguments[0]);
             }
             return str_format.format.call(null, str_format.cache[arguments[0]], arguments);
         };
-    
+
         str_format.format = function(parse_tree, argv) {
             var cursor = 1, tree_length = parse_tree.length, node_type = '', arg, output = [], i, k, match, pad, pad_character, pad_length;
             for (i = 0; i < tree_length; i++) {
@@ -34065,7 +34065,7 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
                     else { // positional argument (implicit)
                         arg = argv[cursor++];
                     }
-    
+
                     if (/[^s]/.test(match[8]) && (get_type(arg) != 'number')) {
                         throw(sprintf('[sprintf] expecting number but found %s', get_type(arg)));
                     }
@@ -34090,9 +34090,9 @@ AutodeskNamespace('Autodesk.Viewing.i18n');
             }
             return output.join('');
         };
-    
+
         str_format.cache = {};
-    
+
         str_format.parse = function(fmt) {
             var _fmt = fmt, match = [], parse_tree = [], arg_names = 0;
             while (_fmt) {
@@ -34865,14 +34865,14 @@ var ModelStructurePanel = function(parentContainer, id, title, options)
 {
     avu.DockingPanel.call(this, parentContainer, id, title, options);
     this.container.classList.add('modelStructurePanel');
-    
+
     options = options || {};
     if (!options.heightAdjustment)
         options.heightAdjustment = 40;
     if (!options.marginTop)
         options.marginTop = 0;
     options.left = true;
-    
+
     this.createScrollContainer(options);
 
     this.options = options;
@@ -34886,14 +34886,14 @@ var ModelStructurePanel = function(parentContainer, id, title, options)
     this.addVisibilityListener(function (show) {
         if (show) {
             if (!that.uiCreated) {
-                that.createUI();                
+                that.createUI();
             }
-            
+
             that.resizeToContent();
         }
     });
-    
-    
+
+
 };
 
 ModelStructurePanel.prototype = Object.create(avu.DockingPanel.prototype);
@@ -34912,7 +34912,7 @@ ModelStructurePanel.prototype.setModel = function(instanceTree, modelTitle)
 
     if (this.isVisible())
         this.createUI();
-    else    
+    else
         this.uiCreated = false;
 };
 
@@ -34924,14 +34924,14 @@ ModelStructurePanel.prototype.createUI = function()
 {
     var that = this;
     var instanceTree = that.instanceTree;
-    
+
     if (!instanceTree)
         return;
 
     var createDelegate = function()
     {
         var delegate = new avu.TreeDelegate();
-     
+
         delegate.getTreeNodeId = function(node)
         {
             if (typeof node == "object") {
@@ -35055,7 +35055,7 @@ ModelStructurePanel.prototype.createUI = function()
 
     if(!that.options || !that.options.hasOwnProperty('startCollapsed') || that.options.startCollapsed) {
         that.tree.setAllCollapsed(true);
-        
+
         that.tree.setCollapsed(rootId, false);
         if (skipRoot)
             that.tree.setCollapsed(childId, false);
@@ -35181,7 +35181,7 @@ ModelStructurePanel.prototype.isGroupCollapsed = function(node)
 
 /**
  * Override this to do something when the user right-clicks on a tree node
- * 
+ *
  * @param {Object} node - A node in an Autodesk.Viewing.Model
  * @param {Event} event
  */
@@ -35275,7 +35275,7 @@ ModelStructurePanel.prototype.getContentSize = function () {
 
 /**
  * Given a node's id, adds the given CSS class to this node.
- * 
+ *
  * @param {string} id - The id of a node in an Autodesk.Viewing.Model
  * @param {string} className - The CSS class to add
  * @returns {boolean} - true if the class was added, false otherwise
@@ -36917,7 +36917,7 @@ Autodesk.Viewing.Private.convertUnits = function (fromUnits, toUnits, d, type) {
 
 //==========================================================================================================
 //==========================================================================================================
-//==========================================================================================================    
+//==========================================================================================================
     /** @constructor */
     avp.OptionLabel = function (caption, parentTbody,options) {
 
@@ -36965,7 +36965,7 @@ Autodesk.Viewing.Private.convertUnits = function (fromUnits, toUnits, d, type) {
         }
 
         this.selectedIndex = this.dropdownElement.selectedIndex = initialItemIndex;
-        
+
         var cell = this.sliderRow.insertCell(0);
         this.caption = document.createElement("div");
         this.caption.setAttribute("data-i18n", caption);
@@ -38323,7 +38323,7 @@ Autodesk.Viewing.UI.SettingsPanel.prototype.getContentSize = function () {
 
 "use strict";
 
-/** @constructor 
+/** @constructor
  *
  * @alias Autodesk.Viewing.Private.AlertBox
  *
@@ -39751,7 +39751,7 @@ avp.ErrorHandler.reportError = function( container, errorCode, errorMsg, statusC
     // If there is no errorCode, just return (otherwise an empty alert box is being shown)
     if (!errorCode)
         return;
-        
+
     var errorLog = {
         category: "error",
         code: errorCode,
@@ -39838,7 +39838,7 @@ avp.ErrorHandler.reportErrors = function( container, errors )
             error.header = (errors[0].type === "warning") ? Autodesk.Viewing.i18n.translate( "header-warning", {"defaultValue" : "Warning"} ) : "";
 
         formattedErrors.push( error );
-    
+
         var errorLog = {
             category: "error",
             code: errors[i].code,
@@ -39897,7 +39897,7 @@ avp.ErrorHandler.parseErrorString = function( errorCode, options )
     // Split into header, message and hints. The messages may have the following format
     //   <title>header</title>text of the error message. <hint> hint-1 <hint> hint-2 ... <hint> hint-n
     //
-    
+
     // Get the header
     if (msg.indexOf("<title>") != -1) {
         var parts = msg.split("<title>")[1].split("</title>");
@@ -47649,7 +47649,7 @@ var stringToDOM = avp.stringToDOM = function(str) {
     GuiViewer3D.prototype.showViewCubeUI = function (show) {
         this.viewCubeUi.setVisible(show);
     };
-    
+
     GuiViewer3D.prototype.displayViewCube = function (display, updatePrefs) {
         this.viewCubeUi.displayViewCube(display, updatePrefs);
     };
@@ -48344,7 +48344,7 @@ Control.prototype.removeClass = function(cssClass) {
     this.container.classList.remove(cssClass);
 
 };
-    
+
 /**
  * Returns the position of this control relative to the canvas.
  * @returns {object} The top and left values of the toolbar.
@@ -48715,7 +48715,7 @@ function Button (id, options) {
         if (self.getState() !== Button.State.DISABLED) {
             self.fireEvent(Button.Event.CLICK);
             if (self.onClick)
-                self.onClick(event); 
+                self.onClick(event);
         }
         event.stopPropagation();
     });
@@ -51708,7 +51708,7 @@ CAMModelStructurePanel.prototype.onClick = function (node, event) {
     this.SetModelVisible();
 
     this.setCamNodeVisibility(node);
-	
+
 	this.viewer.fitToView();
 };
 
@@ -52370,11 +52370,11 @@ av.theExtensionManager.registerExtension('Autodesk.Fusion360.Animation', Animati
 ;/**
  * Created by tstanev on 14-11-23.
  */
- 
+
 function init_WarpShader() {
 
 if (typeof window.WarpShader !== "undefined")
-	return; 
+	return;
 
 //Shader that implements Oculus VR headset image warping.
 WarpShader = {
@@ -52528,7 +52528,7 @@ Autodesk.Viewing.Extensions.Oculus.StereoRenderContext = function(options) {
 
 
     this.init = function (glrenderer, width, height) {
-    
+
         init_WarpShader();
 
         _renderer = glrenderer;
@@ -53710,12 +53710,12 @@ Autodesk.Viewing.Extensions.Oculus.StereoRenderContext = function(options) {
         function init() {
 
             scope.client = avp.MessageClient.GetInstance(scope.options ? scope.options.messageServerURL : undefined);
-            
+
             scope.socketErrorHandler = function(evt) {
                 avp.ErrorHandler.reportError(viewer.container, Autodesk.Viewing.ErrorCodes.RTC_ERROR, evt.data);
                 scope.close();
             };
-            
+
             scope.client.addEventListener("socketError", scope.socketErrorHandler);
 
             scope.presenceChannelId = window.location.host;
@@ -53762,10 +53762,10 @@ Autodesk.Viewing.Extensions.Oculus.StereoRenderContext = function(options) {
     ave.Collaboration.Collaboration.prototype.unload = function () {
 
         var viewer = this.viewer;
-        
+
         this.client.removeEventListener("socketError", this.socketErrorHandler);
         this.socketErrorHandler = null;
-        
+
         this.p2p.hangup();
         this.viewtx.detach(viewer);
         this.client.disconnect();
@@ -54656,7 +54656,7 @@ Autodesk.Viewing.Extensions.Beeline.BeelineTool = function( viewerImpl, viewerAp
                 _isDragging = true;
                 _previousXY.x += deltaXY.x * kDampingFactor;
                 _previousXY.y += deltaXY.y * kDampingFactor;
-                
+
                 var worldDotCamera = _navapi.getWorldUpVector().dot(_navapi.getCameraUpVector());
                 var horDirection = viewerApi.prefs.reverseHorizontalLookDirection ? -1 : 1;
                 var vertDirection = viewerApi.prefs.reverseVerticalLookDirection ? -1 : 1;
@@ -60307,7 +60307,7 @@ Autodesk.Viewing.Extensions.Measure.Snapper = function(viewer, markupMode) {
                     }
 
                 }
-                
+
                 _isSnapped = true;
             }
         }
@@ -61177,7 +61177,7 @@ Autodesk.Viewing.Extensions.Measure.Snapper = function(viewer, markupMode) {
         if (!result) {
             return;
         }
-        
+
         var intersectPoint = result.intersectPoint;
         var fragIds = result.fragId;
 
@@ -64223,7 +64223,7 @@ Autodesk.Viewing.theExtensionManager.registerExtension('Autodesk.VR', Autodesk.V
                 return 'METER';
         }
     }
-    
+
     function normalize(point) {
 
         var x = point[0];
@@ -66766,7 +66766,7 @@ Autodesk.Viewing.Extensions.Section.SectionTool = function(viewer, options)
     var _visibleAtFirst = true;
     var _outlineIndices = [[0, 1], [1, 3], [3, 2], [2, 0]];
     var AVES = Autodesk.Viewing.Extensions.Section;
-    
+
     init_TransformGizmos();
     init_SectionMesh();
 
@@ -66777,7 +66777,7 @@ Autodesk.Viewing.Extensions.Section.SectionTool = function(viewer, options)
 
         _transRotControl = new THREE.TransformControls(_viewer.camera, _viewer.canvas, "transrotate");
         _transRotControl.addEventListener('change', updateViewer);
-        _transRotControl.setSnap(Math.PI/2, Math.PI/36); // snap to 90 degs within 5 degs range 
+        _transRotControl.setSnap(Math.PI/2, Math.PI/36); // snap to 90 degs within 5 degs range
 
         _transControl = new THREE.TransformControls(_viewer.camera, _viewer.canvas, "translate");
         _transControl.addEventListener('change', updateViewer);
@@ -66793,15 +66793,15 @@ Autodesk.Viewing.Extensions.Section.SectionTool = function(viewer, options)
         viewer.addEventListener(Autodesk.Viewing.ISOLATE_EVENT, updateSections);
         viewer.addEventListener(Autodesk.Viewing.HIDE_EVENT, updateSections);
         viewer.addEventListener(Autodesk.Viewing.SHOW_EVENT, updateSections);
-    
+
         _initialized = true;
     }
 
     function deinitControl() {
-        
+
         if (!_initialized)
             return;
-    
+
         _viewer.removeOverlay(_overlayName, _transRotControl);
         _transRotControl.removeEventListener('change', updateViewer);
         _transRotControl = null;
@@ -66814,7 +66814,7 @@ Autodesk.Viewing.Extensions.Section.SectionTool = function(viewer, options)
         viewer.removeEventListener(Autodesk.Viewing.ISOLATE_EVENT, updateSections);
         viewer.removeEventListener(Autodesk.Viewing.HIDE_EVENT, updateSections);
         viewer.removeEventListener(Autodesk.Viewing.SHOW_EVENT, updateSections);
-        
+
         _initialized = false;
     }
 
@@ -66842,7 +66842,7 @@ Autodesk.Viewing.Extensions.Section.SectionTool = function(viewer, options)
     function mix(a, b, val) {
         return a * (1.0 - val) + b * val;
     }
-    
+
     function getDiffuseColor(material) {
        return material.color || new THREE.Color(0xffffff);
     }
@@ -66858,21 +66858,21 @@ Autodesk.Viewing.Extensions.Section.SectionTool = function(viewer, options)
         c.g = mix(c.g, tc.g, intensity);
         c.b = mix(c.b, tc.b, intensity);
     }
-    
+
     function updateCapMeshes(plane) {
 
         init_three_triangulator();
         init_three_intersector();
-    
+
 
         var oldsection = _viewer.sceneAfter.getObjectByName("section");
         if (oldsection)
             _viewer.sceneAfter.remove(oldsection);
-            
+
         var section = new THREE.Object3D();
         section.name = "section";
         _viewer.sceneAfter.add(section);
-        
+
         var section3D = new THREE.Object3D();
         section.add(section3D);
         var section2D = new THREE.Object3D();
@@ -66894,8 +66894,8 @@ Autodesk.Viewing.Extensions.Section.SectionTool = function(viewer, options)
 
         var box = new THREE.Box3();
 
-        var worldBox = _viewer.getVisibleBounds(true);   
-        
+        var worldBox = _viewer.getVisibleBounds(true);
+
         //some heuristic for line width of the section outline based on model size
         //half a percent of the model size is what we do here.
         var lineWidth = 0.5 * 5e-5 * worldBox.size().length();
@@ -67129,7 +67129,7 @@ Autodesk.Viewing.Extensions.Section.SectionTool = function(viewer, options)
         });
 
         var mesh = new AVES.SectionMesh(geometry, material, plane);
-        var pt = plane.projectPoint(bbox.center());       
+        var pt = plane.projectPoint(bbox.center());
         mesh.position.copy(pt);
         mesh.quaternion.multiply(quat);
 
@@ -67151,7 +67151,7 @@ Autodesk.Viewing.Extensions.Section.SectionTool = function(viewer, options)
     }
 
     function updatePlaneMeshes(rebuild) {
-    
+
         traverseSections(function(child) {
             if (child instanceof AVES.SectionMesh) {
 
@@ -67199,7 +67199,7 @@ Autodesk.Viewing.Extensions.Section.SectionTool = function(viewer, options)
     }
 
     function traverseSections(callback) {
-        for (var i = 0; i < _sectionGroups.length; i++) {           
+        for (var i = 0; i < _sectionGroups.length; i++) {
             _sectionGroups[i].traverse(callback);
         }
     }
@@ -67220,7 +67220,7 @@ Autodesk.Viewing.Extensions.Section.SectionTool = function(viewer, options)
         for (var i = 0; i < _sectionGroups.length; i++) {
             _sectionGroups[i].visible = set;
         }
-        
+
         if (_isPlaneOn !== set)
             updateViewer();
 
@@ -67264,8 +67264,8 @@ Autodesk.Viewing.Extensions.Section.SectionTool = function(viewer, options)
 
     function setBox() {
         var normals = [
-            new THREE.Vector3(1, 0, 0), 
-            new THREE.Vector3(0, 1, 0), 
+            new THREE.Vector3(1, 0, 0),
+            new THREE.Vector3(0, 1, 0),
             new THREE.Vector3(0, 0, 1),
             new THREE.Vector3(-1, 0, 0),
             new THREE.Vector3(0, -1, 0),
@@ -67295,7 +67295,7 @@ Autodesk.Viewing.Extensions.Section.SectionTool = function(viewer, options)
                 var ptMax = plane.orthoPoint(bbox.max);
                 var ptMin = plane.orthoPoint(bbox.min);
                 var size = new THREE.Vector3().subVectors(ptMax, ptMin);
-                plane.constant -= size.length();                
+                plane.constant -= size.length();
             }
 
             var mesh = createPlaneMesh(plane, bbox);
@@ -67317,7 +67317,7 @@ Autodesk.Viewing.Extensions.Section.SectionTool = function(viewer, options)
                 mesh.connectivity.push(nc);
             }
         }
-        
+
         _sectionGroups.push(group);
         _viewer.addOverlay(_overlayName, group);
 
@@ -67338,7 +67338,7 @@ Autodesk.Viewing.Extensions.Section.SectionTool = function(viewer, options)
             m.set(plane1.normal.x, plane1.normal.y, plane1.normal.z,
                   plane2.normal.x, plane2.normal.y, plane2.normal.z,
                   plane3.normal.x, plane3.normal.y, plane3.normal.z);
-            
+
             var det = m.determinant();
             if (det === 0) return null;
 
@@ -67361,7 +67361,7 @@ Autodesk.Viewing.Extensions.Section.SectionTool = function(viewer, options)
             var rect = _viewer.canvas.getBoundingClientRect();
             var x = ((pointer.clientX - rect.left) / rect.width) * 2 - 1;
             var y = - ((pointer.clientY - rect.top) / rect.height) * 2 + 1;
-            
+
             if (camera.isPerspective) {
                 pointerVector.set(x, y, 0.5);
                 pointerVector.unproject(camera);
@@ -67435,7 +67435,7 @@ Autodesk.Viewing.Extensions.Section.SectionTool = function(viewer, options)
             var group = _sectionGroups.pop();
             _viewer.removeOverlay(_overlayName, group);
         }
-        
+
         var oldsection = _viewer.sceneAfter.getObjectByName("section");
         if (oldsection)
             _viewer.sceneAfter.remove(oldsection);
@@ -67578,7 +67578,7 @@ Autodesk.Viewing.Extensions.Section.SectionTool = function(viewer, options)
 
     this.handleButtonUp = function(event, button) {
         _isDragging = false;
-        if (_transControl.onPointerUp(event)) 
+        if (_transControl.onPointerUp(event))
             return true;
         return _transRotControl.onPointerUp(event);
     };
@@ -67604,7 +67604,7 @@ Autodesk.Viewing.Extensions.Section.SectionTool = function(viewer, options)
                 _visibleAtFirst = false;
             }
 
-            // show gizmo + plane when intersecting on non-touch 
+            // show gizmo + plane when intersecting on non-touch
             var visible = _visibleAtFirst || (result || intersectObjects(pointer, _sectionPicker, true)) ? true : false;
             _transRotControl.visible = visible;
             _transControl.visible = _transControl.object !== undefined && visible;
@@ -69288,7 +69288,7 @@ var HyperlinkTool = function(viewer) {
             callback(_thumbnailCache[dbId]);
             return;
         }
-        
+
         var data = {
             urn: viewer.model.getData().urn,
             width: 400,
@@ -69337,13 +69337,13 @@ var HyperlinkTool = function(viewer) {
         var vB = new THREE.Vector3(maxX, minY, z);
         var vC = new THREE.Vector3(maxX, maxY, z);
         var vD = new THREE.Vector3(minX, maxY, z);
-        
+
         var geom = new THREE.Geometry();
         geom.vertices.push(vA);
         geom.vertices.push(vB);
         geom.vertices.push(vC);
         geom.vertices.push(vD);
-        
+
         geom.faces.push(new THREE.Face3(0, 1, 2));
         geom.faces.push(new THREE.Face3(0, 3, 2));
 
@@ -69364,9 +69364,9 @@ var HyperlinkTool = function(viewer) {
         }
 
         var mesh = _linkCache2d[index].bBoxMesh = new THREE.Mesh(geom, _bBoxMaterial, true);
-        
+
         viewer.impl.addOverlay(_bBoxOverlayName, mesh);
-        
+
     };
 
     this.highlightSelection = function(mesh) {
@@ -69408,7 +69408,7 @@ aveh.HyperlinkTool = HyperlinkTool;
 
 })();
 ;(function() {
-    
+
     "use strict";
 
     var aveh = AutodeskNamespace('Autodesk.Viewing.Extensions.Hyperlink'),
@@ -69420,17 +69420,17 @@ aveh.HyperlinkTool = HyperlinkTool;
     var HyperlinkPanel = function(hyperlinkTool, viewer, position, intersectPoint, title, link, viewableID, dbId, item, callback) {
         var self = this;
         this.viewer = viewer;
-        
+
         this.container = document.createElement("div");
         this.container.className = "hyperlink-container";
         viewer.container.appendChild(this.container);
-        
+
         this.container.style.left = position.x + "px";
         this.container.style.top = position.y - 70 + "px"; // add the offset to let the triangle point to the position
 
         this.intersectPoint = intersectPoint; // for updating the panel position when camera is changed.
         this.dbId = dbId;
-        
+
         // triangle
         this.triangle = document.createElement("div");
         this.triangle.className = "hyperlink-container-triangle";
@@ -69507,7 +69507,7 @@ aveh.HyperlinkTool = HyperlinkTool;
         var hi = this.container.clientHeight;
         var x1 = parseInt(this.container.style.left, 10);
         var y1 = parseInt(this.container.style.top, 10);
-        
+
         var x2 = x1, y2 = y1;
         if (x1 < 0)
             x2 = 0;
@@ -69583,7 +69583,7 @@ aveh.HyperlinkTool = HyperlinkTool;
         this.viewer.container.removeChild(this.container);
         this.container = null;
     };
-    
+
     aveh.HyperlinkBack = HyperlinkBack;
 
 })();;(function(){ "use strict";
@@ -70908,7 +70908,7 @@ aveh.HyperlinkTool = HyperlinkTool;
 
         svg.setAttribute('pointer-events', 'none');
     };
-    
+
     namespace.createMarkupTextSvg = function() {
 
         var svg = namespace.createSvgElement('g');
@@ -75882,7 +75882,7 @@ aveh.HyperlinkTool = HyperlinkTool;
     };
 
     proto.cloneShape = function(clone) {
-        
+
         clone.shape = namespaceUtils.createMarkupTextSvg();
         clone.bindDomEvents();
     };
@@ -78224,7 +78224,7 @@ aveh.HyperlinkTool = HyperlinkTool;
 
     /**
      * Markup delete circle action.
-     * 
+     *
      * Implements an [EditAction]{@link Autodesk.Viewing.Extensions.Markups.Core.EditAction}
      * for deleting a Circle [Markup]{@link Autodesk.Viewing.Extensions.Markups.Core.Markup}.
      * Included in documentation as an example of how to create
@@ -80629,7 +80629,7 @@ aveh.HyperlinkTool = HyperlinkTool;
             });
             return Math.max.apply(null, targets);
         };
-        
+
         var l = minFn(movements, 'x');
         var t = minFn(movements, 'y');
         var r = maxFn(movements, 'x');
@@ -80926,7 +80926,7 @@ aveh.HyperlinkTool = HyperlinkTool;
             this.size.x = this.selectedMarkup.size.x;
             this.size.y = this.selectedMarkup.size.y;
         }
-        
+
         namespace.EditMode.prototype.creationEnd.call(this);
 
         this.closed = false;
@@ -82629,7 +82629,7 @@ aveh.HyperlinkTool = HyperlinkTool;
         var self = this;
         this.tool = new aveb.BillboardTool(this.viewer);
         this.viewer.toolController.registerTool(this.tool);
-        
+
         this.onExplodeBinded = this.onExplode.bind(this);
         this.onSectionBinded = this.onSection.bind(this);
 
@@ -82651,7 +82651,7 @@ aveh.HyperlinkTool = HyperlinkTool;
             }
         }];
         av.theHotkeyManager.pushHotkeys(this.HOTKEYS_ID, hotkeys);
-        
+
         return true;
     };
 
@@ -82670,7 +82670,7 @@ aveh.HyperlinkTool = HyperlinkTool;
         this.tool = null;
         return true;
     };
-    
+
     BillboardExtension.prototype.isActive = function() {
         return this.tool.isActive();
     };
@@ -82797,16 +82797,16 @@ aveh.HyperlinkTool = HyperlinkTool;
 
 })();
 ;(function() {
-    
+
     "use strict";
-    
+
     var av = Autodesk.Viewing;
     var avp = Autodesk.Viewing.Private;
     var aveb = AutodeskNamespace('Autodesk.Viewing.Extensions.Billboard');
 
     av.ANNOTATION_CREATED_EVENT = "annotationCreated";
     av.ANNOTATION_DELETED_EVENT = "annotationDeleted";
-    
+
     var BillboardTool = function(viewer) {
         av.ToolInterface.call(this);
         this.names = ['billboard'];
@@ -83367,7 +83367,7 @@ aveh.HyperlinkTool = HyperlinkTool;
 
             return scale;
         };
-        
+
         this.createNumMarker = function(annotation) {
             var numMarker = document.createElement('div');
             numMarker.className = 'billboard-marker';
@@ -83554,7 +83554,7 @@ aveh.HyperlinkTool = HyperlinkTool;
                     this.numMarkers[i].style.visibility = "hidden";
             }
         };
-        
+
         this.moveHandler = function(mover) {
 
             var self = this;
@@ -83562,7 +83562,7 @@ aveh.HyperlinkTool = HyperlinkTool;
             var lastX, lastY;
             var startX, startY;
             var deltaX, deltaY;
-            
+
             function handleMove(e) {
                 if (e.type === "touchmove") {
                     e.screenX = e.touches[0].screenX;
@@ -83601,7 +83601,7 @@ aveh.HyperlinkTool = HyperlinkTool;
 
                 mover.dragging = true;
             }
-            
+
             function handleUp(e) {
 
                 // Get the projected Z value of intersectPoint as the one for mover's projected position.
@@ -83635,13 +83635,13 @@ aveh.HyperlinkTool = HyperlinkTool;
                 y = startY = mover.offsetTop;
 
                 mover.dragging = false;
-                
+
                 window.addEventListener('mousemove', handleMove);
                 window.addEventListener('mouseup', handleUp);
                 window.addEventListener('touchmove', handleMove);
                 window.addEventListener('touchend', handleUp);
             }
-            
+
             mover.addEventListener('mousedown', handleDown);
             mover.addEventListener('touchstart', handleDown);
         };
@@ -83661,7 +83661,7 @@ aveh.HyperlinkTool = HyperlinkTool;
         };
 
         this.handleSingleClick = function(event, button) {
-            
+
             var node = viewer.impl.hitTest(event.canvasX, event.canvasY, false);
             if (node) {
                 this.createBillboard(node.intersectPoint);
@@ -83688,7 +83688,7 @@ aveh.HyperlinkTool = HyperlinkTool;
         };
 
     };
-    
+
     aveb.BillboardTool = BillboardTool;
 })();
 ;(function() {
@@ -90174,7 +90174,7 @@ viewerSearchNameSpace.WorkerUtils = new WorkerUtils();
     var ns = AutodeskNamespace('Autodesk.Viewing.Extensions.Print');
     var toolId = "Print";
     var targetGroup = "settingsTools";
-    
+
     function Print(viewer, options) {
         var that = this, toolbar = viewer.getToolbar();
         that.toolbar = toolbar;
@@ -90183,7 +90183,7 @@ viewerSearchNameSpace.WorkerUtils = new WorkerUtils();
 
     var prototype = Object.create(av.Extension.prototype);
     prototype.constructor = Print;
-    
+
     // https://github.com/ebidel/filer.js/blob/master/src/filer.js
     function dataURLToBlob(dataURL) {
         var BASE64_MARKER = ';base64,';
@@ -90249,23 +90249,23 @@ viewerSearchNameSpace.WorkerUtils = new WorkerUtils();
     prototype.printSheet = function() {
     	this.getPrintableScreenshot().then(function(blobUrl) {
         	var w = window.open(blobUrl);
-        	w.onload = function () { 
+        	w.onload = function () {
         		var image = w.document.querySelector('img');
         		image.style.cssText = "display:block; margin: 0 auto;";
         		w.focus();
         		w.print();
         	};
-        	w.onbeforeunload = setTimeout(function () { 
-        		w.close(); 
+        	w.onbeforeunload = setTimeout(function () {
+        		w.close();
         	}, 500);
-        	w.onafterprint = setTimeout(function () { 
-        		w.close(); 
+        	w.onafterprint = setTimeout(function () {
+        		w.close();
         	}, 500);
     	});
     };
-    
+
     var psBinded = null;
-    
+
     prototype.load = function () {
     	var that = this, control = new avu.Button(toolId);
     	control.icon.innerHTML = '&#9113;';
@@ -90278,7 +90278,7 @@ viewerSearchNameSpace.WorkerUtils = new WorkerUtils();
     	control.addEventListener('click', psBinded);
     	return true;
     };
-    
+
     prototype.unload = function () {
     	var that = this, toolbar = that.toolbar;
     	var settingsTools = toolbar.getControl(targetGroup);
@@ -90290,11 +90290,11 @@ viewerSearchNameSpace.WorkerUtils = new WorkerUtils();
     	settingsTools.removeControl(toolId);
     	return true;
     };
-    
-    Print.prototype = prototype; 
+
+    Print.prototype = prototype;
 
     ns.Print = Print;
-    
+
     av.theExtensionManager.registerExtension('Autodesk.Print', ns.Print);
 })();
 ;/**
@@ -90329,13 +90329,13 @@ if (typeof Path2D !== 'function') {
        *
        * http://pegjs.majda.cz/
        */
-    
+
       function peg$subclass(child, parent) {
         function ctor() { this.constructor = child; }
         ctor.prototype = parent.prototype;
         child.prototype = new ctor();
       }
-    
+
       function SyntaxError(message, expected, found, offset, line, column) {
         this.message  = message;
         this.expected = expected;
@@ -90343,20 +90343,20 @@ if (typeof Path2D !== 'function') {
         this.offset   = offset;
         this.line     = line;
         this.column   = column;
-    
+
         this.name     = "SyntaxError";
       }
-    
+
       peg$subclass(SyntaxError, Error);
-    
+
       function parse(input) {
         var options = arguments.length > 1 ? arguments[1] : {},
-    
+
             peg$FAILED = {},
-    
+
             peg$startRuleFunctions = { svg_path: peg$parsesvg_path },
             peg$startRuleFunction  = peg$parsesvg_path,
-    
+
             peg$c0 = peg$FAILED,
             peg$c1 = [],
             peg$c2 = null,
@@ -90466,7 +90466,7 @@ if (typeof Path2D !== 'function') {
             peg$c56 = function(digits) { return digits.join('') },
             peg$c57 = /^[ \t\n\r]/,
             peg$c58 = { type: "class", value: "[ \\t\\n\\r]", description: "[ \\t\\n\\r]" },
-    
+
             peg$currPos          = 0,
             peg$reportedPos      = 0,
             peg$cachedPos        = 0,
@@ -90474,33 +90474,33 @@ if (typeof Path2D !== 'function') {
             peg$maxFailPos       = 0,
             peg$maxFailExpected  = [],
             peg$silentFails      = 0,
-    
+
             peg$result;
-    
+
         if ("startRule" in options) {
           if (!(options.startRule in peg$startRuleFunctions)) {
             throw new Error("Can't start parsing from rule \"" + options.startRule + "\".");
           }
-    
+
           peg$startRuleFunction = peg$startRuleFunctions[options.startRule];
         }
-    
+
         function text() {
           return input.substring(peg$reportedPos, peg$currPos);
         }
-    
+
         function offset() {
           return peg$reportedPos;
         }
-    
+
         function line() {
           return peg$computePosDetails(peg$reportedPos).line;
         }
-    
+
         function column() {
           return peg$computePosDetails(peg$reportedPos).column;
         }
-    
+
         function expected(description) {
           throw peg$buildException(
             null,
@@ -90508,15 +90508,15 @@ if (typeof Path2D !== 'function') {
             peg$reportedPos
           );
         }
-    
+
         function error(message) {
           throw peg$buildException(message, null, peg$reportedPos);
         }
-    
+
         function peg$computePosDetails(pos) {
           function advance(details, startPos, endPos) {
             var p, ch;
-    
+
             for (p = startPos; p < endPos; p++) {
               ch = input.charAt(p);
               if (ch === "\n") {
@@ -90533,7 +90533,7 @@ if (typeof Path2D !== 'function') {
               }
             }
           }
-    
+
           if (peg$cachedPos !== pos) {
             if (peg$cachedPos > pos) {
               peg$cachedPos = 0;
@@ -90542,25 +90542,25 @@ if (typeof Path2D !== 'function') {
             advance(peg$cachedPosDetails, peg$cachedPos, pos);
             peg$cachedPos = pos;
           }
-    
+
           return peg$cachedPosDetails;
         }
-    
+
         function peg$fail(expected) {
           if (peg$currPos < peg$maxFailPos) { return; }
-    
+
           if (peg$currPos > peg$maxFailPos) {
             peg$maxFailPos = peg$currPos;
             peg$maxFailExpected = [];
           }
-    
+
           peg$maxFailExpected.push(expected);
         }
-    
+
         function peg$buildException(message, expected, pos) {
           function cleanupExpected(expected) {
             var i = 1;
-    
+
             expected.sort(function(a, b) {
               if (a.description < b.description) {
                 return -1;
@@ -90570,7 +90570,7 @@ if (typeof Path2D !== 'function') {
                 return 0;
               }
             });
-    
+
             while (i < expected.length) {
               if (expected[i - 1] === expected[i]) {
                 expected.splice(i, 1);
@@ -90579,11 +90579,11 @@ if (typeof Path2D !== 'function') {
               }
             }
           }
-    
+
           function buildMessage(expected, found) {
             function stringEscape(s) {
               function hex(ch) { return ch.charCodeAt(0).toString(16).toUpperCase(); }
-    
+
               return s
                 .replace(/\\/g,   '\\\\')
                 .replace(/"/g,    '\\"')
@@ -90597,32 +90597,32 @@ if (typeof Path2D !== 'function') {
                 .replace(/[\u0180-\u0FFF]/g,         function(ch) { return '\\u0' + hex(ch); })
                 .replace(/[\u1080-\uFFFF]/g,         function(ch) { return '\\u'  + hex(ch); });
             }
-    
+
             var expectedDescs = new Array(expected.length),
                 expectedDesc, foundDesc, i;
-    
+
             for (i = 0; i < expected.length; i++) {
               expectedDescs[i] = expected[i].description;
             }
-    
+
             expectedDesc = expected.length > 1
               ? expectedDescs.slice(0, -1).join(", ")
                   + " or "
                   + expectedDescs[expected.length - 1]
               : expectedDescs[0];
-    
+
             foundDesc = found ? "\"" + stringEscape(found) + "\"" : "end of input";
-    
+
             return "Expected " + expectedDesc + " but " + foundDesc + " found.";
           }
-    
+
           var posDetails = peg$computePosDetails(pos),
               found      = pos < input.length ? input.charAt(pos) : null;
-    
+
           if (expected !== null) {
             cleanupExpected(expected);
           }
-    
+
           return new SyntaxError(
             message !== null ? message : buildMessage(expected, found),
             expected,
@@ -90632,10 +90632,10 @@ if (typeof Path2D !== 'function') {
             posDetails.column
           );
         }
-    
+
         function peg$parsesvg_path() {
           var s0, s1, s2, s3, s4;
-    
+
           s0 = peg$currPos;
           s1 = [];
           s2 = peg$parsewsp();
@@ -90671,13 +90671,13 @@ if (typeof Path2D !== 'function') {
             peg$currPos = s0;
             s0 = peg$c0;
           }
-    
+
           return s0;
         }
-    
+
         function peg$parsemoveTo_drawTo_commandGroups() {
           var s0, s1, s2, s3, s4;
-    
+
           s0 = peg$currPos;
           s1 = peg$parsemoveTo_drawTo_commandGroup();
           if (s1 !== peg$FAILED) {
@@ -90715,13 +90715,13 @@ if (typeof Path2D !== 'function') {
             peg$currPos = s0;
             s0 = peg$c0;
           }
-    
+
           return s0;
         }
-    
+
         function peg$parsemoveTo_drawTo_commandGroup() {
           var s0, s1, s2, s3, s4;
-    
+
           s0 = peg$currPos;
           s1 = peg$parsemoveto();
           if (s1 !== peg$FAILED) {
@@ -90759,13 +90759,13 @@ if (typeof Path2D !== 'function') {
             peg$currPos = s0;
             s0 = peg$c0;
           }
-    
+
           return s0;
         }
-    
+
         function peg$parsedrawto_commands() {
           var s0, s1, s2, s3, s4;
-    
+
           s0 = peg$currPos;
           s1 = peg$parsedrawto_command();
           if (s1 !== peg$FAILED) {
@@ -90803,13 +90803,13 @@ if (typeof Path2D !== 'function') {
             peg$currPos = s0;
             s0 = peg$c0;
           }
-    
+
           return s0;
         }
-    
+
         function peg$parsedrawto_command() {
           var s0;
-    
+
           s0 = peg$parseclosepath();
           if (s0 === peg$FAILED) {
             s0 = peg$parselineto();
@@ -90835,13 +90835,13 @@ if (typeof Path2D !== 'function') {
               }
             }
           }
-    
+
           return s0;
         }
-    
+
         function peg$parsemoveto() {
           var s0, s1, s2, s3;
-    
+
           s0 = peg$currPos;
           if (peg$c4.test(input.charAt(peg$currPos))) {
             s1 = input.charAt(peg$currPos);
@@ -90875,13 +90875,13 @@ if (typeof Path2D !== 'function') {
             peg$currPos = s0;
             s0 = peg$c0;
           }
-    
+
           return s0;
         }
-    
+
         function peg$parsemoveto_argument_sequence() {
           var s0, s1, s2, s3, s4;
-    
+
           s0 = peg$currPos;
           s1 = peg$parsecoordinate_pair();
           if (s1 !== peg$FAILED) {
@@ -90918,13 +90918,13 @@ if (typeof Path2D !== 'function') {
             peg$currPos = s0;
             s0 = peg$c0;
           }
-    
+
           return s0;
         }
-    
+
         function peg$parseclosepath() {
           var s0, s1;
-    
+
           s0 = peg$currPos;
           if (peg$c8.test(input.charAt(peg$currPos))) {
             s1 = input.charAt(peg$currPos);
@@ -90938,13 +90938,13 @@ if (typeof Path2D !== 'function') {
             s1 = peg$c10();
           }
           s0 = s1;
-    
+
           return s0;
         }
-    
+
         function peg$parselineto() {
           var s0, s1, s2, s3;
-    
+
           s0 = peg$currPos;
           if (peg$c11.test(input.charAt(peg$currPos))) {
             s1 = input.charAt(peg$currPos);
@@ -90978,13 +90978,13 @@ if (typeof Path2D !== 'function') {
             peg$currPos = s0;
             s0 = peg$c0;
           }
-    
+
           return s0;
         }
-    
+
         function peg$parselineto_argument_sequence() {
           var s0, s1, s2, s3, s4;
-    
+
           s0 = peg$currPos;
           s1 = peg$parsecoordinate_pair();
           if (s1 !== peg$FAILED) {
@@ -91021,13 +91021,13 @@ if (typeof Path2D !== 'function') {
             peg$currPos = s0;
             s0 = peg$c0;
           }
-    
+
           return s0;
         }
-    
+
         function peg$parsehorizontal_lineto() {
           var s0, s1, s2, s3;
-    
+
           s0 = peg$currPos;
           if (peg$c14.test(input.charAt(peg$currPos))) {
             s1 = input.charAt(peg$currPos);
@@ -91061,13 +91061,13 @@ if (typeof Path2D !== 'function') {
             peg$currPos = s0;
             s0 = peg$c0;
           }
-    
+
           return s0;
         }
-    
+
         function peg$parsecoordinate_sequence() {
           var s0, s1, s2, s3, s4;
-    
+
           s0 = peg$currPos;
           s1 = peg$parsecoordinate();
           if (s1 !== peg$FAILED) {
@@ -91104,13 +91104,13 @@ if (typeof Path2D !== 'function') {
             peg$currPos = s0;
             s0 = peg$c0;
           }
-    
+
           return s0;
         }
-    
+
         function peg$parsevertical_lineto() {
           var s0, s1, s2, s3;
-    
+
           s0 = peg$currPos;
           if (peg$c17.test(input.charAt(peg$currPos))) {
             s1 = input.charAt(peg$currPos);
@@ -91144,13 +91144,13 @@ if (typeof Path2D !== 'function') {
             peg$currPos = s0;
             s0 = peg$c0;
           }
-    
+
           return s0;
         }
-    
+
         function peg$parsecurveto() {
           var s0, s1, s2, s3;
-    
+
           s0 = peg$currPos;
           if (peg$c20.test(input.charAt(peg$currPos))) {
             s1 = input.charAt(peg$currPos);
@@ -91184,13 +91184,13 @@ if (typeof Path2D !== 'function') {
             peg$currPos = s0;
             s0 = peg$c0;
           }
-    
+
           return s0;
         }
-    
+
         function peg$parsecurveto_argument_sequence() {
           var s0, s1, s2, s3, s4;
-    
+
           s0 = peg$currPos;
           s1 = peg$parsecurveto_argument();
           if (s1 !== peg$FAILED) {
@@ -91227,13 +91227,13 @@ if (typeof Path2D !== 'function') {
             peg$currPos = s0;
             s0 = peg$c0;
           }
-    
+
           return s0;
         }
-    
+
         function peg$parsecurveto_argument() {
           var s0, s1, s2, s3, s4, s5;
-    
+
           s0 = peg$currPos;
           s1 = peg$parsecoordinate_pair();
           if (s1 !== peg$FAILED) {
@@ -91274,13 +91274,13 @@ if (typeof Path2D !== 'function') {
             peg$currPos = s0;
             s0 = peg$c0;
           }
-    
+
           return s0;
         }
-    
+
         function peg$parsesmooth_curveto() {
           var s0, s1, s2, s3;
-    
+
           s0 = peg$currPos;
           if (peg$c24.test(input.charAt(peg$currPos))) {
             s1 = input.charAt(peg$currPos);
@@ -91314,13 +91314,13 @@ if (typeof Path2D !== 'function') {
             peg$currPos = s0;
             s0 = peg$c0;
           }
-    
+
           return s0;
         }
-    
+
         function peg$parsesmooth_curveto_argument_sequence() {
           var s0, s1, s2, s3, s4;
-    
+
           s0 = peg$currPos;
           s1 = peg$parsesmooth_curveto_argument();
           if (s1 !== peg$FAILED) {
@@ -91357,13 +91357,13 @@ if (typeof Path2D !== 'function') {
             peg$currPos = s0;
             s0 = peg$c0;
           }
-    
+
           return s0;
         }
-    
+
         function peg$parsesmooth_curveto_argument() {
           var s0, s1, s2, s3;
-    
+
           s0 = peg$currPos;
           s1 = peg$parsecoordinate_pair();
           if (s1 !== peg$FAILED) {
@@ -91389,13 +91389,13 @@ if (typeof Path2D !== 'function') {
             peg$currPos = s0;
             s0 = peg$c0;
           }
-    
+
           return s0;
         }
-    
+
         function peg$parsequadratic_bezier_curveto() {
           var s0, s1, s2, s3;
-    
+
           s0 = peg$currPos;
           if (peg$c28.test(input.charAt(peg$currPos))) {
             s1 = input.charAt(peg$currPos);
@@ -91429,13 +91429,13 @@ if (typeof Path2D !== 'function') {
             peg$currPos = s0;
             s0 = peg$c0;
           }
-    
+
           return s0;
         }
-    
+
         function peg$parsequadratic_bezier_curveto_argument_sequence() {
           var s0, s1, s2, s3, s4;
-    
+
           s0 = peg$currPos;
           s1 = peg$parsequadratic_bezier_curveto_argument();
           if (s1 !== peg$FAILED) {
@@ -91472,13 +91472,13 @@ if (typeof Path2D !== 'function') {
             peg$currPos = s0;
             s0 = peg$c0;
           }
-    
+
           return s0;
         }
-    
+
         function peg$parsequadratic_bezier_curveto_argument() {
           var s0, s1, s2, s3;
-    
+
           s0 = peg$currPos;
           s1 = peg$parsecoordinate_pair();
           if (s1 !== peg$FAILED) {
@@ -91504,13 +91504,13 @@ if (typeof Path2D !== 'function') {
             peg$currPos = s0;
             s0 = peg$c0;
           }
-    
+
           return s0;
         }
-    
+
         function peg$parsesmooth_quadratic_bezier_curveto() {
           var s0, s1, s2, s3;
-    
+
           s0 = peg$currPos;
           if (peg$c31.test(input.charAt(peg$currPos))) {
             s1 = input.charAt(peg$currPos);
@@ -91544,13 +91544,13 @@ if (typeof Path2D !== 'function') {
             peg$currPos = s0;
             s0 = peg$c0;
           }
-    
+
           return s0;
         }
-    
+
         function peg$parsesmooth_quadratic_bezier_curveto_argument_sequence() {
           var s0, s1, s2, s3, s4;
-    
+
           s0 = peg$currPos;
           s1 = peg$parsecoordinate_pair();
           if (s1 !== peg$FAILED) {
@@ -91587,13 +91587,13 @@ if (typeof Path2D !== 'function') {
             peg$currPos = s0;
             s0 = peg$c0;
           }
-    
+
           return s0;
         }
-    
+
         function peg$parseelliptical_arc() {
           var s0, s1, s2, s3;
-    
+
           s0 = peg$currPos;
           if (peg$c34.test(input.charAt(peg$currPos))) {
             s1 = input.charAt(peg$currPos);
@@ -91627,13 +91627,13 @@ if (typeof Path2D !== 'function') {
             peg$currPos = s0;
             s0 = peg$c0;
           }
-    
+
           return s0;
         }
-    
+
         function peg$parseelliptical_arc_argument_sequence() {
           var s0, s1, s2, s3, s4;
-    
+
           s0 = peg$currPos;
           s1 = peg$parseelliptical_arc_argument();
           if (s1 !== peg$FAILED) {
@@ -91670,13 +91670,13 @@ if (typeof Path2D !== 'function') {
             peg$currPos = s0;
             s0 = peg$c0;
           }
-    
+
           return s0;
         }
-    
+
         function peg$parseelliptical_arc_argument() {
           var s0, s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11;
-    
+
           s0 = peg$currPos;
           s1 = peg$parsenonnegative_number();
           if (s1 !== peg$FAILED) {
@@ -91759,13 +91759,13 @@ if (typeof Path2D !== 'function') {
             peg$currPos = s0;
             s0 = peg$c0;
           }
-    
+
           return s0;
         }
-    
+
         function peg$parsecoordinate_pair() {
           var s0, s1, s2, s3;
-    
+
           s0 = peg$currPos;
           s1 = peg$parsecoordinate();
           if (s1 !== peg$FAILED) {
@@ -91791,13 +91791,13 @@ if (typeof Path2D !== 'function') {
             peg$currPos = s0;
             s0 = peg$c0;
           }
-    
+
           return s0;
         }
-    
+
         function peg$parsecoordinate() {
           var s0, s1;
-    
+
           s0 = peg$currPos;
           s1 = peg$parsenumber();
           if (s1 !== peg$FAILED) {
@@ -91805,24 +91805,24 @@ if (typeof Path2D !== 'function') {
             s1 = peg$c39(s1);
           }
           s0 = s1;
-    
+
           return s0;
         }
-    
+
         function peg$parsenonnegative_number() {
           var s0;
-    
+
           s0 = peg$parsefloating_point_constant();
           if (s0 === peg$FAILED) {
             s0 = peg$parsedigit_sequence();
           }
-    
+
           return s0;
         }
-    
+
         function peg$parsenumber() {
           var s0, s1, s2;
-    
+
           s0 = peg$currPos;
           s1 = peg$parsesign();
           if (s1 === peg$FAILED) {
@@ -91861,13 +91861,13 @@ if (typeof Path2D !== 'function') {
               s0 = peg$c0;
             }
           }
-    
+
           return s0;
         }
-    
+
         function peg$parseflag() {
           var s0;
-    
+
           if (input.charCodeAt(peg$currPos) === 48) {
             s0 = peg$c40;
             peg$currPos++;
@@ -91884,13 +91884,13 @@ if (typeof Path2D !== 'function') {
               if (peg$silentFails === 0) { peg$fail(peg$c43); }
             }
           }
-    
+
           return s0;
         }
-    
+
         function peg$parsecomma_wsp() {
           var s0, s1, s2, s3, s4;
-    
+
           s0 = peg$currPos;
           s1 = [];
           s2 = peg$parsewsp();
@@ -91951,13 +91951,13 @@ if (typeof Path2D !== 'function') {
               s0 = peg$c0;
             }
           }
-    
+
           return s0;
         }
-    
+
         function peg$parsecomma() {
           var s0;
-    
+
           if (input.charCodeAt(peg$currPos) === 44) {
             s0 = peg$c44;
             peg$currPos++;
@@ -91965,13 +91965,13 @@ if (typeof Path2D !== 'function') {
             s0 = peg$FAILED;
             if (peg$silentFails === 0) { peg$fail(peg$c45); }
           }
-    
+
           return s0;
         }
-    
+
         function peg$parsefloating_point_constant() {
           var s0, s1, s2;
-    
+
           s0 = peg$currPos;
           s1 = peg$parsefractional_constant();
           if (s1 !== peg$FAILED) {
@@ -92007,13 +92007,13 @@ if (typeof Path2D !== 'function') {
               s0 = peg$c0;
             }
           }
-    
+
           return s0;
         }
-    
+
         function peg$parsefractional_constant() {
           var s0, s1, s2, s3;
-    
+
           s0 = peg$currPos;
           s1 = peg$parsedigit_sequence();
           if (s1 === peg$FAILED) {
@@ -92067,13 +92067,13 @@ if (typeof Path2D !== 'function') {
               s0 = peg$c0;
             }
           }
-    
+
           return s0;
         }
-    
+
         function peg$parseexponent() {
           var s0, s1, s2, s3;
-    
+
           s0 = peg$currPos;
           if (peg$c48.test(input.charAt(peg$currPos))) {
             s1 = input.charAt(peg$currPos);
@@ -92104,13 +92104,13 @@ if (typeof Path2D !== 'function') {
             peg$currPos = s0;
             s0 = peg$c0;
           }
-    
+
           return s0;
         }
-    
+
         function peg$parsesign() {
           var s0;
-    
+
           if (input.charCodeAt(peg$currPos) === 43) {
             s0 = peg$c50;
             peg$currPos++;
@@ -92127,13 +92127,13 @@ if (typeof Path2D !== 'function') {
               if (peg$silentFails === 0) { peg$fail(peg$c53); }
             }
           }
-    
+
           return s0;
         }
-    
+
         function peg$parsedigit_sequence() {
           var s0, s1, s2;
-    
+
           s0 = peg$currPos;
           s1 = [];
           if (peg$c54.test(input.charAt(peg$currPos))) {
@@ -92162,13 +92162,13 @@ if (typeof Path2D !== 'function') {
             s1 = peg$c56(s1);
           }
           s0 = s1;
-    
+
           return s0;
         }
-    
+
         function peg$parsewsp() {
           var s0;
-    
+
           if (peg$c57.test(input.charAt(peg$currPos))) {
             s0 = input.charAt(peg$currPos);
             peg$currPos++;
@@ -92176,11 +92176,11 @@ if (typeof Path2D !== 'function') {
             s0 = peg$FAILED;
             if (peg$silentFails === 0) { peg$fail(peg$c58); }
           }
-    
+
           return s0;
         }
-    
-    
+
+
           // The last coordinate we are at in the path. In absolute coords.
           var lastCoord = [0, 0];
           // The last control point we encountered in the path. In absolute coords.
@@ -92191,7 +92191,7 @@ if (typeof Path2D !== 'function') {
           var firstSubPath = true;
           // The letter of the last parsed command.
           var lastCh = '';
-    
+
           // Convert a position into an absolute position.
           function makeAbsolute(c, coord) {
             if ('mlazhvcsqt'.indexOf(c) === -1) {
@@ -92203,7 +92203,7 @@ if (typeof Path2D !== 'function') {
             lastCh = c;
             return lastCoord.slice(0);
           }
-    
+
           // Convert a sequence of coordinates into absolute coordinates.
           //
           // For arguments that take multiple coord pairs, such as bezier.
@@ -92223,7 +92223,7 @@ if (typeof Path2D !== 'function') {
             }
             return r;
           }
-    
+
           // Find the reflection of the last control point over
           // the last postion in the path.
           function makeReflected() {
@@ -92237,7 +92237,7 @@ if (typeof Path2D !== 'function') {
             r[1] = 2*lastCoord[1] - lastControl[1];
             return r;
           }
-    
+
           function makeAbsoluteFromX(c, x) {
             var coord = [x, 0];
             if (c == 'H') {
@@ -92245,7 +92245,7 @@ if (typeof Path2D !== 'function') {
             }
             return makeAbsolute(c, coord);
           }
-    
+
           function makeAbsoluteFromY(c, y) {
             var coord = [0, y];
             if (c == 'V') {
@@ -92253,7 +92253,7 @@ if (typeof Path2D !== 'function') {
             }
             return makeAbsolute(c, coord);
           }
-    
+
           function concatSequence(one, rest) {
             var r = [one];
             if (rest && rest.length > 1) {
@@ -92264,19 +92264,19 @@ if (typeof Path2D !== 'function') {
             }
             return r;
           }
-    
+
           function mag(v) {
             return Math.sqrt(Math.pow(v[0], 2) + Math.pow(v[1], 2));
           }
-    
+
           function dot(u, v) {
             return (u[0]*v[0] + u[1]*v[1]);
           }
-    
+
           function ratio(u, v) {
             return dot(u,v) / (mag(u)*mag(v))
           }
-    
+
           function angle(u, v) {
             var sign = 1.0;
             if ((u[0]*v[1] - u[1]*v[0]) < 0) {
@@ -92284,39 +92284,39 @@ if (typeof Path2D !== 'function') {
             }
             return sign * Math.acos(ratio(u,v));
           }
-    
+
           function rotClockwise(v, angle) {
             var cost = Math.cos(angle);
             var sint = Math.sin(angle);
             return [cost*v[0] + sint*v[1], -1 * sint*v[0] + cost*v[1]];
           }
-    
+
           function rotCounterClockwise(v, angle) {
             var cost = Math.cos(angle);
             var sint = Math.sin(angle);
             return [cost*v[0] - sint*v[1], sint*v[0] + cost*v[1]];
           }
-    
+
           function midPoint(u, v) {
             return [(u[0] - v[0])/2.0, (u[1] - v[1])/2.0];
           }
-    
+
           function meanVec(u, v) {
             return [(u[0] + v[0])/2.0, (u[1] + v[1])/2.0];
           }
-    
+
           function pointMul(u, v) {
             return [u[0]*v[0], u[1]*v[1]];
           }
-    
+
           function scale(c, v) {
             return [c*v[0], c*v[1]];
           }
-    
+
           function sum(u, v) {
             return [u[0] + v[0], u[1] + v[1]];
           }
-    
+
           // Convert an SVG elliptical arc to a series of canvas commands.
           //
           // x1, x2: start and stop coordinates of the ellipse.
@@ -92338,7 +92338,7 @@ if (typeof Path2D !== 'function') {
             var xPrime2 = pointMul(xPrime, xPrime);
             var rx2 = Math.pow(rx, 2);
             var ry2 = Math.pow(ry, 2);
-    
+
             var lambda = Math.sqrt(xPrime2[0]/rx2 + xPrime2[1]/ry2);
             if (lambda > 1) {
               rx *= lambda;
@@ -92346,7 +92346,7 @@ if (typeof Path2D !== 'function') {
               rx2 = Math.pow(rx, 2);
               ry2 = Math.pow(ry, 2);
             }
-    
+
             var factor = Math.sqrt((rx2*ry2 - rx2*xPrime2[1] - ry2*xPrime2[0]) /
               (rx2*xPrime2[1] + ry2*xPrime2[0]));
             if (fA == fS) {
@@ -92369,21 +92369,21 @@ if (typeof Path2D !== 'function') {
               {type: 'restore', args: []}
               );
           }
-    
-    
+
+
         peg$result = peg$startRuleFunction();
-    
+
         if (peg$result !== peg$FAILED && peg$currPos === input.length) {
           return peg$result;
         } else {
           if (peg$result !== peg$FAILED && peg$currPos < input.length) {
             peg$fail({ type: "end", description: "end of input" });
           }
-    
+
           throw peg$buildException(null, peg$maxFailExpected, peg$maxFailPos);
         }
       }
-    
+
       return {
         SyntaxError: SyntaxError,
         parse:       parse
@@ -92980,9 +92980,9 @@ function init_TransformGizmos() {
     var createLineGeometry = function ( axis ) {
 
         var lineGeometry = new THREE.Geometry();
-        if ( axis === 'X') 
+        if ( axis === 'X')
             lineGeometry.vertices.push( new THREE.Vector3( 0, 0, 0 ), new THREE.Vector3( 1, 0, 0 ) );
-        else if ( axis === 'Y' ) 
+        else if ( axis === 'Y' )
             lineGeometry.vertices.push( new THREE.Vector3( 0, 0, 0 ), new THREE.Vector3( 0, 1, 0 ) );
         else if ( axis === 'Z' )
             lineGeometry.vertices.push( new THREE.Vector3( 0, 0, 0 ), new THREE.Vector3( 0, 0, 1 ) );
@@ -93653,7 +93653,7 @@ function init_TransformGizmos() {
             case "translate":
                 this.gizmo[mode] = new THREE.TransformGizmoTranslate();
                 break;
-            case "rotate":           
+            case "rotate":
                this.gizmo[mode] = new THREE.TransformGizmoRotate();
                break;
             case "transrotate":
@@ -93846,7 +93846,7 @@ function init_TransformGizmos() {
 
             this.object.position.copy ( position );
             this.update();
-        
+
         };
 
         this.setNormal = function ( normal ) {
@@ -93943,7 +93943,7 @@ function init_TransformGizmos() {
                 if ( child.name.search("R") !== -1 ) child.visible = set;
             }
             this.useAllPickers = set;
-            
+
         };
 
         this.highlight = function () {
@@ -93977,12 +93977,12 @@ function init_TransformGizmos() {
                 scope.update(true);
                 scope.dispatchEvent( changeEvent );
 
-            } 
+            }
 
             if (scope.axis === null) {
 
                 scope.gizmo[_mode].show();
-            
+
             }
 
             return intersect? true : false;
@@ -93992,7 +93992,7 @@ function init_TransformGizmos() {
         this.onPointerDown = function( event ) {
 
             if ( scope.object === undefined || _dragging === true ) return false;
-            
+
             var pointer = event.pointers ? event.pointers[ 0 ] : event;
 
             if ( event.pointerType === 'touch' ) {
@@ -94396,7 +94396,7 @@ function init_TransformGizmos() {
             var rect = domElement.getBoundingClientRect();
             var x = ( ( pointer.clientX - rect.left ) / rect.width ) * 2 - 1;
             var y = - ( ( pointer.clientY - rect.top ) / rect.height ) * 2 + 1;
-          
+
             if ( camera.isPerspective ) {
                 pointerVector.set( x, y, 0.5 );
                 pointerVector.unproject( camera );
@@ -95095,7 +95095,7 @@ var av = Autodesk.Viewing,
 
     av.getManifestApi = function(root) {
         var base = av.getViewingUrl(root);
-        if (needsBubble) 
+        if (needsBubble)
             return base + "/bubbles/";  // Only applies to /v1/ accessed from viewing.api
         else if (isViewingV1)
             return base + '/';
@@ -95159,10 +95159,10 @@ var av = Autodesk.Viewing,
     };
 
     // ??? Loading options, put it as global configs and default to be false.
-    // ??? This will control whether use a different package reader with 
+    // ??? This will control whether use a different package reader with
     // ??? less memory consumption for 'large' models.
     avp.memoryOptimizedSvfLoading = false;
-    // This force to enable a memory optimized mode for svf loading. 
+    // This force to enable a memory optimized mode for svf loading.
     // (for testing purpose only)
     avp.forceMemoryOptimizedModeOnSvfLoading = false;
 
@@ -95369,7 +95369,7 @@ var av = Autodesk.Viewing,
             console.info("No viewer version specified, will implicitly use " + LMV_VIEWER_VERSION);
         }
 
-        LMV_RESOURCE_ROOT = root || LMV_RESOURCE_ROOT;
+        LMV_RESOURCE_ROOT = "/resources/libs/viewer/"; //root || LMV_RESOURCE_ROOT;
     };
 
 

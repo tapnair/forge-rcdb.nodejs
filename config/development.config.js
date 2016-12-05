@@ -135,6 +135,7 @@ const envConfig = {
   },
 
   forge: {
+
     oauth: {
       clientSecret: process.env.FORGE_DEV_CLIENT_SECRET,
       clientId: process.env.FORGE_DEV_CLIENT_ID,
@@ -145,6 +146,11 @@ const envConfig = {
         'bucket:read',
         'bucket:create'
       ]
+    },
+
+    viewer: {
+      viewer3D: '/resources/libs/viewer/viewer3D.js',
+      threeJS: '/resources/libs/viewer/three.js'
     }
   },
   databases: [{

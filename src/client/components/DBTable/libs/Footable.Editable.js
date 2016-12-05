@@ -498,8 +498,13 @@
     //addFooRowButtons(table);
     makeColsFooEditable(table);
 
-    $(table).data('ft').bindToggleSelectors();
-    $(table).data('ft').resize();  //makes new rows display correct when fields are hidden.
+    var ft = $(table).data('ft')
+
+    if(ft) {
+
+      ft.bindToggleSelectors();
+      $(table).data('ft').resize();  //makes new rows display correct when fields are hidden.
+    }
   }
 
   $.fn.ftEditable = function (target) {

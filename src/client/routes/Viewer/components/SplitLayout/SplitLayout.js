@@ -65,7 +65,7 @@ class SplitLayout extends React.Component {
                 width={this.state.splitWidth}/>
 
               <SplitPane split="horizontal"
-                minSize={230} maxSize="90%" defaultSize={300}
+                minSize={220} maxSize="90%" defaultSize={300}
                 onChange={ (size) => {
                   if(this.eventTimeout) {
                     clearTimeout(this.eventTimeout)

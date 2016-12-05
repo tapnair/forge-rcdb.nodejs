@@ -183,7 +183,7 @@ export default class ToolPanelBase extends
     this.titleImgId = ToolPanelBase.guid()
 
     var html = `
-      <img id="${this.titleImgId}"></img>
+      <span id="${this.titleImgId}"></span>
       <div id="${this.titleTextId}" class="dockingPanelTitleText">
         ${title}
       </div>

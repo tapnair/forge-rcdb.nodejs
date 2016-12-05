@@ -1,4 +1,5 @@
 
+import { LinkContainer } from 'react-router-bootstrap'
 import DatabaseDlg from './dialogs/DatabaseDlg'
 import LayoutDlg from './dialogs/LayoutDlg'
 import ThemeDlg from './dialogs/ThemeDlg'
@@ -102,10 +103,12 @@ export default class AppNavbar extends React.Component {
         <Navbar.Collapse>
 
           <Nav>
-            <NavItem eventKey={1} href="/#">
-              <span className={"forge-rcdb-span " + (this.state.menuIcons ? "fa fa-home":"")}></span>
-              &nbsp; Home
-            </NavItem>
+            <LinkContainer to={{ pathname: '/', query: { } }}>
+              <NavItem eventKey={1}>
+                <span className={"forge-rcdb-span " + (this.state.menuIcons ? "fa fa-home":"")}></span>
+                &nbsp; Home
+              </NavItem>
+            </LinkContainer>
           </Nav>
 
           <Nav pullRight>

@@ -16,6 +16,19 @@ import ModelSvc from 'ModelSvc'
 import EventSvc from 'EventSvc'
 
 // ========================================================
+// SystemJS config
+// ========================================================
+
+var meta = {}
+
+meta[config.forge.viewer.viewer3D] = { format: 'global'}
+meta[config.forge.viewer.threeJS] = { format: 'global'}
+
+System.config({
+  meta
+})
+
+// ========================================================
 // Services Initialization
 // ========================================================
 

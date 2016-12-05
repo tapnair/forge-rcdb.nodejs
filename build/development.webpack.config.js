@@ -20,7 +20,10 @@ const webpackConfig = {
     ],
     extensions : ['', '.js', '.jsx', '.json']
   },
-  module : {}
+  module : {},
+  node: {
+    fs: "empty"
+  }
 }
 
 // ------------------------------------
@@ -61,9 +64,9 @@ debug('Enable plugins for live development (HMR, NoErrors).')
 
 webpackConfig.plugins.push(
   new HtmlWebpackPlugin({
-    threeJS: '/resources/libs/viewer/three.js',
-    viewer3D: '/resources/libs/viewer/viewer3D.js',
-    viewerCSS: '/resources/libs/viewer/style.css',
+    threeJS: config.forge.viewer.threeJS,
+    viewer3D: config.forge.viewer.viewer3D,
+    viewerCSS: config.forge.viewer.viewerCSS,
     template: config.utils_paths.client('layouts/index.ejs'),
     title: 'Forge | RCDB | DEV',
     filename: 'index.html',
@@ -79,7 +82,7 @@ webpackConfig.plugins.push(
 // ------------------------------------
 // No Parse
 // ------------------------------------
-webpackConfig.module.noParse = /falcor/
+webpackConfig.module.noParse = [/falcor/, /systemjs/]
 
 // ------------------------------------
 // Loaders

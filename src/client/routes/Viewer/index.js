@@ -1,4 +1,5 @@
 import { injectReducer } from '../../store/reducers'
+import {forge as forgeConfig} from 'c0nfig'
 
 export default (store) => ({
 
@@ -11,16 +12,19 @@ export default (store) => ({
      and embed an async module loader (jsonp) when bundling   */
     require.ensure([], (require) => {
 
-      /*  Webpack - use require callback to define
-       dependencies for bundling   */
-      const container = require('./containers/ViewerContainer').default
-      const reducer = require('./modules/viewer').default
+      System.import(forgeConfig.viewer.viewer3D).then(() => {
 
-      /*  Add the reducer to the store on key 'counter'  */
-      injectReducer(store, { key: 'viewer', reducer })
+        /*  Webpack - use require callback to define
+         dependencies for bundling   */
+        const container = require('./containers/ViewerContainer').default
+        const reducer = require('./modules/viewer').default
 
-      /*  Return getComponent   */
-      cb(null, container)
+        /*  Add the reducer to the store on key 'counter'  */
+        injectReducer(store, { key: 'viewer', reducer })
+
+        /*  Return getComponent   */
+        cb(null, container)
+      })
 
       /* Webpack named bundle   */
     }, 'viewer')

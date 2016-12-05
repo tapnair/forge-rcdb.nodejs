@@ -1,214 +1,213 @@
-[
 { 
     "_id" : ObjectId("583ec501c6bad5f3088806ae"), 
     "name" : "Stainless Steel", 
     "supplier" : "Autodesk", 
     "currency" : "USD", 
-    "price" : NumberInt(1)
-},
+    "price" : 0.1
+}
 { 
     "_id" : ObjectId("583ec501c6bad5f3088806af"), 
     "name" : "Steel", 
     "supplier" : "Autodesk", 
     "currency" : "USD", 
     "price" : NumberInt(1)
-},
+}
 { 
     "_id" : ObjectId("583ec501c6bad5f3088806b0"), 
     "name" : "Polyaryletherketone Resin", 
     "supplier" : "Autodesk", 
     "currency" : "USD", 
     "price" : NumberInt(1)
-},
+}
 { 
     "_id" : ObjectId("583ec501c6bad5f3088806b1"), 
     "name" : "Brass, Soft Yellow", 
     "supplier" : "Autodesk", 
     "currency" : "USD", 
     "price" : NumberInt(1)
-},
+}
 { 
     "_id" : ObjectId("583ec501c6bad5f3088806b2"), 
     "name" : "Nylon-6/6", 
     "supplier" : "Autodesk", 
     "currency" : "USD", 
     "price" : NumberInt(1)
-},
+}
 { 
     "_id" : ObjectId("583ec501c6bad5f3088806b4"), 
     "name" : "Steel, High Strength Low Alloy", 
     "supplier" : "Autodesk", 
     "currency" : "USD", 
     "price" : NumberInt(1)
-},
+}
 { 
     "_id" : ObjectId("583ec501c6bad5f3088806b3"), 
     "name" : "Steel, Mild", 
     "supplier" : "Autodesk", 
     "currency" : "USD", 
     "price" : NumberInt(1)
-},
+}
 { 
     "_id" : ObjectId("583ec501c6bad5f3088806b5"), 
     "name" : "Acetal Resin, Black", 
     "supplier" : "Autodesk", 
     "currency" : "USD", 
     "price" : NumberInt(1)
-},
+}
 { 
     "_id" : ObjectId("583ec501c6bad5f3088806b6"), 
     "name" : "ABS Plastic", 
     "supplier" : "Autodesk", 
     "currency" : "USD", 
     "price" : NumberInt(1)
-},
+}
 { 
     "_id" : ObjectId("583ec501c6bad5f3088806b7"), 
     "name" : "Nylon Composite (Nylon, molybdenum disulphide)", 
     "supplier" : "Autodesk", 
     "currency" : "USD", 
     "price" : NumberInt(1)
-},
+}
 { 
     "_id" : ObjectId("583ec501c6bad5f3088806b8"), 
     "name" : "Acetal Resin, White", 
     "supplier" : "Autodesk", 
     "currency" : "USD", 
     "price" : NumberInt(1)
-},
+}
 { 
     "_id" : ObjectId("583ec501c6bad5f3088806b9"), 
     "name" : "Aluminum-6061", 
     "supplier" : "Autodesk", 
     "currency" : "USD", 
     "price" : NumberInt(1)
-},
+}
 { 
     "_id" : ObjectId("583ec501c6bad5f3088806ba"), 
     "name" : "Rubber", 
     "supplier" : "Autodesk", 
     "currency" : "USD", 
     "price" : NumberInt(1)
-},
+}
 { 
     "_id" : ObjectId("583ec501c6bad5f3088806bb"), 
     "name" : "Cast Steel", 
     "supplier" : "Autodesk", 
     "currency" : "USD", 
     "price" : NumberInt(1)
-},
+}
 { 
     "_id" : ObjectId("583ec501c6bad5f3088806bc"), 
     "name" : "Generic", 
     "supplier" : "Autodesk", 
     "currency" : "USD", 
     "price" : NumberInt(1)
-},
+}
 { 
     "_id" : ObjectId("583ec501c6bad5f3088806bd"), 
     "name" : "Silicone", 
     "supplier" : "Autodesk", 
     "currency" : "USD", 
     "price" : NumberInt(1)
-},
+}
 { 
     "_id" : ObjectId("583ec501c6bad5f3088806be"), 
     "name" : "Stainless Steel, 440C", 
     "supplier" : "Autodesk", 
     "currency" : "USD", 
     "price" : NumberInt(1)
-},
+}
 { 
     "_id" : ObjectId("583ec501c6bad5f3088806bf"), 
     "name" : "Titanium", 
     "supplier" : "Autodesk", 
     "currency" : "USD", 
     "price" : NumberInt(1)
-},
+}
 { 
     "_id" : ObjectId("583ec501c6bad5f3088806c0"), 
     "name" : "Concrete - Cast-in-Place Concrete", 
     "supplier" : "Autodesk", 
     "currency" : "USD", 
     "price" : NumberInt(1)
-},
+}
 { 
     "_id" : ObjectId("583ec501c6bad5f3088806c1"), 
     "name" : "Metal - Stud Layer", 
     "supplier" : "Autodesk", 
     "currency" : "USD", 
     "price" : NumberInt(1)
-},
+}
 { 
     "_id" : ObjectId("583ec501c6bad5f3088806c2"), 
     "name" : "Glass", 
     "supplier" : "Autodesk", 
     "currency" : "USD", 
     "price" : NumberInt(1)
-},
+}
 { 
     "_id" : ObjectId("583ec501c6bad5f3088806c3"), 
     "name" : "Default Floor", 
     "supplier" : "Autodesk", 
     "currency" : "USD", 
     "price" : NumberInt(1)
-},
+}
 { 
     "_id" : ObjectId("583ec501c6bad5f3088806c4"), 
     "name" : "Metal - Steel", 
     "supplier" : "Autodesk", 
     "currency" : "USD", 
     "price" : NumberInt(1)
-},
+}
 { 
     "_id" : ObjectId("583ec501c6bad5f3088806c5"), 
     "name" : "Wood - Stud Layer", 
     "supplier" : "Autodesk", 
     "currency" : "USD", 
     "price" : NumberInt(1)
-},
+}
 { 
     "_id" : ObjectId("583ec501c6bad5f3088806c6"), 
     "name" : "Wood - Cherry", 
     "supplier" : "Autodesk", 
     "currency" : "USD", 
     "price" : NumberInt(1)
-},
+}
 { 
     "_id" : ObjectId("583ec501c6bad5f3088806c8"), 
     "name" : "Metal - Chrome", 
     "supplier" : "Autodesk", 
     "currency" : "USD", 
     "price" : NumberInt(1)
-},
+}
 { 
     "_id" : ObjectId("583ec501c6bad5f3088806c9"), 
     "name" : "Wood - Birch", 
     "supplier" : "Autodesk", 
     "currency" : "USD", 
     "price" : NumberInt(1)
-},
+}
 { 
     "_id" : ObjectId("583ec501c6bad5f3088806cd"), 
     "name" : "Metal - Aluminum", 
     "supplier" : "Autodesk", 
     "currency" : "USD", 
     "price" : NumberInt(1)
-},
+}
 { 
     "_id" : ObjectId("583ec501c6bad5f3088806ce"), 
     "name" : "Plastic", 
     "supplier" : "Autodesk", 
     "currency" : "USD", 
     "price" : NumberInt(1)
-},
+}
 { 
     "_id" : ObjectId("583ec501c6bad5f3088806cf"), 
     "name" : "Copper", 
     "supplier" : "Autodesk", 
     "currency" : "USD", 
     "price" : NumberInt(1)
-},
+}
 { 
     "_id" : ObjectId("583ec501c6bad5f3088806d0"), 
     "name" : "Glass - Frosted", 
@@ -216,4 +215,55 @@
     "currency" : "USD", 
     "price" : NumberInt(1)
 }
-]
+{ 
+    "_id" : ObjectId("5841e079540a4d30802763e0")
+}
+{ 
+    "_id" : ObjectId("5841e57cfc165500697cab48"), 
+    "name" : "CFRP", 
+    "supplier" : "Autodesk", 
+    "currency" : "USD", 
+    "price" : NumberInt(1)
+}
+{ 
+    "_id" : ObjectId("5841e57cfc165500697cab49"), 
+    "name" : "Aluminum 6061", 
+    "supplier" : "Autodesk", 
+    "currency" : "USD", 
+    "price" : NumberInt(1)
+}
+{ 
+    "_id" : ObjectId("5841e57cfc165500697cab4a"), 
+    "name" : "Iron, Cast", 
+    "supplier" : "Autodesk", 
+    "currency" : "USD", 
+    "price" : NumberInt(1)
+}
+{ 
+    "_id" : ObjectId("5841e57cfc165500697cab4b"), 
+    "name" : "Rubber, Silicone", 
+    "supplier" : "Autodesk", 
+    "currency" : "USD", 
+    "price" : NumberInt(1)
+}
+{ 
+    "_id" : ObjectId("5841e57cfc165500697cab4c"), 
+    "name" : "Silicon Nitride", 
+    "supplier" : "Autodesk", 
+    "currency" : "USD", 
+    "price" : NumberInt(1)
+}
+{ 
+    "_id" : ObjectId("5841e57cfc165500697cab4d"), 
+    "name" : "Steel, Alloy", 
+    "supplier" : "Autodesk", 
+    "currency" : "USD", 
+    "price" : NumberInt(1)
+}
+{ 
+    "_id" : ObjectId("5841e57cfc165500697cab4e"), 
+    "name" : "Steel, Carbon", 
+    "supplier" : "Autodesk", 
+    "currency" : "USD", 
+    "price" : NumberInt(1)
+}

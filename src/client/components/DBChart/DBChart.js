@@ -11,14 +11,43 @@ class DBChart extends React.Component {
   /////////////////////////////////////////////////////////////
   componentDidMount () {
 
-    $(window).resize(() => {
-      if(this.eventTimeout) {
-        clearTimeout(this.eventTimeout)
-      }
-      this.eventTimeout = setTimeout(() => {
-        this.draw(this.props.data)
-      }, 100)
-    })
+    this.onResizeHandler = () => {
+      this.onResize()
+    }
+
+    window.addEventListener(
+      'resize',
+      this.onResizeHandler)
+  }
+
+  /////////////////////////////////////////////////////////////
+  //
+  //
+  /////////////////////////////////////////////////////////////
+  onResize () {
+
+    if(this.eventTimeout) {
+      clearTimeout(this.eventTimeout)
+    }
+
+    this.eventTimeout = setTimeout(() => {
+      this.draw(this.props.data)
+    }, 100)
+  }
+
+  /////////////////////////////////////////////////////////////
+  //
+  //
+  /////////////////////////////////////////////////////////////
+  componentWillUnmount () {
+
+    window.removeEventListener(
+      'resize',
+      this.onResizeHandler)
+
+    $('#pie-chart-container').empty()
+
+    $('#legend-container').empty()
   }
 
   /////////////////////////////////////////////////////////////

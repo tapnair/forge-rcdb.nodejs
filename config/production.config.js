@@ -149,6 +149,10 @@ const envConfig = {
         'bucket:read',
         'bucket:create'
       ]
+    },
+    viewer: {
+      viewer3D: '/resources/libs/viewer/viewer3D.min.js',
+      threeJS: '/resources/libs/viewer/three.min.js'
     }
   },
   databases: [{

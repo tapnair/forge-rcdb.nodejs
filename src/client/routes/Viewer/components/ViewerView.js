@@ -15,6 +15,8 @@ import d3 from 'd3'
 
 class ViewerView extends React.Component {
 
+  static viewerEnvInitialized = false
+
   /////////////////////////////////////////////////////////
   //
   //
@@ -34,8 +36,6 @@ class ViewerView extends React.Component {
 
     this.eventSvc = ServiceManager.getService(
       'EventSvc')
-
-    this.viewerEnvInitialized = false
   }
 
   /////////////////////////////////////////////////////////
@@ -226,9 +226,9 @@ class ViewerView extends React.Component {
         'forge-rcdb',
         modelId)
 
-      if(!this.viewerEnvInitialized) {
+      if(!ViewerView.viewerEnvInitialized) {
 
-        this.viewerEnvInitialized = true
+        ViewerView.viewerEnvInitialized = true
 
         await initialize(
           this.dbModel.env,
@@ -750,36 +750,7 @@ class ViewerView extends React.Component {
     }
   }
 
-  //async getAllMaterials(model) {
-  //
-  //  const componentIds = await ViewerToolkit.getLeafNodes(model)
-  //
-  //  let materialTasks = componentIds.map((dbId) => {
-  //
-  //    return ViewerToolkit.getProperty(
-  //      model, dbId, (propName) => {
-  //        return (propName.indexOf('Material') > -1)
-  //      }, 'undefined')
-  //  })
-  //
-  //  let materials = await Promise.all(materialTasks)
-  //
-  //  var names = {}
-  //
-  //  materials.forEach((m) => {
-  //    names[m.displayName] = true
-  //  })
-  //
-  //  const rnames = Object.keys(names)
-  //
-  //  const snames = _.sortBy(rnames,
-  //    (name) => {
-  //      return name
-  //    })
-  //
-  //  console.log(snames)
-  //}
-  //
+
   //async createDBItems() {
   //
   //  const propFilter = (propName) => {
@@ -792,52 +763,9 @@ class ViewerView extends React.Component {
   //  var componentsMap = await ViewerToolkit.mapComponentsByProp(
   //    this.viewer.model, propFilter, componentIds)
   //
-  //  console.log(Object.keys(componentsMap))
+  //  const keys = Object.keys(componentsMap)
   //
-  //  const keys = [
-  //
-  //    //seat
-  //    "Stainless Steel",
-  //    "Steel",
-  //    "Polyaryletherketone Resin",
-  //    "Brass, Soft Yellow",
-  //    "Nylon-6/6",
-  //    "Steel, High Strength Low Alloy",
-  //    "Steel, Mild",
-  //    "Acetal Resin, Black",
-  //    "ABS Plastic",
-  //    "Nylon Composite (Nylon, molybdenum disulphide)",
-  //    "Acetal Resin, White",
-  //    "Aluminum-6061",
-  //    "Rubber",
-  //
-  //    //engine
-  //    "Cast Steel",
-  //    "Generic",
-  //    "Silicone",
-  //    "Stainless Steel, 440C",
-  //    "Aluminum-6061",
-  //    "Steel, High Strength Low Alloy",
-  //    "Steel, Mild",
-  //    "Stainless Steel",
-  //    "Brass, Soft Yellow",
-  //    "Titanium",
-  //
-  //    //office
-  //    "Concrete - Cast-in-Place Concrete",
-  //    "Metal - Stud Layer",
-  //    "Glass",
-  //    "Metal - Steel",
-  //    "Default Floor",
-  //    "Wood - Stud Layer",
-  //    "Wood - Cherry",
-  //    "Metal - Chrome",
-  //    "Wood - Birch",
-  //    "Metal - Aluminum",
-  //    "Plastic",
-  //    "Copper",
-  //    "Glass - Frosted"
-  //  ]
+  //  console.log(keys)
   //
   //  const materialSvc = ServiceManager.getService('MaterialSvc')
   //
@@ -849,8 +777,6 @@ class ViewerView extends React.Component {
   //      currency: 'USD',
   //      price: 1.0
   //    })
-  //
-  //    console.log(res)
   //  })
   //}
 }
