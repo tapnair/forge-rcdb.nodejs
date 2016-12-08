@@ -29,6 +29,13 @@
   border: 1px solid #aeaeae;
 }
 
+.db-dropdown .Select-menu-outer {
+  max-height: 100px;
+  overflow-y: hidden;
+}
+
 .db-dropdown .Select-option {
   background-color: #f8f8f8;
 }
+
+

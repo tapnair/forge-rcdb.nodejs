@@ -274,12 +274,15 @@ class ViewerView extends React.Component {
 
     try {
 
+      //this.listMaterials (true) //["Brick", "Concrete", "Steel", "Wood", "Aluminum", "Glass", "Copper"])
+
       //viewer.react.addComponent(
       //  <DBDropdown key="test" className="react-div">
       //  </DBDropdown>
       //)
 
       //viewer.loadExtension('Autodesk.InViewerSearch')
+
 
       const modelOptions = this.dbModel.options || {
           removedControls: [
@@ -750,35 +753,40 @@ class ViewerView extends React.Component {
     }
   }
 
+  async listMaterials(create = false, materials = null) {
 
-  //async createDBItems() {
-  //
-  //  const propFilter = (propName) => {
-  //    return propName.indexOf('Material') > -1
-  //  }
-  //
-  //  const componentIds = await ViewerToolkit.getLeafNodes(
-  //    this.viewer.model)
-  //
-  //  var componentsMap = await ViewerToolkit.mapComponentsByProp(
-  //    this.viewer.model, propFilter, componentIds)
-  //
-  //  const keys = Object.keys(componentsMap)
-  //
-  //  console.log(keys)
-  //
-  //  const materialSvc = ServiceManager.getService('MaterialSvc')
-  //
-  //  keys.forEach(async(key) => {
-  //
-  //    const res = await materialSvc.postMaterial('forge-rcdb', {
-  //      name: key,
-  //      supplier: 'Autodesk',
-  //      currency: 'USD',
-  //      price: 1.0
-  //    })
-  //  })
-  //}
+    const propFilter = (propName) => {
+      return propName.indexOf('Material') > -1
+    }
+
+    const componentIds = await ViewerToolkit.getLeafNodes(
+      this.viewer.model)
+
+    var componentsMap = await ViewerToolkit.mapComponentsByProp(
+      this.viewer.model, propFilter, componentIds)
+
+    const keys = Object.keys(componentsMap)
+
+    console.log(keys)
+
+    if (create) {
+
+      const materialSvc = ServiceManager.getService('MaterialSvc')
+
+      keys.forEach((key) => {
+
+        if(!materials || materials.indexOf(key) > -1) {
+
+          materialSvc.postMaterial('forge-rcdb', {
+            name: key,
+            supplier: 'Autodesk',
+            currency: 'USD',
+            price: 1.0
+          })
+        }
+      })
+    }
+  }
 }
 
 export default ViewerView

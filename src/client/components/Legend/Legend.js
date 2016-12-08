@@ -2,7 +2,7 @@ import Snap from 'imports-loader?this=>window,fix=>module.exports=0!snapsvg/dist
 import EventsEmitter from 'EventsEmitter'
 import './Legend.scss'
 
-class Legend  extends EventsEmitter {
+class Legend extends EventsEmitter {
 
   constructor (container, data) {
 

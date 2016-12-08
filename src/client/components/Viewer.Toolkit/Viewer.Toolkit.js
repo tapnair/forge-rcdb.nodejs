@@ -180,7 +180,7 @@ export default class ViewerToolkit {
 
     return new Promise(async(resolve, reject) => {
 
-      try{
+      try {
 
         const dbIdArray = Array.isArray(dbIds) ? dbIds : [dbIds]
 
@@ -201,7 +201,7 @@ export default class ViewerToolkit {
 
         return resolve(fragIds)
 
-      } catch(ex){
+      } catch(ex) {
 
         return reject(ex)
       }
@@ -214,36 +214,37 @@ export default class ViewerToolkit {
   /////////////////////////////////////////////////////////////////
   static getWorldBoundingBox(model, dbId) {
 
-    return new Promise(async(resolve, reject)=>{
+    return new Promise(async(resolve, reject) => {
 
-      try{
+      try {
 
-        var fragIds = await ViewerToolkit.getFragIds(
-          model, dbId);
+        var fragIds =
+          await ViewerToolkit.getFragIds(
+            model, dbId)
 
-        if(!fragIds.length){
+        if (!fragIds.length) {
 
-          return reject('No geometry, invalid dbId?');
+          return reject('No geometry, invalid dbId?')
         }
 
-        var fragList = model.getFragmentList();
+        var fragList = model.getFragmentList()
 
-        var fragbBox = new THREE.Box3();
-        var nodebBox = new THREE.Box3();
+        var fragbBox = new THREE.Box3()
+        var nodebBox = new THREE.Box3()
 
         fragIds.forEach(function(fragId) {
 
-          fragList.getWorldBounds(fragId, fragbBox);
-          nodebBox.union(fragbBox);
-        });
+          fragList.getWorldBounds(fragId, fragbBox)
+          nodebBox.union(fragbBox)
+        })
 
-        return resolve(nodebBox);
-      }
-      catch(ex){
+        return resolve(nodebBox)
 
-        return reject(ex);
+      } catch(ex){
+
+        return reject(ex)
       }
-    });
+    })
   }
 
   /////////////////////////////////////////////////////////////////
@@ -354,7 +355,7 @@ export default class ViewerToolkit {
 
     return new Promise(async(resolve, reject) => {
 
-      try{
+      try {
 
         var propertyTasks = dbIds.map((dbId) => {
 
@@ -366,9 +367,9 @@ export default class ViewerToolkit {
 
         var properties = []
 
-        propertyResults.forEach((propertyResult)=>{
+        propertyResults.forEach((propertyResult) => {
 
-          propertyResult.forEach((prop)=>{
+          propertyResult.forEach((prop) => {
 
             if(properties.indexOf(prop.displayName) < 0){
 

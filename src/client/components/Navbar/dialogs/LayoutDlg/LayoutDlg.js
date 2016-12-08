@@ -36,6 +36,12 @@ export default class LayoutDlg extends React.Component {
         layoutType: 'jqueryLayoutRight',
         caption: 'JQuery',
         key: '4'
+      },
+      {
+        className: 'grid-layout',
+        layoutType: 'flexLayoutRight',
+        caption: 'Flex',
+        key: '5'
       }
     ]
   }

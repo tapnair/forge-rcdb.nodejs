@@ -1,8 +1,10 @@
 .viewer {
-
+  height: calc(100% - 0px);
+  position: relative;
+  width: 100%;
 }
 
-#forge-rcdb-toolbar{
+#forge-rcdb-toolbar {
   background-color: #f5c70a;
   border: 1px solid black;
   color: black;

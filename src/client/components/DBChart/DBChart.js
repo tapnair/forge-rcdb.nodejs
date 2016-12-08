@@ -45,9 +45,9 @@ class DBChart extends React.Component {
       'resize',
       this.onResizeHandler)
 
-    $('#pie-chart-container').empty()
+    $('#pie-chart-container').remove()
 
-    $('#legend-container').empty()
+    $('#legend-container').remove()
   }
 
   /////////////////////////////////////////////////////////////
