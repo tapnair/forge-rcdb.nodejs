@@ -82,7 +82,7 @@ const ACTION_HANDLERS = {
 const createInitialState = () => {
 
   const defaultState = {
-    layoutType: 'splitLayoutRight',
+    layoutType: 'flexLayoutRight',
     theme: {
       css: '/resources/themes/snow-white.css',
       name: 'snow-white-theme',

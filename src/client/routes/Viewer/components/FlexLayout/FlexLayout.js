@@ -1,4 +1,5 @@
-import {LayoutSplitter, Layout} from 'FlexLayout'
+
+import {FlexContainer, FlexElement, FlexSplitter} from 'FlexLayout'
 import DBResponsiveView from '../DBResponsiveView'
 import WidgetContainer from 'WidgetContainer'
 import DBChart from 'DBChart'
@@ -13,21 +14,12 @@ class FlexLayout extends React.Component {
   //
   //
   /////////////////////////////////////////////////////////
-  state = {
-
-  }
-
-  /////////////////////////////////////////////////////////
-  //
-  //
-  /////////////////////////////////////////////////////////
   constructor () {
 
     super()
 
-    this.onResizeHandler = () => {
+    this.state = {
 
-      this.onResize()
     }
   }
 
@@ -37,7 +29,6 @@ class FlexLayout extends React.Component {
   /////////////////////////////////////////////////////////
   componentDidMount() {
 
-    window.addEventListener('resize', this.onResizeHandler)
   }
 
   /////////////////////////////////////////////////////////
@@ -46,25 +37,6 @@ class FlexLayout extends React.Component {
   /////////////////////////////////////////////////////////
   componentWillUnmount() {
 
-    window.removeEventListener('resize', this.onResizeHandler)
-  }
-
-  /////////////////////////////////////////////////////////
-  //
-  //
-  /////////////////////////////////////////////////////////
-  onResize() {
-
-    this.setState(this.state)
-
-    if(this.eventTimeout) {
-      clearTimeout(this.eventTimeout)
-    }
-
-    this.eventTimeout = setTimeout(() => {
-
-      this.setState(this.state)
-    }, 100)
   }
 
   /////////////////////////////////////////////////////////
@@ -73,90 +45,99 @@ class FlexLayout extends React.Component {
   /////////////////////////////////////////////////////////
   render() {
 
-    var width = window.innerWidth
-      || document.documentElement.clientWidth
-      || document.body.clientWidth
-
-    var height = window.innerHeight
-      || document.documentElement.clientHeight
-      || document.body.clientHeight
-
     switch(this.props.layoutType) {
 
       case 'flexLayoutRight':
 
         return (
-          <div>
-            <Layout fill='parent' layoutWidth={width} layoutHeight={height-65}>
-              <Layout layoutWidth={width * 60/100}>
-                <Viewer
-                  onViewerCreated={this.props.onViewerCreated}
-                  onFilterDbItems={this.props.onFilterDbItems}
-                  updatedDbItem={this.props.updatedDbItem}
-                  onModelLoaded={this.props.onModelLoaded}
-                  dbItems={this.props.dbItems}/>
-              </Layout>
-              <LayoutSplitter onResizeComplete={this.onResizeHandler}
-                onResizing={this.onResizeHandler}
-                orientation='horizontal'
-              />
-              <Layout layoutWidth='flex'>
-                <Layout layoutHeight={(height-65)/2}>
+          <FlexContainer orientation='vertical'>
+            <FlexElement flex={0.6}>
+              <Viewer
+                onViewerCreated={this.props.onViewerCreated}
+                onFilterDbItems={this.props.onFilterDbItems}
+                updatedDbItem={this.props.updatedDbItem}
+                onModelLoaded={this.props.onModelLoaded}
+                dbItems={this.props.dbItems}/>
+            </FlexElement>
+            <FlexSplitter
+              onStopResize={() => this.setState(this.state)}
+            />
+            <FlexElement>
+              <FlexContainer orientation='horizontal'
+                className="data-pane">
+                <FlexElement minSize={210}>
                   <WidgetContainer title="Database">
                     <DBResponsiveView
                       onSelectDbItem={this.props.onSelectDbItem}
                       onUpdateDbItem={this.props.onUpdateDbItem}
                       selectedDbItem={this.props.selectedDbItem}
                       dbItems={this.props.filteredDbItems}
-                      height={this.state.splitHeight}
                     />
                   </WidgetContainer>
-                </Layout>
-                <LayoutSplitter onResizing={this.onResizeHandler}
-                  onResizeComplete={this.onResizeHandler}
+                </FlexElement>
+                <FlexSplitter
+                  onStopResize={() => this.setState(this.state)}
                 />
-                <Layout layoutHeight={(height-65)/2}>
+                <FlexElement>
                   <WidgetContainer title="Cost Breakdown">
                     <DBChart
                       onClick={this.props.onChartClicked}
-                      height={this.state.splitHeight}
-                      width={this.state.splitWidth}
                       data={this.props.chartData}
                     />
                   </WidgetContainer>
-                </Layout>
-              </Layout>
-            </Layout>
-          </div>
+                </FlexElement>
+              </FlexContainer>
+            </FlexElement>
+          </FlexContainer>
         )
 
       case 'flexLayoutLeft':
-      default:
 
         return (
-          <div>
-            <Layout layoutWidth={1000} layoutHeight={500}>
-              <Layout layoutHeight={100}>
-                Row 1
-              </Layout>
-              <LayoutSplitter orientation='horizontal'/>
-              <Layout layoutHeight={100}>
-                Row 2
-              </Layout>
-              <LayoutSplitter orientation='horizontal'/>
-              <Layout layoutHeight={100}>
-                Row 3
-              </Layout>
-              <LayoutSplitter orientation='horizontal'/>
-              <Layout layoutHeight={100}>
-                Row 4
-              </Layout>
-            </Layout>
-          </div>
+          <FlexContainer orientation='vertical'>
+            <FlexElement>
+              <FlexContainer orientation='horizontal'
+                className="data-pane">
+                <FlexElement minSize={210}>
+                  <WidgetContainer title="Database">
+                    <DBResponsiveView
+                      onSelectDbItem={this.props.onSelectDbItem}
+                      onUpdateDbItem={this.props.onUpdateDbItem}
+                      selectedDbItem={this.props.selectedDbItem}
+                      dbItems={this.props.filteredDbItems}
+                    />
+                  </WidgetContainer>
+                </FlexElement>
+                <FlexSplitter
+                  onStopResize={() => this.setState(this.state)}
+                />
+                <FlexElement>
+                  <WidgetContainer title="Cost Breakdown">
+                    <DBChart
+                      onClick={this.props.onChartClicked}
+                      data={this.props.chartData}
+                    />
+                  </WidgetContainer>
+                </FlexElement>
+              </FlexContainer>
+            </FlexElement>
+            <FlexSplitter
+              onStopResize={() => this.setState(this.state)}
+            />
+            <FlexElement flex={0.6}>
+              <Viewer
+                onViewerCreated={this.props.onViewerCreated}
+                onFilterDbItems={this.props.onFilterDbItems}
+                updatedDbItem={this.props.updatedDbItem}
+                onModelLoaded={this.props.onModelLoaded}
+                dbItems={this.props.dbItems}/>
+            </FlexElement>
+          </FlexContainer>
         )
     }
   }
 }
 
 module.exports = FlexLayout
+
 

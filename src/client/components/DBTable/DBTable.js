@@ -111,7 +111,7 @@ class DBTable extends React.Component {
           _id: updateRecord.id
         })
 
-        switch(updateRecord.fieldName) {
+        switch (updateRecord.fieldName) {
 
           case 'price':
 
@@ -183,6 +183,24 @@ class DBTable extends React.Component {
 
               //console.log('OK')
 
+            //enter
+            } else if (e.keyCode === 13) {
+
+              const value = this.getValue(e.target)
+
+              const price = parseFloat(value)
+
+              if(!isNaN(price)) {
+
+                let dbItem = this.getDbItem(e.target)
+
+                dbItem.price = price
+
+                this.props.onUpdateDbItem(dbItem)
+              }
+
+              e.preventDefault()
+
             } else {
 
               e.preventDefault()
@@ -193,8 +211,17 @@ class DBTable extends React.Component {
             // prevents ENTER
             if (e.keyCode === 13) {
 
-              e.preventDefault()
+              const field = this.getField(e.target)
 
+              const value = this.getValue(e.target)
+
+              let dbItem = this.getDbItem(e.target)
+
+              dbItem[field] = value
+
+              this.props.onUpdateDbItem(dbItem)
+
+              e.preventDefault()
             }
           }
         })
@@ -212,28 +239,78 @@ class DBTable extends React.Component {
   //
   //
   /////////////////////////////////////////////////////////
+  getDbItem (target) {
+
+    const id = $(target).parent()[0].id
+
+    return _.find(this.props.dbItems, {
+      _id: id
+    })
+  }
+
+  /////////////////////////////////////////////////////////
+  //
+  //
+  /////////////////////////////////////////////////////////
+  getValue (target) {
+
+    const $label = $(target).find('label')
+
+    if($label.length) {
+
+      return $label.text()
+    }
+
+    return $(target).text()
+  }
+
+  /////////////////////////////////////////////////////////
+  //
+  //
+  /////////////////////////////////////////////////////////
+  getField (target) {
+
+    const idx = $(target).index()
+
+    const header = $('.footable > thead > tr > th')[idx]
+
+    const field = $(header).attr('data-field')
+
+    return field
+  }
+
+  /////////////////////////////////////////////////////////
+  //
+  //
+  /////////////////////////////////////////////////////////
   render() {
 
     setTimeout(() => {
       this.refresh()
     }, 0)
 
+    const att = {'data-attr': 'value'}
+
     return (
         <div className="db-table">
           <table className="footable scroll">
             <thead>
               <tr>
-                <th className="db-column fooId">
+                <th className="db-column fooId"
+                  data-field="material">
                   <label>Material</label>
                 </th>
                 <th className="db-column fooEditable"
-                  data-hide="phone,tablet">
+                  data-hide="phone,tablet"
+                  data-field="supplier">
                   Supplier
                 </th>
-                <th className="db-column fooEditable">
+                <th className="db-column fooEditable"
+                  data-field="price">
                   Price (/kg)
                 </th>
                 <th className="db-column"
+                  data-field="currency"
                   data-hide="phone"
                   data-ft-control="select">
                   Currency

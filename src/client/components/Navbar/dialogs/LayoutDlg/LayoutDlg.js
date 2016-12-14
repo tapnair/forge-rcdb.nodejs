@@ -15,13 +15,13 @@ export default class LayoutDlg extends React.Component {
     this.items = [
       {
         className: 'split-layout-left',
-        layoutType: 'splitLayoutLeft',
+        layoutType: 'flexLayoutLeft',
         caption: 'Split Layout - Left',
         key: '1'
       },
       {
         className: 'split-layout-right',
-        layoutType: 'splitLayoutRight',
+        layoutType: 'flexLayoutRight',
         caption: 'Split Layout - Right',
         key: '2'
       },
@@ -30,18 +30,6 @@ export default class LayoutDlg extends React.Component {
         layoutType: 'gridLayout',
         caption: 'Grid Layout',
         key: '3'
-      },
-      {
-        className: 'grid-layout',
-        layoutType: 'jqueryLayoutRight',
-        caption: 'JQuery',
-        key: '4'
-      },
-      {
-        className: 'grid-layout',
-        layoutType: 'flexLayoutRight',
-        caption: 'Flex',
-        key: '5'
       }
     ]
   }
@@ -75,6 +63,7 @@ export default class LayoutDlg extends React.Component {
     return (
       <div>
         <Modal className="dialog layout"
+          contentLabel=""
           isOpen={this.props.open}
           onRequestClose={() => {this.close()}}>
 

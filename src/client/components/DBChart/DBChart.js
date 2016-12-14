@@ -45,6 +45,11 @@ class DBChart extends React.Component {
       'resize',
       this.onResizeHandler)
 
+    if (this.pieChart) {
+
+      this.pieChart.destroy()
+    }
+
     $('#pie-chart-container').remove()
 
     $('#legend-container').remove()

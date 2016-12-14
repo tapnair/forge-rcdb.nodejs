@@ -71,6 +71,7 @@ export default class ThemeDlg extends React.Component {
     return (
       <div>
         <Modal className="dialog theme"
+          contentLabel=""
           isOpen={this.props.open}
           onRequestClose={() => {this.close()}}>
 

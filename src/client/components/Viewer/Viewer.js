@@ -23,17 +23,6 @@ import './style.css'
 class Viewer extends React.Component {
 
   ///////////////////////////////////////////////////////////////////
-  //
-  //
-  ///////////////////////////////////////////////////////////////////
-  getSize (viewer) {
-    return {
-      height: $(viewer.container).height(),
-      width: $(viewer.container).width()
-    }
-  }
-
-  ///////////////////////////////////////////////////////////////////
   // Async viewer event: returns a promise that resolves when the
   // specified event is fired.
   // Removes event handler automatically
@@ -86,6 +75,7 @@ class Viewer extends React.Component {
     return new Promise((resolve, reject) => {
 
       Autodesk.Viewing.Document.load(urn, (doc) => {
+
           resolve (doc)
 
         },(errCode) => {

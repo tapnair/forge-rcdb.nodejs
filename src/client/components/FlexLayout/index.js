@@ -1,4 +1,10 @@
+import FlexContainer from './flex-container'
+import FlexSplitter from './flex-splitter'
+import FlexElement from './flex-element'
+import './flex-layout.scss'
+
 module.exports = {
-  LayoutSplitter: require('./react-flex-layout-splitter.js').default,
-  Layout: require('./react-flex-layout.js').default
+  FlexContainer,
+  FlexSplitter,
+  FlexElement
 }

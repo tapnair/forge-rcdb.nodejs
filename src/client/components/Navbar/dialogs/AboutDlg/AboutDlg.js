@@ -32,6 +32,7 @@ export default class AboutDlg extends React.Component {
     return (
       <div>
         <Modal className="dialog about"
+          contentLabel=""
           isOpen={this.props.open}
           onRequestClose={() => {this.close()}}>
 

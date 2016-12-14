@@ -4,7 +4,6 @@ import VisualReportExtension from 'Viewing.Extension.VisualReport'
 import ContextMenuExtension from 'Viewing.Extension.ContextMenu'
 import Markup3DExtension from 'Viewing.Extension.Markup3D'
 import ViewerToolkit from 'Viewer.Toolkit'
-import JQueryLayout from './JQueryLayout'
 import ServiceManager from 'SvcManager'
 import SplitLayout from './SplitLayout'
 import FlexLayout from './FlexLayout'
@@ -119,10 +118,12 @@ class ViewerView extends React.Component {
           updatedDbItem : dbItem
       })
 
-    this.setState(Object.assign({}, this.state, {
-      filteredDbItems,
-      chartData
-    }))
+    setTimeout(() => {
+      this.setState(Object.assign({}, this.state, {
+        filteredDbItems,
+        chartData
+      }))
+    }, 0)
 
     const dbProperties = this.buildViewerPanelProperties(
       updatedDbItem)
@@ -130,8 +131,11 @@ class ViewerView extends React.Component {
     const metaPropExtension =
       this.viewer.getExtension(MetaPropertyExtension)
 
-    metaPropExtension.updateProperties(
-      dbProperties)
+    if (metaPropExtension) {
+
+      metaPropExtension.updateProperties(
+        dbProperties)
+    }
   }
 
   /////////////////////////////////////////////////////////
@@ -669,8 +673,6 @@ class ViewerView extends React.Component {
 
     const { layoutType } = this.props.appState
 
-    //const  layoutType  = 'flexLayoutRight'
-
     switch (layoutType) {
 
       case 'gridLayout':
@@ -713,30 +715,11 @@ class ViewerView extends React.Component {
 
       case 'flexLayoutRight':
       case 'flexLayoutLeft':
+      default:
 
         return (
           <div className="viewer-view">
             <FlexLayout
-              onSelectDbItem={(dbItem, propagate) => this.onSelectDbItem(dbItem, propagate)}
-              onUpdateDbItem={(dbItem) => this.onUpdateDbItem(dbItem)}
-              onModelLoaded={(viewer) => this.onModelLoaded(viewer)}
-              onViewerCreated={(data) => this.onViewerCreated(data)}
-              onChartClicked={(data) => this.onChartClicked(data)}
-              filteredDbItems={this.state.filteredDbItems}
-              selectedDbItem={this.state.selectedDbItem}
-              chartData={this.state.chartData}
-              dbItems={this.props.dbItems}
-              layoutType={layoutType}
-            />
-          </div>
-        )
-
-      case 'jqueryLayoutRight':
-      case 'jqueryLayoutLeft':
-
-        return (
-          <div className="viewer-view">
-            <JQueryLayout
               onSelectDbItem={(dbItem, propagate) => this.onSelectDbItem(dbItem, propagate)}
               onUpdateDbItem={(dbItem) => this.onUpdateDbItem(dbItem)}
               onModelLoaded={(viewer) => this.onModelLoaded(viewer)}

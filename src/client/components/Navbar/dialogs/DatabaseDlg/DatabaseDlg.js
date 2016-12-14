@@ -56,6 +56,7 @@ export default class DatabaseDlg extends React.Component {
     return (
       <div>
         <Modal className="dialog database"
+          contentLabel=""
           isOpen={this.props.open}
           onRequestClose={() => {this.close()}}>
 

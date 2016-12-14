@@ -3,7 +3,7 @@
     "name" : "Stainless Steel", 
     "supplier" : "Autodesk", 
     "currency" : "USD", 
-    "price" : 0.1
+    "price" : NumberInt(1)
 }
 { 
     "_id" : ObjectId("583ec501c6bad5f3088806af"), 
@@ -79,7 +79,7 @@
     "_id" : ObjectId("583ec501c6bad5f3088806b9"), 
     "name" : "Aluminum-6061", 
     "supplier" : "Autodesk", 
-    "currency" : "USD", 
+    "currency" : "BRL", 
     "price" : NumberInt(1)
 }
 { 
@@ -94,7 +94,7 @@
     "name" : "Cast Steel", 
     "supplier" : "Autodesk", 
     "currency" : "USD", 
-    "price" : NumberInt(1)
+    "price" : NumberInt(2)
 }
 { 
     "_id" : ObjectId("583ec501c6bad5f3088806bc"), 
@@ -216,53 +216,78 @@
     "price" : NumberInt(1)
 }
 { 
-    "_id" : ObjectId("5841e079540a4d30802763e0")
-}
-{ 
-    "_id" : ObjectId("5841e57cfc165500697cab48"), 
-    "name" : "CFRP", 
+    "_id" : ObjectId("58470be47ffea21ed80ee8f2"), 
+    "name" : "Concrete", 
     "supplier" : "Autodesk", 
     "currency" : "USD", 
     "price" : NumberInt(1)
 }
 { 
-    "_id" : ObjectId("5841e57cfc165500697cab49"), 
-    "name" : "Aluminum 6061", 
+    "_id" : ObjectId("58470be47ffea21ed80ee8f1"), 
+    "name" : "Brick", 
     "supplier" : "Autodesk", 
     "currency" : "USD", 
     "price" : NumberInt(1)
 }
 { 
-    "_id" : ObjectId("5841e57cfc165500697cab4a"), 
+    "_id" : ObjectId("58470be47ffea21ed80ee8f3"), 
+    "name" : "Wood", 
+    "supplier" : "Autodesk", 
+    "currency" : "USD", 
+    "price" : NumberInt(1)
+}
+{ 
+    "_id" : ObjectId("58470be47ffea21ed80ee8f4"), 
+    "name" : "Aluminum", 
+    "supplier" : "Autodesk", 
+    "currency" : "USD", 
+    "price" : NumberInt(1)
+}
+{ 
+    "_id" : ObjectId("58472c897ffea21ed80ee8f5"), 
     "name" : "Iron, Cast", 
     "supplier" : "Autodesk", 
     "currency" : "USD", 
     "price" : NumberInt(1)
 }
 { 
-    "_id" : ObjectId("5841e57cfc165500697cab4b"), 
-    "name" : "Rubber, Silicone", 
+    "_id" : ObjectId("58472c897ffea21ed80ee8f6"), 
+    "name" : "Aluminum 6061", 
     "supplier" : "Autodesk", 
     "currency" : "USD", 
     "price" : NumberInt(1)
 }
 { 
-    "_id" : ObjectId("5841e57cfc165500697cab4c"), 
+    "_id" : ObjectId("58472c897ffea21ed80ee8f7"), 
+    "name" : "Steel, Carbon", 
+    "supplier" : "Autodesk", 
+    "currency" : "USD", 
+    "price" : NumberInt(1)
+}
+{ 
+    "_id" : ObjectId("58472c897ffea21ed80ee8f8"), 
     "name" : "Silicon Nitride", 
     "supplier" : "Autodesk", 
     "currency" : "USD", 
     "price" : NumberInt(1)
 }
 { 
-    "_id" : ObjectId("5841e57cfc165500697cab4d"), 
+    "_id" : ObjectId("58472c897ffea21ed80ee8f9"), 
     "name" : "Steel, Alloy", 
     "supplier" : "Autodesk", 
     "currency" : "USD", 
     "price" : NumberInt(1)
 }
 { 
-    "_id" : ObjectId("5841e57cfc165500697cab4e"), 
-    "name" : "Steel, Carbon", 
+    "_id" : ObjectId("58472c897ffea21ed80ee8fa"), 
+    "name" : "CFRP", 
+    "supplier" : "Autodesk", 
+    "currency" : "USD", 
+    "price" : NumberInt(1)
+}
+{ 
+    "_id" : ObjectId("58472c897ffea21ed80ee8fb"), 
+    "name" : "Rubber, Silicone", 
     "supplier" : "Autodesk", 
     "currency" : "USD", 
     "price" : NumberInt(1)
