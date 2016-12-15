@@ -36,6 +36,8 @@ export default class FlexContainer extends React.Component {
       id: this.guid()
     }
 
+    this.onResize = this.onResize.bind(this)
+
     this.onSplitterStartResize =
       this.onSplitterStartResize.bind(this)
 
@@ -52,6 +54,9 @@ export default class FlexContainer extends React.Component {
   /////////////////////////////////////////////////////////
   componentDidMount () {
 
+    window.addEventListener(
+      'resize', this.onResize)
+
     FlexEvents.on('splitter.startResize',
       this.onSplitterStartResize)
 
@@ -67,6 +72,9 @@ export default class FlexContainer extends React.Component {
   //
   /////////////////////////////////////////////////////////
   componentWillUnmount () {
+
+    window.removeEventListener(
+      'resize', this.onResize)
 
     FlexEvents.removeListener(
       'splitter.startResize',
@@ -95,6 +103,15 @@ export default class FlexContainer extends React.Component {
       x: domElement.offsetWidth,
       y: domElement.offsetHeight
     }
+  }
+
+  ///////////////////////////////////////////////////////////////////
+  //
+  //
+  ///////////////////////////////////////////////////////////////////
+  onResize () {
+
+    this.forceUpdate()
   }
 
   /////////////////////////////////////////////////////////

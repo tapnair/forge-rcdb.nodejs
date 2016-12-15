@@ -59,11 +59,16 @@ class DBChart extends React.Component {
   //
   //
   /////////////////////////////////////////////////////////////
-  render() {
+  componentDidUpdate () {
 
-    setTimeout(() => {
-      this.draw(this.props.data)
-    }, 0)
+    this.draw(this.props.data)
+  }
+
+  /////////////////////////////////////////////////////////////
+  //
+  //
+  /////////////////////////////////////////////////////////////
+  render() {
 
     return (
       <div className="db-chart">

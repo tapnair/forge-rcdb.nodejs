@@ -1,5 +1,7 @@
-import React from 'react'
+
+import ReactDOM from 'react-dom'
 import './WidgetContainer.scss'
+import React from 'react'
 
 class WidgetContainer extends React.Component {
 
@@ -7,8 +9,12 @@ class WidgetContainer extends React.Component {
 
     super()
 
-  }
+    this.state = {
+      style: {}
+    }
 
+    this.onResize = this.onResize.bind(this)
+  }
 
   ///////////////////////////////////////////////////////////////////
   //
@@ -16,7 +22,7 @@ class WidgetContainer extends React.Component {
   ///////////////////////////////////////////////////////////////////
   componentDidMount () {
 
-
+    window.addEventListener('resize', this.onResize)
   }
 
   ///////////////////////////////////////////////////////////////////
@@ -25,8 +31,44 @@ class WidgetContainer extends React.Component {
   ///////////////////////////////////////////////////////////////////
   componentWillUnmount () {
 
+    window.removeEventListener('resize', this.onResize)
   }
 
+  ///////////////////////////////////////////////////////////////////
+  //
+  //
+  ///////////////////////////////////////////////////////////////////
+  fillParent () {
+
+    const domElement = ReactDOM.findDOMNode(this)
+
+    const parent = domElement.parentNode
+
+    this.setState({
+      style: {
+        height: parent.offsetHeight,
+        width: parent.offsetWidth
+      }
+    })
+  }
+
+  ///////////////////////////////////////////////////////////////////
+  //
+  //
+  ///////////////////////////////////////////////////////////////////
+  onResize () {
+
+    this.fillParent()
+  }
+
+  ///////////////////////////////////////////////////////////////////
+  //
+  //
+  ///////////////////////////////////////////////////////////////////
+  componentWillReceiveProps () {
+
+    this.fillParent()
+  }
 
   ///////////////////////////////////////////////////////////////////
   //
@@ -35,7 +77,7 @@ class WidgetContainer extends React.Component {
   render() {
 
     return (
-      <div className="widget-container">
+      <div className="widget-container" style={this.state.style}>
         <div className="title">
           <label>
           {this.props.title}

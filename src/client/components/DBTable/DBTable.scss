@@ -191,6 +191,7 @@
 }
 
 .db-table {
+  user-select: none;
   height: calc(100%);
   width: 100%;
 }

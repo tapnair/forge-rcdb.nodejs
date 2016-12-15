@@ -24,6 +24,12 @@ class ViewerView extends React.Component {
 
     super()
 
+    this.state = {
+      selectedDbItem: null,
+      filteredDbItems:[],
+      chartData:[]
+    }
+
     this.materialSvc = ServiceManager.getService(
       'MaterialSvc')
 
@@ -35,16 +41,6 @@ class ViewerView extends React.Component {
 
     this.eventSvc = ServiceManager.getService(
       'EventSvc')
-  }
-
-  /////////////////////////////////////////////////////////
-  //
-  //
-  /////////////////////////////////////////////////////////
-  state = {
-    selectedDbItem: null,
-    filteredDbItems:[],
-    chartData:[]
   }
 
   /////////////////////////////////////////////////////////

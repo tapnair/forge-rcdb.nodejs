@@ -279,6 +279,14 @@ class DBTable extends React.Component {
     return field
   }
 
+  /////////////////////////////////////////////////////////////
+  //
+  //
+  /////////////////////////////////////////////////////////////
+  componentDidUpdate () {
+
+  }
+
   /////////////////////////////////////////////////////////
   //
   //
@@ -288,8 +296,6 @@ class DBTable extends React.Component {
     setTimeout(() => {
       this.refresh()
     }, 0)
-
-    const att = {'data-attr': 'value'}
 
     return (
         <div className="db-table">

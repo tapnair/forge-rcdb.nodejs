@@ -7,37 +7,7 @@ import Viewer from 'Viewer'
 import './FlexLayout.scss'
 import React from 'react'
 
-
 class FlexLayout extends React.Component {
-
-  /////////////////////////////////////////////////////////
-  //
-  //
-  /////////////////////////////////////////////////////////
-  constructor () {
-
-    super()
-
-    this.state = {
-
-    }
-  }
-
-  /////////////////////////////////////////////////////////
-  //
-  //
-  /////////////////////////////////////////////////////////
-  componentDidMount() {
-
-  }
-
-  /////////////////////////////////////////////////////////
-  //
-  //
-  /////////////////////////////////////////////////////////
-  componentWillUnmount() {
-
-  }
 
   /////////////////////////////////////////////////////////
   //
@@ -60,11 +30,10 @@ class FlexLayout extends React.Component {
                 dbItems={this.props.dbItems}/>
             </FlexElement>
             <FlexSplitter
-              onStopResize={() => this.setState(this.state)}
+              onStopResize={() => this.forceUpdate()}
             />
             <FlexElement>
-              <FlexContainer orientation='horizontal'
-                className="data-pane">
+              <FlexContainer orientation='horizontal'>
                 <FlexElement minSize={210}>
                   <WidgetContainer title="Database">
                     <DBResponsiveView
@@ -76,7 +45,7 @@ class FlexLayout extends React.Component {
                   </WidgetContainer>
                 </FlexElement>
                 <FlexSplitter
-                  onStopResize={() => this.setState(this.state)}
+                  onStopResize={() => this.forceUpdate()}
                 />
                 <FlexElement>
                   <WidgetContainer title="Cost Breakdown">
@@ -96,8 +65,7 @@ class FlexLayout extends React.Component {
         return (
           <FlexContainer orientation='vertical'>
             <FlexElement>
-              <FlexContainer orientation='horizontal'
-                className="data-pane">
+              <FlexContainer orientation='horizontal'>
                 <FlexElement minSize={210}>
                   <WidgetContainer title="Database">
                     <DBResponsiveView
@@ -109,7 +77,7 @@ class FlexLayout extends React.Component {
                   </WidgetContainer>
                 </FlexElement>
                 <FlexSplitter
-                  onStopResize={() => this.setState(this.state)}
+                  onStopResize={() => this.forceUpdate()}
                 />
                 <FlexElement>
                   <WidgetContainer title="Cost Breakdown">
@@ -122,7 +90,7 @@ class FlexLayout extends React.Component {
               </FlexContainer>
             </FlexElement>
             <FlexSplitter
-              onStopResize={() => this.setState(this.state)}
+              onStopResize={() => this.forceUpdate()}
             />
             <FlexElement flex={0.6}>
               <Viewer
