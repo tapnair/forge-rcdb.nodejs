@@ -42,7 +42,9 @@ export default class PieChart extends EventsEmitter {
         enabled: true,
         type: "placeholder",
         placeholderParser: (index, replacements) => {
-          Object.assign(replacements, {unit: data[index].unit})
+          Object.assign(replacements, {
+            unit: data[index].unit
+          })
         },
         string: '{label}',
         styles: {

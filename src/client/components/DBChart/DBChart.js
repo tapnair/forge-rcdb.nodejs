@@ -50,9 +50,9 @@ class DBChart extends React.Component {
       this.pieChart.destroy()
     }
 
-    $('#pie-chart-container').remove()
+    $('.pie-chart-container').empty()
 
-    $('#legend-container').remove()
+    $('.legend-container').empty()
   }
 
   /////////////////////////////////////////////////////////////
@@ -61,7 +61,7 @@ class DBChart extends React.Component {
   /////////////////////////////////////////////////////////////
   componentDidUpdate () {
 
-    this.draw(this.props.data)
+
   }
 
   /////////////////////////////////////////////////////////////
@@ -70,13 +70,17 @@ class DBChart extends React.Component {
   /////////////////////////////////////////////////////////////
   render() {
 
+    setTimeout(() => {
+      this.draw(this.props.data)
+    }, 100)
+
     return (
       <div className="db-chart">
         <div className="legend-scroll">
-          <div id="legend-container">
+          <div className="legend-container">
           </div>
         </div>
-        <div id="pie-chart-container">
+        <div className="pie-chart-container">
         </div>
         <div className="footer">
           <div className="footer-panel">
@@ -94,14 +98,14 @@ class DBChart extends React.Component {
   /////////////////////////////////////////////////////////////
   draw (chartData) {
 
-    $('#legend-container').empty()
+    $('.legend-container').empty()
 
-    $('#legend-container').css({
+    $('.legend-container').css({
       height: `${chartData.length * 20}px`
     })
 
     this.legend = new Legend(
-      '#legend-container',
+      $('.legend-container')[0],
       chartData)
 
     this.legend.on('legend.click', (data) => {
@@ -111,34 +115,91 @@ class DBChart extends React.Component {
       this.props.onClick(data.item)
     })
 
-    $('#pie-chart-container').empty()
+    $('.pie-chart-container').empty()
 
     if(chartData && chartData.length) {
 
-      const filteredChartData = _.filter(chartData,
-        (entry) => {
-          return entry.value > 0
+      const groupedChartData = this.groupDataSmallerThan(
+        chartData, 5.0)
+
+      const height = $('.pie-chart-container').height()
+      const width = $('.pie-chart-container').width()
+
+      if($('.pie-chart-container').length) {
+
+        this.pieChart = new PieChart(
+          '.pie-chart-container',
+          groupedChartData,
+          { effects: { load: { effect: "none" }},
+            size: {
+              canvasHeight: height * 0.9,
+              canvasWidth: width * 0.9,
+              pieInnerRadius: '0%',
+              pieOuterRadius: '98%'
+            }})
+
+        this.pieChart.on('pieSegment.click', (item) => {
+
+          this.props.onClick(item)
+        })
+      }
+    }
+  }
+
+  /////////////////////////////////////////////////////////////
+  //
+  //
+  /////////////////////////////////////////////////////////////
+  groupDataSmallerThan (chartData, threshold) {
+
+    const groupedData = []
+
+    let otherData = {
+      value: 0,
+      percent: 0,
+      item: {
+        components: []
+      }
+    }
+
+    chartData.forEach((entry) => {
+
+      if (entry.percent < threshold) {
+
+        const components = [
+          ...otherData.item.components,
+          ...entry.item.components
+        ]
+
+        const percent = otherData.percent + entry.percent
+
+        const value = otherData.value + entry.value
+
+        const label =  `Other materials: ` +
+          `${percent.toFixed(2)}% ` +
+          `(${value.toFixed(2)} USD)`
+
+        otherData = Object.assign({}, entry, {
+          percent,
+          label,
+          value,
+          item: {
+            components
+          }
         })
 
-      const pieChartHeight = $('#pie-chart-container').height(),
-            pieChartWidth = $('#pie-chart-container').width()
+      } else {
 
-      this.pieChart = new PieChart(
-        '#pie-chart-container',
-        filteredChartData,
-        { effects: { load: { effect: "none" }},
-          size: {
-            canvasHeight: pieChartHeight * 0.9,
-            canvasWidth: pieChartWidth * 0.9,
-            pieInnerRadius: '0%',
-            pieOuterRadius: '98%'
-          }})
+        groupedData.push(entry)
+      }
+    })
 
-      this.pieChart.on('pieSegment.click', (item) => {
+    if (otherData.value > 0) {
 
-        this.props.onClick(item)
-      })
+      groupedData.push(otherData)
     }
+
+    return groupedData
   }
 }
 

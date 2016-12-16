@@ -33,6 +33,46 @@ class DBTable extends React.Component {
     })
 
     this.ftEditable = $().ftEditable()
+
+    this.ftEditable.setUpdateHandler((updateRecord) => {
+
+      let dbItem = _.find(this.props.dbItems, {
+        _id: updateRecord.id
+      })
+
+      switch (updateRecord.fieldName) {
+
+        case 'price':
+
+          const price = parseFloat(updateRecord.fieldValue)
+
+          if(!isNaN(price)) {
+
+            dbItem[updateRecord.fieldName] = price
+          }
+
+          break
+
+        case 'currency':
+          return
+
+        default:
+          dbItem[updateRecord.fieldName] =
+            updateRecord.fieldValue
+          break
+      }
+
+      this.props.onUpdateDbItem(dbItem)
+    })
+  }
+
+  /////////////////////////////////////////////////////////
+  //
+  //
+  /////////////////////////////////////////////////////////
+  componentWillUnmount () {
+
+    $('.footable').remove()
   }
 
   /////////////////////////////////////////////////////////
@@ -104,37 +144,6 @@ class DBTable extends React.Component {
             ]
           }
         })
-
-      this.ftEditable.setUpdateHandler((updateRecord) => {
-
-        let dbItem = _.find(this.props.dbItems, {
-          _id: updateRecord.id
-        })
-
-        switch (updateRecord.fieldName) {
-
-          case 'price':
-
-            const price = parseFloat(updateRecord.fieldValue)
-
-            if(!isNaN(price)) {
-
-              dbItem[updateRecord.fieldName] = price
-            }
-
-            break
-
-          case 'currency':
-            return
-
-          default:
-            dbItem[updateRecord.fieldName] =
-              updateRecord.fieldValue
-            break
-        }
-
-        this.props.onUpdateDbItem(dbItem)
-      })
 
       this.select = $('select', '.db-table').niceSelect()
 

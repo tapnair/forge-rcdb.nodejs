@@ -150,6 +150,7 @@ const envConfig = {
 
     viewer: {
       viewer3D: '/resources/libs/viewer/viewer3D.js',
+      viewerCSS: '/resources/libs/viewer/style.css',
       threeJS: '/resources/libs/viewer/three.js'
     }
   },

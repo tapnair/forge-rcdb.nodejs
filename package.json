@@ -110,6 +110,7 @@
     "d3pie": "^0.1.9",
     "debug": "^2.2.0",
     "dragula": "^3.7.2",
+    "eslint-plugin-promise": "^2.0.1",
     "exports-loader": "^0.6.3",
     "express": "^4.14.0",
     "express-session": "^1.14.1",

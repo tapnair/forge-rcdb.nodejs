@@ -22,10 +22,15 @@ class DBDropdown extends React.Component {
   //
   //
   /////////////////////////////////////////////////////////
-  state = {
-    dirty: false,
-    editedFieldName: '',
-    editedFieldValue:''
+  constructor () {
+
+    super()
+
+    this.state = {
+      editedFieldName: '',
+      editedFieldValue:'',
+      dirty: false
+    }
   }
 
   /////////////////////////////////////////////////////////
@@ -47,17 +52,9 @@ class DBDropdown extends React.Component {
   /////////////////////////////////////////////////////////
   onChangeField (e, fieldName) {
 
-    // Strip all non-number characters from the input
-    //return inputValue.replace(/[^0-9]/g, "");
+    let fieldValue = e.target.value
 
-    const enterPressed = (e.target.value.indexOf('<br>') > -1)
-
-    console.log(e.target.value)
-    console.log(enterPressed)
-
-    let fieldValue = e.target.value.replace('<br>', '')
-
-    switch(fieldName){
+    switch (fieldName) {
 
       case 'price':
         fieldValue = parseFloat(fieldValue)
@@ -65,9 +62,9 @@ class DBDropdown extends React.Component {
     }
 
     this.setState(Object.assign({}, this.state, {
-      dirty: true,
+      editedFieldValue:fieldValue,
       editedFieldName: fieldName,
-      editedFieldValue:fieldValue
+      dirty: true
     }))
   }
 
@@ -77,7 +74,7 @@ class DBDropdown extends React.Component {
   /////////////////////////////////////////////////////////
   onBlurField (e, field) {
 
-    if (this.state.dirty) {
+    if (this.state.dirty && this.props.selectedDbItem) {
 
       this.props.selectedDbItem[
         this.state.editedFieldName] =
@@ -88,6 +85,51 @@ class DBDropdown extends React.Component {
 
       this.state.dirty = false
     }
+  }
+
+  /////////////////////////////////////////////////////////
+  //
+  //
+  /////////////////////////////////////////////////////////
+  onKeyDown (e) {
+
+    // ENTER
+    if (e.keyCode === 13 || !this.props.selectedDbItem) {
+
+      if (this.state.dirty && this.props.selectedDbItem) {
+
+        this.props.selectedDbItem[
+          this.state.editedFieldName] =
+          this.state.editedFieldValue
+
+        this.props.onUpdateDbItem(
+          this.props.selectedDbItem)
+
+        this.state.dirty = false
+      }
+
+      e.stopPropagation()
+      e.preventDefault()
+    }
+  }
+
+  /////////////////////////////////////////////////////////
+  //
+  //
+  /////////////////////////////////////////////////////////
+  onKeyDownNumeric (e) {
+
+    //backspace, ENTER, ->, <-, delete, '.', ',',
+    const allowed = [8, 13, 37, 39, 46, 188, 190]
+
+    if (allowed.indexOf(e.keyCode) > -1 ||
+      (e.keyCode > 47 && e.keyCode < 58)) {
+
+      return this.onKeyDown(e)
+    }
+
+    e.stopPropagation()
+    e.preventDefault()
   }
 
   /////////////////////////////////////////////////////////
@@ -112,35 +154,44 @@ class DBDropdown extends React.Component {
             onChange={(item)=>this.onSelectDbItem(item)}
           />
           <div className="field-container">
-            <div className="field-name"><b>Supplier:</b></div>
+            <div className="field-name">
+              <b>Supplier:</b>
+            </div>
             <ContentEditable
               onBlur={(e)=>this.onBlurField(e, 'supplier')}
               className="field-value"
               html={selectedDbItem ? selectedDbItem.supplier : ''}
               disabled={false}
               onChange={(e)=>this.onChangeField(e, 'supplier')}
+              onKeyDown={(e) => this.onKeyDown(e)}
             />
           </div>
           <br/>
           <div className="field-container">
-            <div className="field-name"><b>Currency:</b></div>
+            <div className="field-name">
+              <b>Currency:</b>
+            </div>
             <ContentEditable
               onBlur={(e)=>this.onBlurField(e, 'currency')}
               className="field-value"
               html={selectedDbItem ? selectedDbItem.currency : ''}
               disabled={false}
               onChange={(e)=>this.onChangeField(e, 'currency')}
+              onKeyDown={(e) => this.onKeyDown(e)}
             />
           </div>
           <br/>
           <div className="field-container">
-            <div className="field-name"><b>Price:</b></div>
+            <div className="field-name">
+              <b>Price:</b>
+            </div>
             <ContentEditable
               onBlur={(e)=>this.onBlurField(e, 'price')}
               className="field-value"
               html={selectedDbItem ? selectedDbItem.price : ''}
               disabled={false}
               onChange={(e)=>this.onChangeField(e, 'price')}
+              onKeyDown={(e) => this.onKeyDownNumeric(e)}
             />
           </div>
         </div>

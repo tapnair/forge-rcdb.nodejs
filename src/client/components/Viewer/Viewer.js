@@ -18,7 +18,6 @@
 import ReactDOM from 'react-dom'
 import React from 'react'
 import './Viewer.scss'
-import './style.css'
 
 class Viewer extends React.Component {
 
@@ -171,10 +170,11 @@ class Viewer extends React.Component {
   ///////////////////////////////////////////////////////////////////
   componentWillUnmount () {
 
-    if(this.viewer) {
+    if (this.viewer) {
 
       if(this.viewer.impl.selector) {
 
+        this.viewer.tearDown()
         this.viewer.finish()
         this.viewer = null
       }

@@ -64,9 +64,11 @@ debug('Enable plugins for live development (HMR, NoErrors).')
 
 webpackConfig.plugins.push(
   new HtmlWebpackPlugin({
-    threeJS: config.forge.viewer.threeJS,
-    viewer3D: config.forge.viewer.viewer3D,
+
     viewerCSS: config.forge.viewer.viewerCSS,
+    viewer3D: config.forge.viewer.viewer3D,
+    threeJS: config.forge.viewer.threeJS,
+
     template: config.utils_paths.client('layouts/index.ejs'),
     title: 'Forge | RCDB | DEV',
     filename: 'index.html',

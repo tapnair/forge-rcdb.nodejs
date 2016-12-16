@@ -151,8 +151,9 @@ const envConfig = {
       ]
     },
     viewer: {
-      viewer3D: '/resources/libs/viewer/viewer3D.min.js',
-      threeJS: '/resources/libs/viewer/three.min.js'
+      viewer3D: 'https://autodeskviewer.com/viewers/2.11/viewer3D.min.js',
+      viewerCSS: 'https://autodeskviewer.com/viewers/2.11/style.min.css',
+      threeJS: 'https://autodeskviewer.com/viewers/2.11/three.min.js'
     }
   },
   databases: [{

@@ -2,6 +2,7 @@ import MetaPropertyExtension from 'Viewing.Extension.MetaProperty'
 import StateManagerExtension from 'Viewing.Extension.StateManager'
 import VisualReportExtension from 'Viewing.Extension.VisualReport'
 import ContextMenuExtension from 'Viewing.Extension.ContextMenu'
+import TransformExtension from 'Viewing.Extension.Transform'
 import Markup3DExtension from 'Viewing.Extension.Markup3D'
 import ViewerToolkit from 'Viewer.Toolkit'
 import ServiceManager from 'SvcManager'
@@ -47,9 +48,11 @@ class ViewerView extends React.Component {
   //
   //
   /////////////////////////////////////////////////////////
-  async componentDidMount () {
+  componentDidMount () {
 
     try {
+
+      this.mounted = true
 
       this.socketSvc.connect().then(() => {
 
@@ -76,6 +79,19 @@ class ViewerView extends React.Component {
   //
   //
   /////////////////////////////////////////////////////////
+  componentWillUnmount () {
+
+    this.materialSvc.off()
+
+    this.socketSvc.off()
+
+    this.mounted = false
+  }
+
+  /////////////////////////////////////////////////////////
+  //
+  //
+  /////////////////////////////////////////////////////////
   onUpdateDbItem (updatedDbItem) {
 
     this.materialSvc.postMaterial(
@@ -95,42 +111,43 @@ class ViewerView extends React.Component {
   /////////////////////////////////////////////////////////
   updateDbItem (updatedDbItem) {
 
-    let entry = this.materialMap[updatedDbItem.name]
+    if (updatedDbItem && this.mounted) {
 
-    entry.dbMaterial = updatedDbItem
+      let entry = this.materialMap[ updatedDbItem.name ]
 
-    entry.totalCost = entry.totalMass * this.toUSD(
-      entry.dbMaterial.price,
-      entry.dbMaterial.currency)
+      entry.dbMaterial = updatedDbItem
 
-    const chartData = this.buildChartData(
-      this.materialMap,
-      'totalCost')
+      entry.totalCost = entry.totalMass * this.toUSD(
+        entry.dbMaterial.price,
+        entry.dbMaterial.currency)
 
-    const filteredDbItems = this.state.filteredDbItems.map(
-      (dbItem) => {
+      const chartData = this.buildChartData(
+        this.materialMap,
+        'totalCost')
 
-        return dbItem._id === updatedDbItem._id ?
-          updatedDbItem : dbItem
-      })
+      const filteredDbItems = this.state.filteredDbItems.map(
+        (dbItem) => {
 
-    setTimeout(() => {
+          return dbItem._id === updatedDbItem._id ?
+            updatedDbItem : dbItem
+        })
+
       this.setState(Object.assign({}, this.state, {
         filteredDbItems,
         chartData
       }))
-    }, 0)
 
-    const dbProperties = this.buildViewerPanelProperties(
-      updatedDbItem)
+      const dbProperties = this.buildViewerPanelProperties(
+        updatedDbItem)
 
-    const metaPropExtension =
-      this.viewer.getExtension(MetaPropertyExtension)
+      const metaPropExtension =
+        this.viewer.getExtension(MetaPropertyExtension)
 
-    if (metaPropExtension) {
+      if (metaPropExtension) {
 
-      metaPropExtension.updateProperties(
-        dbProperties)
+        metaPropExtension.updateProperties(
+          dbProperties)
+      }
     }
   }
 
@@ -381,6 +398,12 @@ class ViewerView extends React.Component {
         model: this.dbModel
       })
 
+      viewer.loadExtension(TransformExtension,
+        Object.assign({}, {
+          container: $('.viewer-view')[0],
+          parentControl: ctrlGroup
+        }, modelOptions.transform))
+
       viewer.loadExtension(Markup3DExtension,
         Object.assign({}, {
           parentControl: ctrlGroup
@@ -580,9 +603,9 @@ class ViewerView extends React.Component {
   /////////////////////////////////////////////////////////////
   buildChartData (materialMap, fieldName) {
 
-    var keys = Object.keys (materialMap)
+    const keys = Object.keys (materialMap)
 
-    var colors = d3.scale.linear()
+    const colors = d3.scale.linear()
       .domain([0, keys.length * .33, keys.length * .66, keys.length])
       .range(['#FCB843', '#C2149F', '#0CC4BD', '#0270E9'])
 
@@ -619,6 +642,7 @@ class ViewerView extends React.Component {
 
       return {
         value: parseFloat(item[fieldName].toFixed(2)),
+        percent: item.totalCost * 100 / totalCost,
         color: colors(idx),
         legendLabel,
         label,
