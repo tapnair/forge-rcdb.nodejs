@@ -857,7 +857,7 @@ export default class ViewerToolkit {
       }
     }
 
-    viewer.impl.setExplodeScale(scale * 0.5)
+    viewer.explode(scale)
   }
 }
 

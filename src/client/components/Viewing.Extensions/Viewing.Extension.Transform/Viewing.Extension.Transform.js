@@ -197,6 +197,10 @@ class TransformExtension extends ExtensionBase {
   /////////////////////////////////////////////////////////////////
   getState (viewerState) {
 
+    this.currentExplodeScale = this._viewer.getExplodeScale()
+
+    viewerState.explodeScale = this.currentExplodeScale
+
     viewerState.transforms = {}
 
     for (let fragId in this.transformedFragIdMap) {
@@ -427,42 +431,52 @@ class TransformExtension extends ExtensionBase {
 
       // create explode animation task
 
-      if (Array.isArray(targetState.objectSet) &&
-        targetState.objectSet.length > 0) {
+      let scale = this.currentExplodeScale
 
-        let scale = viewer.getExplodeScale()
+      const targetScale = parseFloat(targetState.explodeScale)
 
-        const targetScale = parseFloat(
-          targetState.objectSet[0].explodeScale)
+      if (targetScale != scale) {
 
-        if (targetScale != scale) {
+        var scaleStep = (targetScale - scale) / period
 
-          var scaleStep = (targetScale - scale) / period
+        animationTasks.push({
 
-          animationTasks.push({
+          step: (dt) => {
 
-            step: (dt) => {
+            scale += scaleStep * dt
 
-              scale += scaleStep * dt
+            ViewerToolkit.selectiveExplode(
+              viewer,
+              scale,
+              fullFragIds)
+          },
 
-              ViewerToolkit.selectiveExplode(
-                viewer,
-                scale,
-                stateFragIds)
-            },
+          ease: (t) => {
 
-            finalStep: () => {
+            const eased = easing(t/period)
 
-              ViewerToolkit.selectiveExplode(
-                viewer,
-                targetScale,
-                stateFragIds)
+            const easedScale =
+              eased * targetScale +
+              (1 - eased) * this.currentExplodeScale
 
-              viewer.explodeSlider.value = targetScale
-            }
-          })
-        }
+            ViewerToolkit.selectiveExplode(
+              viewer,
+              easedScale,
+              fullFragIds)
+          },
+
+          finalStep: () => {
+
+            ViewerToolkit.selectiveExplode(
+              viewer,
+              targetScale,
+              fullFragIds)
+
+            viewer.explodeSlider.value = targetScale
+          }
+        })
       }
+
 
       let animationId = 0
       let elapsed = 0
@@ -480,7 +494,6 @@ class TransformExtension extends ExtensionBase {
           animationTasks.forEach((task) => {
 
             task.ease(elapsed)
-            //task.step(dt)
           })
 
           animationId = requestAnimationFrame(

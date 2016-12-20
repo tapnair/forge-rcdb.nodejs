@@ -179,7 +179,9 @@ class StateManagerExtension extends ExtensionBase {
     state.name = (data.name.length ?
       data.name : new Date().toString('d/M/yyyy H:mm:ss'))
 
-    if(this._api) {
+    if (this._api) {
+
+      console.log(state)
 
       this._api.addState(
         this._options.model._id,
@@ -195,7 +197,44 @@ class StateManagerExtension extends ExtensionBase {
   ////////////////////////////////////////////////////////////////
   onRestoreState (state) {
 
-    this._viewer.restoreState(state, null, false)
+    this._viewer.getState(state)
+
+    const filteredState = this.filterState(
+        state, 'objectSet', 'explodeScale')
+
+    this.restoreStateWithPivot(filteredState)
+  }
+
+  /////////////////////////////////////////////////////////////////
+  // A fix for viewer.restoreState
+  // that also restores pivotPoint
+  //
+  /////////////////////////////////////////////////////////////////
+  restoreStateWithPivot(state, filter=null, immediate=false) {
+
+    var viewer = this._viewer;
+
+    function onStateRestored() {
+
+      viewer.removeEventListener(
+        Autodesk.Viewing.VIEWER_STATE_RESTORED_EVENT,
+        onStateRestored);
+
+      var pivot = state.viewport.pivotPoint;
+
+      setTimeout(function () {
+
+        viewer.navigation.setPivotPoint(
+          new THREE.Vector3(
+            pivot[0], pivot[1], pivot[2]))
+      }, 1250);
+    }
+
+    viewer.addEventListener(
+      Autodesk.Viewing.VIEWER_STATE_RESTORED_EVENT,
+      onStateRestored);
+
+    viewer.restoreState(state, filter, immediate);
   }
 
   /////////////////////////////////////////////////////////////////
@@ -224,6 +263,39 @@ class StateManagerExtension extends ExtensionBase {
         this._options.model._id,
         sequence)
     }
+  }
+
+  /////////////////////////////////////////////////////////////////
+  // Filter a state selections
+  //
+  /////////////////////////////////////////////////////////////////
+  filterState (srcState, setNames, elementNames) {
+
+    var strObj = JSON.stringify(srcState)
+
+    var state = JSON.parse(strObj)
+
+    var sets = Array.isArray(setNames) ?
+      setNames : [setNames]
+
+    var elements = Array.isArray(elementNames) ?
+      elementNames : [elementNames]
+
+    sets.forEach((setName)=>{
+
+      if(state[setName]){
+
+        elements.forEach((elementName)=>{
+
+          state[setName].forEach((element)=> {
+
+            delete element[elementName]
+          })
+        })
+      }
+    })
+
+    return state
   }
 }
 

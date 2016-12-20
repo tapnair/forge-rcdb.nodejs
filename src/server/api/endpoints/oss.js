@@ -53,7 +53,7 @@ module.exports = function() {
   //
   //
   /////////////////////////////////////////////////////////////////////////////
-  router.get('/buckets/:bucketKey/details', async (req, res) =>{
+  router.get('/buckets/:bucketKey/details', async (req, res) => {
 
     try {
 
@@ -228,68 +228,68 @@ module.exports = function() {
   //
   //
   /////////////////////////////////////////////////////////////////////////////
-  router.delete('/buckets/:bucketKey', async (req, res) =>{
-
-    try {
-
-      const bucketKey = req.params.bucketKey
-
-      const forgeSvc = ServiceManager.getService(
-        'ForgeSvc')
-
-      const ossSvc = ServiceManager.getService(
-        'OssSvc')
-
-      const token = await forgeSvc.request2LeggedToken(
-        'bucket:delete')
-
-      const response = await ossSvc.deleteBucket(
-        token.access_token,
-        bucketKey)
-
-      res.json(response)
-
-    } catch (ex) {
-
-      res.status(ex.statusCode || 500)
-      res.json(ex)
-    }
-  })
+  //router.delete('/buckets/:bucketKey', async (req, res) =>{
+  //
+  //  try {
+  //
+  //    const bucketKey = req.params.bucketKey
+  //
+  //    const forgeSvc = ServiceManager.getService(
+  //      'ForgeSvc')
+  //
+  //    const ossSvc = ServiceManager.getService(
+  //      'OssSvc')
+  //
+  //    const token = await forgeSvc.request2LeggedToken(
+  //      'bucket:delete')
+  //
+  //    const response = await ossSvc.deleteBucket(
+  //      token.access_token,
+  //      bucketKey)
+  //
+  //    res.json(response)
+  //
+  //  } catch (ex) {
+  //
+  //    res.status(ex.statusCode || 500)
+  //    res.json(ex)
+  //  }
+  //})
 
   /////////////////////////////////////////////////////////////////////////////
   // DELETE /buckets/:bucketKey/objects/:objectKey
   //
   //
   /////////////////////////////////////////////////////////////////////////////
-  router.delete('/buckets/:bucketKey/objects/:objectKey', async (req, res) =>{
-
-    try {
-
-      const bucketKey = req.params.bucketKey
-
-      const objectKey = req.params.objectKey
-
-      const forgeSvc = ServiceManager.getService(
-        'ForgeSvc')
-
-      const ossSvc = ServiceManager.getService(
-        'OssSvc')
-
-      const token = await forgeSvc.get2LeggedToken()
-
-      const response = await ossSvc.deleteObject(
-        token.access_token,
-        bucketKey,
-        objectKey)
-
-      res.json(response)
-
-    } catch (ex) {
-
-      res.status(ex.statusCode || 500)
-      res.json(ex)
-    }
-  })
+  //router.delete('/buckets/:bucketKey/objects/:objectKey', async (req, res) =>{
+  //
+  //  try {
+  //
+  //    const bucketKey = req.params.bucketKey
+  //
+  //    const objectKey = req.params.objectKey
+  //
+  //    const forgeSvc = ServiceManager.getService(
+  //      'ForgeSvc')
+  //
+  //    const ossSvc = ServiceManager.getService(
+  //      'OssSvc')
+  //
+  //    const token = await forgeSvc.get2LeggedToken()
+  //
+  //    const response = await ossSvc.deleteObject(
+  //      token.access_token,
+  //      bucketKey,
+  //      objectKey)
+  //
+  //    res.json(response)
+  //
+  //  } catch (ex) {
+  //
+  //    res.status(ex.statusCode || 500)
+  //    res.json(ex)
+  //  }
+  //})
 
   return router
 }

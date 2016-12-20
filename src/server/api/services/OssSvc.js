@@ -40,10 +40,11 @@ export default class OssSvc extends BaseSvc {
 
     this._APIAuth.accessToken = token
 
-    const options = Object.assign({}, {
-      limit: 100,
-      startAt: null,
-      region: 'US'}, opts)
+    const options = {
+      startAt: opts.startAt || null,
+      region: opts.region || 'US',
+      limit: opts.limit || 100
+    }
 
     return this._bucketsAPI.getBuckets(options)
   }
@@ -67,12 +68,13 @@ export default class OssSvc extends BaseSvc {
 
     this._APIAuth.accessToken = token
 
-    const options = Object.assign({}, {
-      limit: 100,
-      startAt: null,
-      region: 'US'}, opts)
+    const options = {
+      startAt: opts.startAt || null,
+      region: opts.region || 'US',
+      limit: opts.limit || 100
+    }
 
-    return this._objectsAPI.getObjects(bucketKey, opts)
+    return this._objectsAPI.getObjects(bucketKey, options)
   }
 
   /////////////////////////////////////////////////////////////////
@@ -117,8 +119,9 @@ export default class OssSvc extends BaseSvc {
     bucketCreationData.policyKey = validatePolicyKey(
       bucketCreationData.policyKey)
 
-    const options = Object.assign({}, {
-      xAdsRegion: 'US'}, opts)
+    const options = {
+      xAdsRegion: opts.xAdsRegion || 'US'
+    }
 
     this._APIAuth.accessToken = token
 
