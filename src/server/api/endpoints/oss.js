@@ -6,7 +6,7 @@ import fs from 'fs'
 
 module.exports = function() {
 
-  var router = express.Router()
+  const router = express.Router()
 
   /////////////////////////////////////////////////////////////////////////////
   // GET /buckets
@@ -18,25 +18,31 @@ module.exports = function() {
     try {
 
       // obtain forge service
-      var forgeSvc = ServiceManager.getService(
+      const forgeSvc = ServiceManager.getService(
         'ForgeSvc')
 
       // request 2legged token
-      var token = await forgeSvc.get2LeggedToken()
+      const token = await forgeSvc.get2LeggedToken()
 
       // obtain oss service
-      var ossSvc = ServiceManager.getService('OssSvc')
+      const ossSvc = ServiceManager.getService('OssSvc')
+
+      const options = {
+        region: req.params.region || 'US',
+        startAt: req.params.startAt || 0,
+        limit: req.params.limit || 100
+      }
 
       // get list of bucket by passing valid token
-      var response = await ossSvc.getBuckets(
-        token.access_token)
+      const response = await ossSvc.getBuckets(
+        token.access_token,
+        options)
 
       // send json-formatted response
       res.json(response)
 
     } catch (ex) {
 
-      console.log(ex)
       res.status(ex.statusCode || 500)
       res.json(ex)
     }
@@ -51,17 +57,18 @@ module.exports = function() {
 
     try {
 
-      var bucketKey = req.params.bucketKey
+      const bucketKey = req.params.bucketKey
 
-      var forgeSvc = ServiceManager.getService(
+      const forgeSvc = ServiceManager.getService(
         'ForgeSvc')
 
-      var token = await forgeSvc.get2LeggedToken()
+      const token = await forgeSvc.get2LeggedToken()
 
-      var ossSvc = ServiceManager.getService('OssSvc')
+      const ossSvc = ServiceManager.getService('OssSvc')
 
-      var response = await ossSvc.getBucketDetails(
-        token.access_token, bucketKey)
+      const response = await ossSvc.getBucketDetails(
+        token.access_token,
+        bucketKey)
 
       res.json(response)
 
@@ -81,17 +88,25 @@ module.exports = function() {
 
     try {
 
-      var bucketKey = req.params.bucketKey
+      const bucketKey = req.params.bucketKey
 
-      var forgeSvc = ServiceManager.getService(
+      const forgeSvc = ServiceManager.getService(
         'ForgeSvc')
 
-      var token = await forgeSvc.get2LeggedToken()
+      const token = await forgeSvc.get2LeggedToken()
 
-      var ossSvc = ServiceManager.getService('OssSvc')
+      const ossSvc = ServiceManager.getService('OssSvc')
 
-      var response = await ossSvc.getObjects(
-        token.access_token, bucketKey)
+      const options = {
+        region: req.params.region || 'US',
+        startAt: req.params.startAt || 0,
+        limit: req.params.limit || 100
+      }
+
+      const response = await ossSvc.getObjects(
+        token.access_token,
+        bucketKey,
+        options)
 
       res.send(response)
 
@@ -113,18 +128,18 @@ module.exports = function() {
 
     try {
 
-      var bucketKey = req.params.bucketKey
+      const bucketKey = req.params.bucketKey
 
-      var objectKey = req.params.objectKey
+      const objectKey = req.params.objectKey
 
-      var forgeSvc = ServiceManager.getService(
+      const forgeSvc = ServiceManager.getService(
         'ForgeSvc')
 
-      var token = await forgeSvc.get2LeggedToken()
+      const token = await forgeSvc.get2LeggedToken()
 
-      var ossSvc = ServiceManager.getService('OssSvc')
+      const ossSvc = ServiceManager.getService('OssSvc')
 
-      var response = await ossSvc.getObjectDetails(
+      const response = await ossSvc.getObjectDetails(
         token.access_token,
         bucketKey,
         objectKey)
@@ -147,19 +162,19 @@ module.exports = function() {
 
     try {
 
-      var bucketKey = req.params.bucketKey
+      const bucketKey = req.params.bucketKey
 
-      var objectKey = req.params.objectKey
+      const objectKey = req.params.objectKey
 
-      var forgeSvc = ServiceManager.getService(
+      const forgeSvc = ServiceManager.getService(
         'ForgeSvc')
 
-      var ossSvc = ServiceManager.getService(
+      const ossSvc = ServiceManager.getService(
         'OssSvc')
 
-      var token = await forgeSvc.get2LeggedToken()
+      const token = await forgeSvc.get2LeggedToken()
 
-      var object = await ossSvc.getObject(
+      const object = await ossSvc.getObject(
         token.access_token,
         bucketKey,
         objectKey)
@@ -181,18 +196,23 @@ module.exports = function() {
 
     try {
 
-      var bucketCreationData = req.body.bucketCreationData
+      const bucketCreationData = req.body.bucketCreationData
 
-      var forgeSvc = ServiceManager.getService(
+      const forgeSvc = ServiceManager.getService(
         'ForgeSvc')
 
-      var token = await forgeSvc.get2LeggedToken()
+      const token = await forgeSvc.get2LeggedToken()
 
-      var ossSvc = ServiceManager.getService('OssSvc')
+      const ossSvc = ServiceManager.getService('OssSvc')
 
-      var response = await ossSvc.createBucket(
+      const options = {
+        xAdsRegion: req.params.region || 'US'
+      }
+
+      const response = await ossSvc.createBucket(
         token.access_token,
-        bucketCreationData)
+        bucketCreationData,
+        options)
 
       res.json(response)
 
@@ -212,18 +232,18 @@ module.exports = function() {
 
     try {
 
-      var bucketKey = req.params.bucketKey
+      const bucketKey = req.params.bucketKey
 
-      var forgeSvc = ServiceManager.getService(
+      const forgeSvc = ServiceManager.getService(
         'ForgeSvc')
 
-      var ossSvc = ServiceManager.getService(
+      const ossSvc = ServiceManager.getService(
         'OssSvc')
 
-      var token = await forgeSvc.request2LeggedToken(
+      const token = await forgeSvc.request2LeggedToken(
         'bucket:delete')
 
-      var response = await ossSvc.deleteBucket(
+      const response = await ossSvc.deleteBucket(
         token.access_token,
         bucketKey)
 
@@ -245,19 +265,19 @@ module.exports = function() {
 
     try {
 
-      var bucketKey = req.params.bucketKey
+      const bucketKey = req.params.bucketKey
 
-      var objectKey = req.params.objectKey
+      const objectKey = req.params.objectKey
 
-      var forgeSvc = ServiceManager.getService(
+      const forgeSvc = ServiceManager.getService(
         'ForgeSvc')
 
-      var ossSvc = ServiceManager.getService(
+      const ossSvc = ServiceManager.getService(
         'OssSvc')
 
-      var token = await forgeSvc.get2LeggedToken()
+      const token = await forgeSvc.get2LeggedToken()
 
-      var response = await ossSvc.deleteObject(
+      const response = await ossSvc.deleteObject(
         token.access_token,
         bucketKey,
         objectKey)

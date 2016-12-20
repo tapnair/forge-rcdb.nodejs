@@ -11,9 +11,9 @@ export default class OssSvc extends BaseSvc {
   //
   //
   /////////////////////////////////////////////////////////////////
-  constructor(opts) {
+  constructor (config) {
 
-    super(opts)
+    super(config)
 
     this._APIAuth =
       ForgeOSS.ApiClient.instance.authentications[
@@ -40,12 +40,12 @@ export default class OssSvc extends BaseSvc {
 
     this._APIAuth.accessToken = token
 
-    opts = Object.assign({
-      limit: 10,
+    const options = Object.assign({}, {
+      limit: 100,
       startAt: null,
       region: 'US'}, opts)
 
-    return this._bucketsAPI.getBuckets(opts)
+    return this._bucketsAPI.getBuckets(options)
   }
 
   /////////////////////////////////////////////////////////////////
@@ -67,8 +67,8 @@ export default class OssSvc extends BaseSvc {
 
     this._APIAuth.accessToken = token
 
-    opts = Object.assign({
-      limit: 10,
+    const options = Object.assign({}, {
+      limit: 100,
       startAt: null,
       region: 'US'}, opts)
 
@@ -79,12 +79,12 @@ export default class OssSvc extends BaseSvc {
   // Returns object details
   //
   /////////////////////////////////////////////////////////////////
-  getObjectDetails (token, bucketKey, objectKey) {
+  getObjectDetails (token, bucketKey, objectKey, opts = {}) {
 
     this._APIAuth.accessToken = token
 
     return this._objectsAPI.getObjectDetails (
-      bucketKey, objectKey, {})
+      bucketKey, objectKey, opts)
   }
 
   /////////////////////////////////////////////////////////////////
@@ -109,7 +109,7 @@ export default class OssSvc extends BaseSvc {
   // Creates a new bucket
   //
   /////////////////////////////////////////////////////////////////
-  createBucket (token, bucketCreationData, headers = {}) {
+  createBucket (token, bucketCreationData, opts = {}) {
 
     bucketCreationData.bucketKey = validateBucketKey(
       bucketCreationData.bucketKey)
@@ -117,14 +117,14 @@ export default class OssSvc extends BaseSvc {
     bucketCreationData.policyKey = validatePolicyKey(
       bucketCreationData.policyKey)
 
-    headers = Object.assign({
-      xAdsRegion: 'US'}, headers)
+    const options = Object.assign({}, {
+      xAdsRegion: 'US'}, opts)
 
     this._APIAuth.accessToken = token
 
     return this._bucketsAPI.createBucket(
       bucketCreationData,
-      headers)
+      options)
   }
 
   /////////////////////////////////////////////////////////////////

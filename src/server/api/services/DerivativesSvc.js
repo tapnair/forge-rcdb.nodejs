@@ -2,17 +2,21 @@
 import ForgeModelDerivative from 'forge-model-derivative'
 import BaseSvc from './BaseSvc'
 import request from 'request'
-import util from 'util'
 
 export default class DerivativeSvc extends BaseSvc {
 
-  /////////////////////////////////////////////////////////////////
-  //
-  //
-  /////////////////////////////////////////////////////////////////
-  constructor (opts) {
+  static get SERVICE_BASE_URL () {
 
-    super(opts)
+    return 'https://developer.api.autodesk.com/modelderivative/v2'
+  }
+
+  /////////////////////////////////////////////////////////////////
+  //
+  //
+  /////////////////////////////////////////////////////////////////
+  constructor (config) {
+
+    super(config)
 
     this._APIAuth =
       ForgeModelDerivative.ApiClient.instance.authentications[
@@ -34,68 +38,12 @@ export default class DerivativeSvc extends BaseSvc {
   //
   //
   /////////////////////////////////////////////////////////////////
-  get jobOutputBuilder () {
-
-    return {
-
-      svf: (opts = {}) => {
-
-        return {
-          destination: {
-            region: opts.region || 'us'
-          },
-          formats: [ {
-            type: 'svf',
-            views: opts.views || ['2d', '3d']
-          } ]
-        }
-      },
-
-      obj: (opts) => {
-
-        return {
-          destination: {
-            region: opts.region || 'us'
-          },
-          formats: [ {
-            type: 'obj',
-            advanced: {
-              modelGuid: opts.guid,
-              objectIds: opts.objectIds
-            }
-          } ]
-        }
-      },
-
-      defaultOutput: (opts = {}) => {
-
-        return {
-          destination: {
-            region: opts.region || 'us'
-          },
-          formats: [ {
-            type: opts.outputType
-          }]
-        }
-      }
-    }
-  }
-
-  /////////////////////////////////////////////////////////////////
-  //
-  //
-  /////////////////////////////////////////////////////////////////
-  postJob (token, input, output) {
+  postJob (token, payload) {
 
     this._APIAuth.accessToken = token
 
-    let job = {
-      input,
-      output
-    }
-
-    return this._derivativesAPI.translate (job, {
-      'xAdsForce': true
+    return this._derivativesAPI.translate (payload, {
+      'xAdsForce': payload.output.force
     })
   }
 
@@ -114,7 +62,7 @@ export default class DerivativeSvc extends BaseSvc {
   //
   //
   /////////////////////////////////////////////////////////////////
-  getMetadata (token, urn) {
+  getMetadata (token, urn, opts = {}) {
 
     this._APIAuth.accessToken = token
 
@@ -137,11 +85,11 @@ export default class DerivativeSvc extends BaseSvc {
   //
   //
   /////////////////////////////////////////////////////////////////
-  getProperties (token, urn, guid) {
+  getProperties (token, urn, guid, opts = {}) {
 
     this._APIAuth.accessToken = token
 
-    return this._derivativesAPI.getModelviewPropertie(
+    return this._derivativesAPI.getModelviewProperties(
       urn, guid, opts)
   }
 
@@ -164,7 +112,18 @@ export default class DerivativeSvc extends BaseSvc {
 
     this._APIAuth.accessToken = token
 
-    return this._derivativesAPI.deleteManifest (urn)
+    //TODO SDK KO
+    //return this._derivativesAPI.deleteManifest (urn)
+
+    var url = `${DerivativeSvc.SERVICE_BASE_URL}/designdata/` +
+      `${urn}/manifest`
+
+    return requestAsync({
+      method: 'DELETE',
+      token: token,
+      json: false,
+      url: url
+    })
   }
 
   /////////////////////////////////////////////////////////////////
@@ -173,10 +132,60 @@ export default class DerivativeSvc extends BaseSvc {
   /////////////////////////////////////////////////////////////////
   download (token, urn, derivativeURN, opts = {}) {
 
-    this._APIAuth.accessToken = token
+    // TODO SDK KO
+    //this._APIAuth.accessToken = token
+    //
+    //return this._derivativesAPI.getDerivativeManifest(
+    //  urn,
+    //  derivativeURN,
+    //  opts)
 
-    return this._derivativesAPI.getDerivativeManifest(
-      urn, encodeURIComponent(derivativeURN), opts)
+    return new Promise((resolve, reject) => {
+
+      const url =
+        `${DerivativeSvc.SERVICE_BASE_URL}/designdata/` +
+        `${encodeURIComponent(urn)}/manifest/` +
+        `${encodeURIComponent(derivativeURN)}`
+
+      request({
+        url: url,
+        method: 'GET',
+        headers: {
+          'Authorization': 'Bearer ' + token
+        },
+        encoding: null
+      }, function(err, response, body) {
+
+        try {
+
+          if (err) {
+
+            return reject(err)
+          }
+
+          if (response && [200, 201, 202].indexOf(
+              response.statusCode) < 0) {
+
+            return reject(response.statusMessage)
+          }
+
+          if (opts.base64) {
+
+            resolve(bufferToBase64(body))
+
+          } else {
+
+            resolve(body)
+          }
+
+        } catch(ex) {
+
+          console.log(ex)
+
+          reject(ex)
+        }
+      })
+    })
   }
 
   /////////////////////////////////////////////////////////////////
@@ -185,9 +194,12 @@ export default class DerivativeSvc extends BaseSvc {
   /////////////////////////////////////////////////////////////////
   getThumbnail (token, urn, options = {width: 100, height: 100}) {
 
-    var url = util.format(
-      'https://developer.api.autodesk.com/modelderivative/v2/designdata/%s/thumbnail?width=%s&height=%s',
-      urn, options.width, options.height)
+    //TODO: SDK KO
+
+    const url = `${DerivativeSvc.SERVICE_BASE_URL}/designdata/` +
+        `${urn}/thumbnail?` +
+        `width=${options.width}&` +
+        `height=${options.height}`
 
     return new Promise((resolve, reject) => {
 
@@ -203,6 +215,7 @@ export default class DerivativeSvc extends BaseSvc {
         try {
 
           if (err) {
+
             return reject(err)
           }
 
@@ -212,29 +225,29 @@ export default class DerivativeSvc extends BaseSvc {
             return reject(response.statusMessage)
           }
 
-          return resolve(arrayToBase64(body))
-        }
-        catch(ex){
+          resolve(bufferToBase64(body))
 
-          console.log(params.url)
+        } catch(ex){
+
+          console.log(url)
           console.log(body)
 
-          return reject(ex)
+          reject(ex)
         }
       })
     })
   }
 }
 
-///////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
+// Utils
 //
-//
-///////////////////////////////////////////////////////////////////
-function arrayToBase64(arraybuffer) {
+/////////////////////////////////////////////////////////////////
+function bufferToBase64 (buffer) {
 
   var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 
-  var bytes = arraybuffer, i, len = bytes.length, base64 = "";
+  var bytes = buffer, i, len = bytes.length, base64 = "";
 
   for (i = 0; i < len; i+=3) {
     base64 += chars[bytes[i] >> 2];
@@ -249,13 +262,9 @@ function arrayToBase64(arraybuffer) {
     base64 = base64.substring(0, base64.length - 2) + "==";
   }
 
-  return base64;
+  return base64
 }
 
-/////////////////////////////////////////////////////////////////
-// Utils
-//
-/////////////////////////////////////////////////////////////////
 function requestAsync(params) {
 
   return new Promise((resolve, reject) => {
@@ -296,9 +305,9 @@ function requestAsync(params) {
           return reject(response)
         }
 
-        return resolve(body.data || body)
-      }
-      catch(ex){
+        return resolve(body || {})
+
+      } catch(ex){
 
         console.log(params.url)
         console.log(ex)

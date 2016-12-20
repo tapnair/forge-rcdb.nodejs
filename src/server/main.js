@@ -196,7 +196,7 @@ function runServer(app) {
 
           let dbSvc = new MongoDbSvc(dbConfig)
 
-          dbSvc.connect().then(() => {
+          dbSvc.connect().then( () => {
 
             let modelSvc = new ModelSvc(dbConfig)
 

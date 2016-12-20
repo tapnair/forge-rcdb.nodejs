@@ -1,14 +1,11 @@
-import EventEmitter from 'events'
 
-class SvcManager extends EventEmitter {
+class SvcManager {
 
   /////////////////////////////////////////////////////////////////
   //
   //
   /////////////////////////////////////////////////////////////////
   constructor() {
-
-    super()
 
     this._services = {}
   }
@@ -20,8 +17,6 @@ class SvcManager extends EventEmitter {
   registerService(svc) {
 
     this._services[svc.name()] = svc
-
-    this.emit(svc.name(), svc)
   }
 
   /////////////////////////////////////////////////////////////////

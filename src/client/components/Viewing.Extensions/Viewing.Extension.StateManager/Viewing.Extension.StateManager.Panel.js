@@ -5,6 +5,8 @@
 /////////////////////////////////////////////////////////////////////
 import './Viewing.Extension.StateManager.scss'
 import ToolPanelBase from 'ToolPanelBase'
+import SwitchButton from 'SwitchButton'
+import ToggleButton from 'ToggleButton'
 import 'dragula/dist/dragula.min.css'
 import dragula from 'dragula'
 
@@ -14,21 +16,53 @@ export default class StateManagerPanel extends ToolPanelBase{
 
     super(container, 'States Manager', {
       buttonElement: btnElement,
-      shadow: true
-    });
+      movable: false,
+      shadow: false
+    })
 
-    $(this.container).addClass('state-manager');
+    $(this.container).removeClass('dockingPanel')
+    $(this.container).addClass('state-manager')
 
     $(`#${this.container.id}-save-btn`).click((e)=>{
 
-      var $name = $(`#${this.container.id}-name`);
+      var $name = $(`#${this.container.id}-name`)
 
-      var state = this.emit('state.add', {name: $name.val()});
+      var state = this.emit('state.add', {
+        name: $name.val()
+      })
 
-      this.addItem(state);
+      this.addItem(state)
 
-      $name.val('');
-    });
+      $name.val('')
+    })
+
+    this.playToggleBtn = new ToggleButton(
+      `#${this.container.id}-play-btn`, {
+        states: [{
+          name: 'Play',
+          className: 'glyphicon glyphicon-play btn-play'
+        }, {
+          name: 'Pause',
+          className: 'glyphicon glyphicon-pause btn-play'
+        }]
+      })
+
+    this.playToggleBtn.on('btn.toggled', (event) => {
+
+      switch (event.state.name) {
+
+        case 'Play':
+          this.playSequence(1500)
+          break
+
+        case 'Pause':
+          clearTimeout(this.playSequenceId)
+          break
+      }
+    })
+
+    this.loopSwitch = new SwitchButton(
+      `#${this.container.id}-switch-loop`)
 
     this.drake = dragula(
       [$(`#${this.container.id}-item-list`)[0]],
@@ -49,6 +83,8 @@ export default class StateManagerPanel extends ToolPanelBase{
     this.drake.on('drag', (el)=> {
 
     });
+
+    this.stateMap = {}
   }
 
   /////////////////////////////////////////////////////////////
@@ -61,17 +97,22 @@ export default class StateManagerPanel extends ToolPanelBase{
 
       <div class="container">
         <div>
+        <input id="${id}-name"
+            type="text"
+            class="input-name"
+            placeholder=" State name ...">
           <button id="${id}-save-btn" class="btn btn-info btn-save">
-            <span class="glyphicon glyphicon-save-file btn-span-list">
+            <span class="fa fa-database btn-span-list">
             </span>
-            Save State
+            Save
           </button>
+          <div id="${id}-play-btn" class="btn-play-container">
+          </div>
+          <div id="${id}-switch-loop" class="switch-loop"></div>
         </div>
-        <input id="${id}-name" type="text" class="input-name"
-               placeholder=" State Name ...">
         <div class="item-list" id="${id}-item-list">
         </div>
-      </div>`;
+      </div>`
   }
 
   /////////////////////////////////////////////////////////////
@@ -97,21 +138,25 @@ export default class StateManagerPanel extends ToolPanelBase{
 
     $(`#${this.container.id}-item-list`).append(itemHtml)
 
-    if(item.readonly){
+    if (item.readonly) {
 
-      $(`#${item.guid}-delete-btn`).css({display:'none'})
+      $(`#${item.guid}-delete-btn`).css({
+        display:'none'
+      })
     }
 
     var $item = $(`#${item.guid}`)
 
-    $(`#${item.guid}-delete-btn`).click((e)=>{
+    $(`#${item.guid}-delete-btn`).click((e) => {
 
       this.emit('state.remove', item)
 
-      $item.remove()
-    });
+      delete this.stateMap[item.guid]
 
-    $item.click((e)=> {
+      $item.remove()
+    })
+
+    $item.click((e) => {
 
       e.preventDefault();
 
@@ -122,7 +167,9 @@ export default class StateManagerPanel extends ToolPanelBase{
 
         this.emit('state.restore', item)
       }
-    });
+    })
+
+    this.stateMap[item.guid] = item
   }
 
   /////////////////////////////////////////////////////////////
@@ -132,5 +179,67 @@ export default class StateManagerPanel extends ToolPanelBase{
   clearItems () {
 
     $(`#${this.container.id}-item-list`).empty()
+
+    this.stateMap = {}
+  }
+
+  /////////////////////////////////////////////////////////////
+  //
+  //
+  ////////////////////////////////////////////////////////////
+  getSequence () {
+
+    const $items = $(`#${this.container.id}-item-list > div`)
+
+    return $items.toArray().map((item) => {
+
+      return item.id
+    })
+  }
+
+  /////////////////////////////////////////////////////////////
+  //
+  //
+  /////////////////////////////////////////////////////////////
+  playSequence (period) {
+
+    const sequence = this.getSequence()
+
+    this.sequenceIdx = 0
+
+    const step = (id) => {
+
+      this.emit('state.restore', this.stateMap[id])
+
+      $(`#${id}`).addClass('active')
+
+      setTimeout(() => {
+        $(`#${id}`).removeClass('active')
+      }, period * 0.9)
+
+      ++this.sequenceIdx
+
+      if(this.sequenceIdx == sequence.length) {
+
+        if (!this.loopSwitch.checked()) {
+
+          this.playToggleBtn.setState(0)
+          return
+        }
+
+        this.sequenceIdx = 0
+      }
+
+      this.playSequenceId = setTimeout(() => {
+
+        step(sequence[this.sequenceIdx])
+
+      }, period)
+    }
+
+    if(sequence.length > 0) {
+
+      step(sequence[this.sequenceIdx])
+    }
   }
 }

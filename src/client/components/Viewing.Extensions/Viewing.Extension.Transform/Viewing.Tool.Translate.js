@@ -133,9 +133,9 @@ export default class TranslateTool extends EventsEmitter {
   // item selected callback
   //
   ///////////////////////////////////////////////////////////////////////////
-  onAggregateSelectionChanged(event) {
+  onAggregateSelectionChanged (event) {
 
-    if(event.selections && event.selections.length) {
+    if (this._hitPoint) {
 
       this._selection = event.selections[0]
 
@@ -166,8 +166,8 @@ export default class TranslateTool extends EventsEmitter {
 
       this.initializeSelection(
         this._hitPoint)
-    }
-    else {
+
+    } else {
 
       this.clearSelection()
     }

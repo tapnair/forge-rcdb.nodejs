@@ -172,12 +172,12 @@ class StateManagerExtension extends ExtensionBase {
   ////////////////////////////////////////////////////////////////
   onAddState (data) {
 
-    var state = this._viewer.getState();
+    var state = this._viewer.getState()
 
     state.guid = ExtensionBase.guid()
 
     state.name = (data.name.length ?
-      data.name : new Date().toString('d/M/yyyy H:mm:ss'));
+      data.name : new Date().toString('d/M/yyyy H:mm:ss'))
 
     if(this._api) {
 
@@ -186,7 +186,7 @@ class StateManagerExtension extends ExtensionBase {
         state);
     }
 
-    return state;
+    return state
   }
 
   /////////////////////////////////////////////////////////////////
@@ -195,7 +195,7 @@ class StateManagerExtension extends ExtensionBase {
   ////////////////////////////////////////////////////////////////
   onRestoreState (state) {
 
-    this._viewer.restoreState(state, null, false);
+    this._viewer.restoreState(state, null, false)
   }
 
   /////////////////////////////////////////////////////////////////
@@ -208,7 +208,7 @@ class StateManagerExtension extends ExtensionBase {
 
       this._api.removeState(
         this._options.model._id,
-        state.guid);
+        state.guid)
     }
   }
 
@@ -218,11 +218,11 @@ class StateManagerExtension extends ExtensionBase {
   ////////////////////////////////////////////////////////////////
   onSaveSequence (sequence) {
 
-    if(this._api) {
+    if (this._api) {
 
       this._api.saveSequence(
         this._options.model._id,
-        sequence);
+        sequence)
     }
   }
 }

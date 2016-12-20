@@ -141,8 +141,7 @@ export default class RotateTool extends EventsEmitter {
 
       this.drawControl()
 
-      this.viewer.fitToView(
-        this.selection.dbIdArray)
+      //this.viewer.fitToView(this.selection.dbIdArray)
 
     } else {
 
@@ -394,6 +393,7 @@ export default class RotateTool extends EventsEmitter {
           fragProxy.quaternion, 0)
 
         this.emit('transform.rotate', {
+          fragIds: fragIdsArray,
           rotation: euler,
           model
         })

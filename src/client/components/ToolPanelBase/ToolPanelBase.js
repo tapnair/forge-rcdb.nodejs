@@ -46,7 +46,7 @@ export default class ToolPanelBase extends
     super(container,
       ToolPanelBase.guid(),
       title,
-      Object.assign(getDefaultOptions(), options))
+      Object.assign({}, getDefaultOptions(), options))
 
     this._dialogResult = 'CANCEL'
 

@@ -2,6 +2,9 @@
 import ServiceManager from '../services/SvcManager'
 import { serverConfig as config } from 'c0nfig'
 import express from 'express'
+import rmdir from 'rmdir'
+import mzfs from 'mz/fs'
+import path from 'path'
 
 module.exports = function() {
 
@@ -26,40 +29,9 @@ module.exports = function() {
       var derivativesSvc = ServiceManager.getService(
         'DerivativesSvc')
 
-      var output = null
-
-      switch(payload.outputType) {
-
-        case 'obj':
-          output = derivativesSvc.jobOutputBuilder.obj({
-            guid: payload.guid,
-            objectIds: payload.objectIds
-          })
-          break
-
-        case 'svf':
-          output = derivativesSvc.jobOutputBuilder.svf()
-          break
-
-        default:
-          output = derivativesSvc.jobOutputBuilder.defaultOutput({
-            outputType: payload.outputType
-          })
-          break
-      }
-
-
-      var input = {
-        urn: payload.urn
-      }
-
-      if(payload.fileExtType === 'versions:autodesk.a360:CompositeDesign') {
-          input.rootFilename = payload.rootFilename
-          input.compressedUrn = true
-      }
-
       var response = await derivativesSvc.postJob(
-        token.access_token, input, output)
+        token.access_token,
+        payload)
 
       res.json(response)
 
@@ -156,8 +128,6 @@ module.exports = function() {
 
     } catch (ex) {
 
-      console.log(ex)
-
       res.status(ex.statusCode || 500)
       res.json(ex)
     }
@@ -190,6 +160,8 @@ module.exports = function() {
       res.json(response)
 
     } catch (ex) {
+
+      console.log(ex)
 
       res.status(ex.statusCode || 500)
       res.json(ex)
@@ -237,7 +209,7 @@ module.exports = function() {
   router.delete('/manifest/:urn', async (req, res) => {
 
     try {
-      
+
       var urn = req.params.urn
 
       var forgeSvc = ServiceManager.getService(
@@ -268,12 +240,14 @@ module.exports = function() {
   router.get('/download', async (req, res) => {
 
     try {
-      
-      var urn = req.query.urn
 
-      var filename = req.query.filename
+      var filename = req.query.filename || 'download'
 
       var derivativeUrn = req.query.derivativeUrn
+
+      var base64 = req.query.base64
+
+      var urn = req.query.urn
 
       var forgeSvc = ServiceManager.getService(
         'ForgeSvc')
@@ -284,9 +258,11 @@ module.exports = function() {
         'DerivativesSvc')
 
       var response = await derivativesSvc.download(
-        token.access_token, urn, derivativeUrn)
+        token.access_token, urn, derivativeUrn, {
+          base64: base64
+        })
 
-      res.set('Content-Type', 'application/obj')
+      res.set('Content-Type', 'application/octet-stream')
 
       res.set('Content-Disposition',
         `attachment filename="${filename}"`)
@@ -332,6 +308,103 @@ module.exports = function() {
     } catch (ex) {
 
       res.status(ex.statusCode || 500)
+      res.json(ex)
+    }
+  })
+
+  /////////////////////////////////////////////////////////////////////////////
+  // POST /svf/extract
+  //
+  /////////////////////////////////////////////////////////////////////////////
+  router.post('/svf/extract', async (req, res) => {
+
+    try {
+
+      const payload = JSON.parse(req.body.payload)
+
+      const name = payload.name
+
+      const urn = payload.urn
+
+      const forgeSvc = ServiceManager.getService(
+        'ForgeSvc')
+
+      const token = await forgeSvc.get2LeggedToken()
+
+      const svfDownloaderSvc = ServiceManager.getService(
+        'SVFDownloaderSvc')
+
+      const dir = path.resolve(__dirname,
+        `../../../../TMP/${name}`)
+
+      const files = await svfDownloaderSvc.download(
+        token.access_token,
+        payload.urn, dir)
+
+      await svfDownloaderSvc.createZip(
+        dir, files, dir + '.zip')
+
+      rmdir(dir)
+
+      res.json('ok')
+
+    } catch (ex) {
+
+      res.status(ex.statusCode || 500)
+      res.json(ex)
+    }
+  })
+
+  /////////////////////////////////////////////////////////////////////////////
+  // GET /svf/status/:name
+  //
+  /////////////////////////////////////////////////////////////////////////////
+  router.get('/svf/status/:name', async (req, res) => {
+
+    try {
+
+      const name = req.params.name
+
+      const filename = path.resolve(__dirname,
+        `../../../../TMP/${name}.zip`)
+
+      await mzfs.stat(filename)
+
+      res.json('ok')
+
+    } catch (ex) {
+
+      res.status(404)
+      res.json(ex)
+    }
+  })
+
+  /////////////////////////////////////////////////////////////////////////////
+  // GET /svf/download/:name
+  //
+  /////////////////////////////////////////////////////////////////////////////
+  router.get('/svf/download/:name', async (req, res) => {
+
+    try {
+
+      const name = req.params.name
+
+      const filename = path.resolve(__dirname,
+        `../../../../TMP/${name}.zip`)
+
+      await mzfs.stat(filename)
+
+      res.set('Content-Type', 'application/octet-stream')
+
+      const stream = mzfs.createReadStream(filename, {
+        bufferSize: 64 * 64 * 1024
+      })
+
+      stream.pipe(res)
+
+    } catch (ex) {
+
+      res.status(404)
       res.json(ex)
     }
   })
