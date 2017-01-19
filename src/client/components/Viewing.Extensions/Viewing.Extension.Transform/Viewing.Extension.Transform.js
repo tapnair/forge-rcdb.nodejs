@@ -197,7 +197,9 @@ class TransformExtension extends ExtensionBase {
   /////////////////////////////////////////////////////////////////
   getState (viewerState) {
 
-    this.currentExplodeScale = this._viewer.getExplodeScale()
+    this.currentExplodeScale =
+      this.currentExplodeScale ||
+      this._viewer.getExplodeScale()
 
     viewerState.explodeScale = this.currentExplodeScale
 
@@ -238,7 +240,7 @@ class TransformExtension extends ExtensionBase {
 
       //this.restoreTransform(viewerState)
 
-      const period = 1.5
+      const period = 1.8
 
       const easingFunc = (t) => {
 
@@ -247,7 +249,11 @@ class TransformExtension extends ExtensionBase {
       }
 
       this.animateTransform(
-        viewerState, easingFunc, period)
+        viewerState, easingFunc, period).then(() => {
+
+          this.currentExplodeScale =
+            viewerState.explodeScale
+        })
 
       this.transformedFragIdMap = Object.assign({},
         viewerState.transforms)
@@ -303,7 +309,7 @@ class TransformExtension extends ExtensionBase {
   //
   //
   /////////////////////////////////////////////////////////////////
-  animateTransform (targetState, easing, period = 1.5) {
+  animateTransform (targetState, easing, period = 2.0) {
 
     return new Promise (async(resolve, reject) => {
 
@@ -397,13 +403,32 @@ class TransformExtension extends ExtensionBase {
 
             const eased = easing(t/period)
 
-            const targetQuat = fragProxy.targetTransform.quaternion
-            const initQuat = fragProxy.initialTransform.quaternion
+            const _targetQuat = fragProxy.targetTransform.quaternion
+            const _initQuat = fragProxy.initialTransform.quaternion
 
-            fragProxy.quaternion.x = eased * targetQuat._x + (1 - eased) * initQuat._x
-            fragProxy.quaternion.y = eased * targetQuat._y + (1 - eased) * initQuat._y
-            fragProxy.quaternion.z = eased * targetQuat._z + (1 - eased) * initQuat._z
-            fragProxy.quaternion.z = eased * targetQuat._z + (1 - eased) * initQuat._z
+            const initQuat = new THREE.Quaternion(
+              _initQuat._x,
+              _initQuat._y,
+              _initQuat._z,
+              _initQuat._w)
+
+            const targetQuat = new THREE.Quaternion(
+              _targetQuat._x,
+              _targetQuat._y,
+              _targetQuat._z,
+              _targetQuat._w)
+
+            initQuat.slerp(targetQuat, eased)
+
+            fragProxy.quaternion._x = initQuat.x
+            fragProxy.quaternion._y = initQuat.y
+            fragProxy.quaternion._z = initQuat.z
+            fragProxy.quaternion._w = initQuat.w
+
+            //fragProxy.quaternion._x = eased * targetQuat._x + (1 - eased) * initQuat._x
+            //fragProxy.quaternion._y = eased * targetQuat._y + (1 - eased) * initQuat._y
+            //fragProxy.quaternion._z = eased * targetQuat._z + (1 - eased) * initQuat._z
+            //fragProxy.quaternion._w = eased * targetQuat._z + (1 - eased) * initQuat._z
 
             const targetPos = fragProxy.targetTransform.position
             const initPos = fragProxy.initialTransform.position
@@ -431,9 +456,10 @@ class TransformExtension extends ExtensionBase {
 
       // create explode animation task
 
-      let scale = this.currentExplodeScale
+      let scale = parseFloat(this.currentExplodeScale)
 
-      const targetScale = parseFloat(targetState.explodeScale)
+      const targetScale = parseFloat(
+        targetState.explodeScale)
 
       if (targetScale != scale) {
 
@@ -455,9 +481,8 @@ class TransformExtension extends ExtensionBase {
 
             const eased = easing(t/period)
 
-            const easedScale =
-              eased * targetScale +
-              (1 - eased) * this.currentExplodeScale
+            const easedScale = scale +
+              eased * (targetScale - scale)
 
             ViewerToolkit.selectiveExplode(
               viewer,

@@ -12,7 +12,8 @@
   width: 100%;
 }
 
-.widget-container .title label{
+.widget-container .title label {
+  user-select: none;
   margin-left: 27px;
   margin-top: 10px;
 }
@@ -21,20 +22,4 @@
   height: calc(100% - 48px);
   overflow: auto;
   width:100%;
-}
-
-.legend-scroll::-webkit-scrollbar {
-  -webkit-appearance: none;
-  &:vertical{
-    width: 11px;
-  }
-  &:horizontal{
-    height: 11px;
-  }
-}
-
-.legend-scroll::-webkit-scrollbar-thumb {
-  border-radius: 8px;
-  border: 2px solid white; /* should match background, can't be transparent */
-  background-color: rgba(0, 0, 0, .5);
 }

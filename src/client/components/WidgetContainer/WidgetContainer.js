@@ -12,62 +12,28 @@ class WidgetContainer extends React.Component {
     this.state = {
       style: {}
     }
-
-    this.onResize = this.onResize.bind(this)
   }
 
   ///////////////////////////////////////////////////////////////////
   //
   //
   ///////////////////////////////////////////////////////////////////
-  componentDidMount () {
+  renderChildren() {
 
-    window.addEventListener('resize', this.onResize)
-  }
+    if (this.props.dimensions) {
 
-  ///////////////////////////////////////////////////////////////////
-  //
-  //
-  ///////////////////////////////////////////////////////////////////
-  componentWillUnmount () {
+      return React.Children.map(this.props.children, (child) => {
 
-    window.removeEventListener('resize', this.onResize)
-  }
+        const newProps = Object.assign({},
+          child.props, {
+            dimensions: this.props.dimensions
+          })
 
-  ///////////////////////////////////////////////////////////////////
-  //
-  //
-  ///////////////////////////////////////////////////////////////////
-  fillParent () {
+        return React.cloneElement(child, newProps)
+      })
+    }
 
-    const domElement = ReactDOM.findDOMNode(this)
-
-    const parent = domElement.parentNode
-
-    this.setState({
-      style: {
-        height: parent.offsetHeight,
-        width: parent.offsetWidth
-      }
-    })
-  }
-
-  ///////////////////////////////////////////////////////////////////
-  //
-  //
-  ///////////////////////////////////////////////////////////////////
-  onResize () {
-
-    this.fillParent()
-  }
-
-  ///////////////////////////////////////////////////////////////////
-  //
-  //
-  ///////////////////////////////////////////////////////////////////
-  componentWillReceiveProps () {
-
-    this.fillParent()
+    return this.props.children
   }
 
   ///////////////////////////////////////////////////////////////////
@@ -77,14 +43,14 @@ class WidgetContainer extends React.Component {
   render() {
 
     return (
-      <div className="widget-container" style={this.state.style}>
+      <div className="widget-container">
         <div className="title">
           <label>
           {this.props.title}
           </label>
         </div>
         <div className="content">
-          {this.props.children}
+          {this.renderChildren()}
         </div>
       </div>
     )

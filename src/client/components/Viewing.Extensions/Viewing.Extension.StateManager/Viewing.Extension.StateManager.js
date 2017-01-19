@@ -202,7 +202,8 @@ class StateManagerExtension extends ExtensionBase {
     const filteredState = this.filterState(
         state, 'objectSet', 'explodeScale')
 
-    this.restoreStateWithPivot(filteredState)
+    //this.restoreStateWithPivot(filteredState)
+    this._viewer.restoreState(filteredState)
   }
 
   /////////////////////////////////////////////////////////////////

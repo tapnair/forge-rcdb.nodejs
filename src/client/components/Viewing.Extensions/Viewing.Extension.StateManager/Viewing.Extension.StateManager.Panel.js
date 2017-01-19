@@ -3,7 +3,6 @@
 // by Philippe Leefsma, Feb 2016
 //
 /////////////////////////////////////////////////////////////////////
-import './Viewing.Extension.StateManager.scss'
 import ToolPanelBase from 'ToolPanelBase'
 import SwitchButton from 'SwitchButton'
 import ToggleButton from 'ToggleButton'
@@ -52,7 +51,7 @@ export default class StateManagerPanel extends ToolPanelBase{
       switch (event.state.name) {
 
         case 'Play':
-          this.playSequence(1500)
+          this.playSequence(2000)
           break
 
         case 'Pause':

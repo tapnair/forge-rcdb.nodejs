@@ -164,6 +164,18 @@ class Viewer extends React.Component {
   }
 
   ///////////////////////////////////////////////////////////////////
+  //
+  //
+  ///////////////////////////////////////////////////////////////////
+  componentWillReceiveProps (props) {
+
+    if (this.viewer && this.viewer.impl) {
+
+      this.viewer.resize()
+    }
+  }
+
+  ///////////////////////////////////////////////////////////////////
   // Component will unmount so we can destroy the viewer to avoid
   // memory leaks
   //
@@ -189,11 +201,12 @@ class Viewer extends React.Component {
 
     if (this.viewer && this.viewer.impl) {
 
-      this.viewer.resize()
+      //this.viewer.resize()
     }
 
     return (
-      <div className="viewer" ref={ (div) => this.viewerContainer = div }>
+      <div className="viewer" style={this.props.style}
+        ref={ (div) => this.viewerContainer = div }>
       </div>
     )
   }

@@ -1,0 +1,17 @@
+.reflex-layout.horizontal > .reflex-splitter {
+  height: 4px;
+  z-index: 10;
+}
+
+.reflex-layout.vertical > .reflex-splitter {
+  z-index: 10;
+  width: 4px;
+}
+
+.reflex-layout.horizontal > .reflex-splitter.mobile {
+  height: 6px;
+}
+
+.reflex-layout.vertical > .reflex-splitter.mobile {
+  width: 6px;
+}

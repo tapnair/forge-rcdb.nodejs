@@ -1,5 +1,5 @@
 
-import {FlexContainer, FlexElement, FlexSplitter} from 'FlexLayout'
+import {ReflexContainer, ReflexElement, ReflexSplitter} from 'react-reflex'
 import DBResponsiveView from '../DBResponsiveView'
 import WidgetContainer from 'WidgetContainer'
 import DBChart from 'DBChart'
@@ -13,28 +13,36 @@ class FlexLayout extends React.Component {
   //
   //
   /////////////////////////////////////////////////////////
+  constructor () {
+
+    super()
+  }
+
+  /////////////////////////////////////////////////////////
+  //
+  //
+  /////////////////////////////////////////////////////////
   render() {
 
-    switch(this.props.layoutType) {
+    switch (this.props.layoutType) {
 
       case 'flexLayoutRight':
 
         return (
-          <FlexContainer orientation='vertical'>
-            <FlexElement flex={0.6}>
+          <ReflexContainer key="flexLayoutRight" orientation='vertical'>
+            <ReflexElement flex={0.6} propagateDimensions={true}>
               <Viewer
                 onViewerCreated={this.props.onViewerCreated}
                 onFilterDbItems={this.props.onFilterDbItems}
                 updatedDbItem={this.props.updatedDbItem}
                 onModelLoaded={this.props.onModelLoaded}
+                style={{height:"calc(100vh - 65px)"}}
                 dbItems={this.props.dbItems}/>
-            </FlexElement>
-            <FlexSplitter
-              onStopResize={() => this.forceUpdate()}
-            />
-            <FlexElement>
-              <FlexContainer orientation='horizontal'>
-                <FlexElement minSize={210}>
+            </ReflexElement>
+            <ReflexSplitter onStopResize={() => this.forceUpdate()}/>
+            <ReflexElement>
+              <ReflexContainer orientation='horizontal'>
+                <ReflexElement minSize={210} propagateDimensions={true}>
                   <WidgetContainer title="Database">
                     <DBResponsiveView
                       onSelectDbItem={this.props.onSelectDbItem}
@@ -43,30 +51,28 @@ class FlexLayout extends React.Component {
                       dbItems={this.props.filteredDbItems}
                     />
                   </WidgetContainer>
-                </FlexElement>
-                <FlexSplitter
-                  onStopResize={() => this.forceUpdate()}
-                />
-                <FlexElement>
+                </ReflexElement>
+                <ReflexSplitter onStopResize={() => this.forceUpdate()}/>
+                <ReflexElement>
                   <WidgetContainer title="Cost Breakdown">
                     <DBChart
                       onClick={this.props.onChartClicked}
                       data={this.props.chartData}
                     />
                   </WidgetContainer>
-                </FlexElement>
-              </FlexContainer>
-            </FlexElement>
-          </FlexContainer>
+                </ReflexElement>
+              </ReflexContainer>
+            </ReflexElement>
+          </ReflexContainer>
         )
 
       case 'flexLayoutLeft':
 
         return (
-          <FlexContainer orientation='vertical'>
-            <FlexElement>
-              <FlexContainer orientation='horizontal'>
-                <FlexElement minSize={210}>
+          <ReflexContainer key="flexLayoutLeft" orientation='vertical'>
+            <ReflexElement flex={0.4}>
+              <ReflexContainer orientation='horizontal'>
+                <ReflexElement minSize={210} propagateDimensions={true}>
                   <WidgetContainer title="Database">
                     <DBResponsiveView
                       onSelectDbItem={this.props.onSelectDbItem}
@@ -75,32 +81,33 @@ class FlexLayout extends React.Component {
                       dbItems={this.props.filteredDbItems}
                     />
                   </WidgetContainer>
-                </FlexElement>
-                <FlexSplitter
+                </ReflexElement>
+                <ReflexSplitter
                   onStopResize={() => this.forceUpdate()}
                 />
-                <FlexElement>
+                <ReflexElement>
                   <WidgetContainer title="Cost Breakdown">
                     <DBChart
                       onClick={this.props.onChartClicked}
                       data={this.props.chartData}
                     />
                   </WidgetContainer>
-                </FlexElement>
-              </FlexContainer>
-            </FlexElement>
-            <FlexSplitter
-              onStopResize={() => this.forceUpdate()}
+                </ReflexElement>
+              </ReflexContainer>
+            </ReflexElement>
+            <ReflexSplitter
+              onStopResize={() => this.refs.viewer.forceUpdate()}
             />
-            <FlexElement flex={0.6}>
+            <ReflexElement propagateDimensions={true}>
               <Viewer
                 onViewerCreated={this.props.onViewerCreated}
                 onFilterDbItems={this.props.onFilterDbItems}
                 updatedDbItem={this.props.updatedDbItem}
                 onModelLoaded={this.props.onModelLoaded}
+                style={{height:"calc(100vh - 65px)"}}
                 dbItems={this.props.dbItems}/>
-            </FlexElement>
-          </FlexContainer>
+            </ReflexElement>
+          </ReflexContainer>
         )
     }
   }

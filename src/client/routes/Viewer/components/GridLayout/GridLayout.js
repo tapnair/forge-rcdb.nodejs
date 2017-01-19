@@ -89,9 +89,26 @@ class GridLayout extends React.Component {
   /////////////////////////////////////////////////////////
   componentDidMount() {
 
+    this.throttledUpdate = _.throttle(() => {
+      this.forceUpdate()
+    }, 150)
+
+    window.addEventListener(
+      'resize', this.throttledUpdate)
+
     this.setState({
       mounted: true
     })
+  }
+
+  ///////////////////////////////////////////////////////////////////
+  //
+  //
+  ///////////////////////////////////////////////////////////////////
+  componentWillUnmount () {
+
+    window.removeEventListener(
+      'resize', this.throttledUpdate)
   }
 
   /////////////////////////////////////////////////////////
@@ -146,7 +163,8 @@ class GridLayout extends React.Component {
                   onFilterDbItems={this.props.onFilterDbItems}
                   updatedDbItem={this.props.updatedDbItem}
                   onModelLoaded={this.props.onModelLoaded}
-                  dbItems={this.props.dbItems}/>
+                  dbItems={this.props.dbItems}
+                  style={{height:"100%"}}/>
               </GridLayoutMovableLock>
             </div>)
           break

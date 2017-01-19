@@ -6,7 +6,6 @@ import TransformExtension from 'Viewing.Extension.Transform'
 import Markup3DExtension from 'Viewing.Extension.Markup3D'
 import ViewerToolkit from 'Viewer.Toolkit'
 import ServiceManager from 'SvcManager'
-import SplitLayout from './SplitLayout'
 import FlexLayout from './FlexLayout'
 import GridLayout from './GridLayout'
 import './ViewerView.scss'
@@ -393,7 +392,6 @@ class ViewerView extends React.Component {
 
       viewer.loadExtension(StateManagerExtension, {
         apiUrl: `/api/models/${'forge-rcdb'}`,
-        container: $('.viewer-view')[0],
         parentControl: ctrlGroup,
         model: this.dbModel
       })
@@ -709,26 +707,6 @@ class ViewerView extends React.Component {
               selectedDbItem={this.state.selectedDbItem}
               chartData={this.state.chartData}
               dbItems={this.props.dbItems}
-            />
-          </div>
-        )
-
-      case 'splitLayoutRight':
-      case 'splitLayoutLeft':
-
-        return (
-          <div className="viewer-view">
-            <SplitLayout
-              onSelectDbItem={(dbItem, propagate) => this.onSelectDbItem(dbItem, propagate)}
-              onUpdateDbItem={(dbItem) => this.onUpdateDbItem(dbItem)}
-              onModelLoaded={(viewer) => this.onModelLoaded(viewer)}
-              onViewerCreated={(data) => this.onViewerCreated(data)}
-              onChartClicked={(data) => this.onChartClicked(data)}
-              filteredDbItems={this.state.filteredDbItems}
-              selectedDbItem={this.state.selectedDbItem}
-              chartData={this.state.chartData}
-              dbItems={this.props.dbItems}
-              layoutType={layoutType}
             />
           </div>
         )

@@ -10,6 +10,22 @@
   border-bottom: 1px solid #aeaeae;
 }
 
+.legend-scroll::-webkit-scrollbar {
+  -webkit-appearance: none;
+  &:vertical{
+    width: 11px;
+  }
+  &:horizontal{
+    height: 11px;
+  }
+}
+
+.legend-scroll::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  border: 2px solid white; /* should match background, can't be transparent */
+  background-color: rgba(0, 0, 0, .5);
+}
+
 .legend-container {
   margin-left: 20px;
   margin-top: 12px;

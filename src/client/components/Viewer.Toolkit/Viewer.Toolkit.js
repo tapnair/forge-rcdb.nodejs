@@ -808,7 +808,7 @@ export default class ViewerToolkit {
 
         svf.instanceTree.enumNodeFragments(nodeId, function(fragId) {
 
-          if(excludedFragIds.indexOf(fragId.toString()) < 0) {
+          if (excludedFragIds.indexOf(fragId.toString()) < 0) {
 
             pt.x = ox;
             pt.y = oy;
@@ -856,8 +856,5 @@ export default class ViewerToolkit {
         }
       }
     }
-
-    viewer.explode(scale)
   }
 }
-

@@ -18,6 +18,17 @@ class DBChart extends React.Component {
     window.addEventListener(
       'resize',
       this.onResizeHandler)
+
+    this.draw(this.props.data)
+  }
+
+  /////////////////////////////////////////////////////////////
+  //
+  //
+  /////////////////////////////////////////////////////////////
+  componentWillReceiveProps (props) {
+
+    this.draw(props.data)
   }
 
   /////////////////////////////////////////////////////////////
@@ -59,20 +70,11 @@ class DBChart extends React.Component {
   //
   //
   /////////////////////////////////////////////////////////////
-  componentDidUpdate () {
-
-
-  }
-
-  /////////////////////////////////////////////////////////////
-  //
-  //
-  /////////////////////////////////////////////////////////////
   render() {
 
-    setTimeout(() => {
-      this.draw(this.props.data)
-    }, 100)
+    //setTimeout(() => {
+    //  this.draw(this.props.data)
+    //}, 100)
 
     return (
       <div className="db-chart">
@@ -89,7 +91,7 @@ class DBChart extends React.Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 
   /////////////////////////////////////////////////////////////
