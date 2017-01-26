@@ -120,6 +120,7 @@ class DBTable extends React.Component {
             supplier: dbItem.supplier,
             price: dbItem.price,
             currency: dbItem.currency,
+            printable: dbItem.printable,
             id: dbItem._id
           }
         }), {
