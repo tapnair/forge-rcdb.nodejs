@@ -330,6 +330,10 @@ class DBTable extends React.Component {
                   data-ft-control="select">
                   Currency
                 </th>
+                <th className="db-column"
+                  data-field="printable">
+                  Printable
+                </th>
                 <th className="db-column hidden">
                   _id
                 </th>
